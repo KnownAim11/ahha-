@@ -89,3 +89,4 @@ indexFiles.forEach(file => {
 
 console.log(`\n✓ Готово! Обработано ${indexFiles.length} страниц.`);
 
+

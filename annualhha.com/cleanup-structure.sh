@@ -40,3 +40,4 @@ echo "  - 2022-honorees/, 2021-honorees/, и т.д."
 echo "  - 2020-ahha-gallery/, 2019-gallery/, и т.д."
 
 
+
