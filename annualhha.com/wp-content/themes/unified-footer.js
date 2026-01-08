@@ -7,20 +7,35 @@
 	'use strict';
 	
 	// Detect if we're in root or subfolder
-	// Simple check: if pathname contains a subdirectory, we need ../
+	// Works with both local (index.html) and Vercel (cleanUrls) paths
 	const pathname = window.location.pathname || '';
 	const href = window.location.href || '';
 	
-	// Check if we're in a subfolder (contains /contact-us/, /about-ahha/, etc.)
-	const isSubfolder = pathname.includes('/contact-us/') ||
-	                    pathname.includes('/about-ahha/') ||
-	                    pathname.includes('/nomination-form/') ||
-	                    pathname.includes('/our-sponsors/') ||
-	                    pathname.includes('/gallery/') ||
-	                    pathname.includes('/honorees/') ||
-	                    pathname.includes('/ahha-honorees/') ||
-	                    pathname.includes('/contact/') ||
-	                    (pathname.split('/').filter(p => p && p !== 'index.html').length > 2);
+	// Normalize pathname - remove trailing slash and index.html
+	let normalizedPath = pathname.replace(/\/index\.html$/, '').replace(/\/$/, '');
+	if (!normalizedPath) normalizedPath = '/';
+	
+	// Check if we're in a subfolder (not root)
+	// Root is either '/' or empty string
+	const isRoot = normalizedPath === '/' || normalizedPath === '';
+	
+	// Also check for known subfolders (works with both /contact-us and /contact-us/)
+	const knownSubfolders = [
+		'/contact-us', '/about-ahha', '/nomination-form', '/our-sponsors',
+		'/gallery', '/honorees', '/ahha-honorees', '/contact',
+		'/2015-gallery', '/2015-honorees', '/2016-ahha-honorees', '/2016-gallery',
+		'/2017-gallery', '/2017-honorees', '/2018-gallery', '/2018-honorees',
+		'/2019-gallery', '/2019-honorees', '/2020-ahha-gallery', '/2020-honorees',
+		'/2021-honorees', '/2022-honorees'
+	];
+	
+	const isKnownSubfolder = knownSubfolders.some(folder => 
+		normalizedPath.startsWith(folder)
+	);
+	
+	// Check if path has more than one segment (e.g., /contact-us vs /)
+	const pathSegments = normalizedPath.split('/').filter(p => p);
+	const isSubfolder = !isRoot && (isKnownSubfolder || pathSegments.length > 0);
 	
 	// Path prefix for assets and links
 	const pathPrefix = isSubfolder ? '../' : '';
@@ -84,9 +99,18 @@
 	
 	function injectFooter() {
 		try {
+			// Debug: log path detection (remove in production if needed)
+			console.log('[Footer] Path detection:', {
+				pathname: window.location.pathname,
+				normalizedPath: normalizedPath,
+				isSubfolder: isSubfolder,
+				pathPrefix: pathPrefix
+			});
+			
 			// Check if footer already injected to avoid duplicates
 			const existingPremiumFooter = document.querySelector('.premium-unified-footer');
 			if (existingPremiumFooter) {
+				console.log('[Footer] Footer already exists, skipping injection');
 				return; // Footer already exists, don't inject again
 			}
 			
@@ -128,22 +152,41 @@
 				'#et-footer-nav, #footer-bottom'
 			);
 			diviFooterElements.forEach(el => {
-				if (el && el.tagName === 'FOOTER' || el.id === 'et-footer-nav' || el.id === 'footer-bottom') {
+				if (el && (el.tagName === 'FOOTER' || el.id === 'et-footer-nav' || el.id === 'footer-bottom')) {
 					el.style.display = 'none';
 				}
 			});
+			
+			console.log('[Footer] Footer injected successfully');
 		} catch (error) {
-			console.error('Error injecting footer:', error);
+			console.error('[Footer] Error injecting footer:', error);
 			// Don't break the page if footer injection fails
 		}
 	}
 	
-	// Run when DOM is ready
-	if (document.readyState === 'loading') {
-		document.addEventListener('DOMContentLoaded', injectFooter);
-	} else {
-		injectFooter();
+	// Run when DOM is ready - multiple strategies for maximum compatibility
+	function initFooter() {
+		if (document.readyState === 'loading') {
+			document.addEventListener('DOMContentLoaded', injectFooter);
+		} else if (document.readyState === 'interactive' || document.readyState === 'complete') {
+			// DOM already loaded or loading
+			injectFooter();
+		} else {
+			// Fallback: wait a bit and try again
+			setTimeout(injectFooter, 100);
+		}
 	}
+	
+	// Try immediately
+	initFooter();
+	
+	// Also try after window load (in case DOMContentLoaded already fired)
+	window.addEventListener('load', function() {
+		setTimeout(injectFooter, 50);
+	});
+	
+	// Fallback: try one more time after a short delay
+	setTimeout(injectFooter, 500);
 	
 })();
 
