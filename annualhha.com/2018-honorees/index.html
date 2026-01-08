@@ -132,32 +132,56 @@ html, body, #page-container, #et-main-area, #main-content, .et_pb_section {
 			background-color: #050505 !important;
 		}
 		
-		/* Ensure images are visible and properly displayed */
-		.honorees-page .et_pb_image_wrap img {
+		/* Ensure images are visible and properly displayed - ALL POSSIBLE SELECTORS */
+		.honorees-page .et_pb_image_wrap img,
+		.honorees-page .et_pb_image img,
+		.honorees-page img.et-waypoint,
+		.honorees-page .et_pb_module.et_pb_image img,
+		.honorees-page .et_pb_image_0 img,
+		.honorees-page .et_pb_image_1 img,
+		.honorees-page .et_pb_image_2 img,
+		.honorees-page .et_pb_image_3 img,
+		.honorees-page .et_pb_image_4 img,
+		.honorees-page .et_pb_image_5 img,
+		.honorees-page .et_pb_image_6 img,
+		.honorees-page .et_pb_image_7 img,
+		.honorees-page .et_pb_image_8 img,
+		.honorees-page .et_pb_image_9 img,
+		.honorees-page .et_pb_image_10 img,
+		.honorees-page .et_pb_image_11 img,
+		.honorees-page .et_pb_image_12 img {
 			background: transparent !important;
 			background-color: transparent !important;
 			display: block !important;
 			opacity: 1 !important;
 			visibility: visible !important;
-			min-height: 100px; /* Чтобы контейнер не схлопывался */
+			min-height: 100px !important;
+			max-width: 100% !important;
+			height: auto !important;
 		}
 		
-		/* Fallback Background */
-		.et_pb_image_wrap img {
+		/* Fallback for all images on page */
+		.honorees-page .et_pb_image_wrap img,
+		.honorees-page .et_pb_image_wrap img[src],
+		.honorees-page img[src] {
 			display: block !important;
 			opacity: 1 !important;
 			visibility: visible !important;
-			min-height: 100px; /* Чтобы контейнер не схлопывался */
+			min-height: 100px !important;
 		}
 		
 		/* Fix overlay blocking images */
-		.box-shadow-overlay {
+		.honorees-page .box-shadow-overlay {
+			display: none !important;
+			opacity: 0 !important;
 			pointer-events: none !important;
+			visibility: hidden !important;
 		}
 		
 		/* Fix white background issue */
 		.honorees-page .et_pb_image,
-		.honorees-page .et_pb_image_wrap {
+		.honorees-page .et_pb_image_wrap,
+		.honorees-page .et_pb_image.has-box-shadow-overlay {
 			background: transparent !important;
 			background-color: transparent !important;
 		}
@@ -168,6 +192,14 @@ html, body, #page-container, #et-main-area, #main-content, .et_pb_section {
 		.honorees-page #et-main-area {
 			background: #050505 !important;
 			background-color: #050505 !important;
+		}
+		
+		/* Force image containers to show */
+		.honorees-page .et_pb_image_wrap,
+		.honorees-page .et_pb_module.et_pb_image {
+			display: block !important;
+			visibility: visible !important;
+			opacity: 1 !important;
 		}
 	</style>
 </head>
