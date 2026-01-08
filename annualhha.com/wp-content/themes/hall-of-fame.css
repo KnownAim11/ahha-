@@ -550,6 +550,38 @@ body.page {
 	}
 }
 
+/* Honoree Caption Styling - Names and Positions under photos */
+.honoree-caption {
+	margin: 1.5rem 0 1rem 0 !important;
+	padding: 0 !important;
+	text-align: left;
+}
+
+.honoree-name {
+	font-family: 'Playfair Display', serif !important;
+	font-size: 19px !important;
+	font-weight: 400 !important;
+	color: #C5A059 !important;
+	margin: 0 0 0.5rem 0 !important;
+	padding: 0 !important;
+	line-height: 1.4 !important;
+	text-transform: none !important;
+	letter-spacing: normal !important;
+}
+
+.honoree-position {
+	font-family: 'Inter', sans-serif !important;
+	font-size: 12px !important;
+	font-weight: 400 !important;
+	color: #FFFFFF !important;
+	text-transform: uppercase !important;
+	letter-spacing: 0.15em !important;
+	margin: 0 !important;
+	padding: 0 !important;
+	line-height: 1.6 !important;
+	opacity: 0.9;
+}
+
 /* Name/Caption styling */
 .honorees-page .et_pb_toggle {
 	border: none !important;
