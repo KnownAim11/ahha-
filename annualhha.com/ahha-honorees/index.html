@@ -98,6 +98,59 @@ body.custom-background {
 	-moz-osx-font-smoothing: grayscale;
 }
 </style>
+<style>
+  /* 1. Полная зачистка всех фонов и теней секций */
+  .et_pb_section, 
+  .et_pb_section_0, 
+  .et_pb_with_background,
+  #main-content .et_pb_section {
+      background-color: #050505 !important;
+      background-image: none !important;
+      box-shadow: none !important; /* Убирает внутренние тени, которые делают фон серым */
+  }
+
+  /* 2. Убиваем ВСЕ псевдоэлементы Divi, которые создают "дымку" */
+  .et_pb_section:before, 
+  .et_pb_section:after, 
+  .et_pb_section_video_bg:before, 
+  .et_pb_section_video_bg:after, 
+  .et_pb_section_video_bg .et_pb_section_video_bg_inner:before {
+      display: none !important;
+      content: none !important;
+      background: transparent !important;
+      opacity: 0 !important;
+  }
+
+  /* 3. Очистка видео-контейнера */
+  .et_pb_section_video_bg {
+      background: #050505 !important;
+      z-index: 0 !important;
+  }
+
+  /* 4. Принудительный черный для всех оберток страницы */
+  html, body, #page-container, #et-main-area, #main-content {
+      background-color: #050505 !important;
+      background-image: none !important;
+  }
+
+  /* Hide media element loader */
+  .mejs-overlay-loading, .et_pb_video_overlay_hover {
+      display: none !important;
+  }
+
+  /* Ensure title is visible */
+  .premium-main-title, .luxury-title.premium-main-title {
+      color: #C5A059 !important;
+      display: block !important;
+      visibility: visible !important;
+      position: relative !important;
+      z-index: 10 !important;
+  }
+  .luxury-header-block.premium-honorees-header {
+      position: relative !important;
+      z-index: 10 !important;
+  }
+</style>
 	<link rel="icon" href="../wp-content/uploads/2020/10/cropped-logoWhite-32x32.png" sizes="32x32" />
 <link rel="icon" href="../wp-content/uploads/2020/10/cropped-logoWhite-192x192.png" sizes="192x192" />
 <link rel="apple-touch-icon" href="../wp-content/uploads/2020/10/cropped-logoWhite-180x180.png" />
@@ -111,7 +164,7 @@ body.custom-background {
 	<link rel="stylesheet" href="../wp-content/themes/hall-of-fame.css" type="text/css" media="all" />
 	<link rel="stylesheet" href="../wp-content/themes/unified-footer.css" type="text/css" media="all" />
 </head>
-<body class="wp-singular page-template-default page page-id-86 custom-background wp-theme-Divi et_pb_button_helper_class et_non_fixed_nav et_show_nav et_primary_nav_dropdown_animation_fade et_secondary_nav_dropdown_animation_fade et_header_style_left et_pb_footer_columns4 et_cover_background et_pb_gutter windows et_pb_gutters3 et_pb_pagebuilder_layout et_no_sidebar et_divi_theme et-db et_minified_js et_minified_css">
+<body class="wp-singular page-template-default page page-id-86 custom-background wp-theme-Divi et_pb_button_helper_class et_non_fixed_nav et_show_nav et_primary_nav_dropdown_animation_fade et_secondary_nav_dropdown_animation_fade et_header_style_left et_pb_footer_columns4 et_pb_gutter windows et_pb_gutters3 et_pb_pagebuilder_layout et_no_sidebar et_divi_theme et-db et_minified_js et_minified_css">
 	<div id="page-container">
 
 	
@@ -358,7 +411,7 @@ var _wpmejsSettings = {"pluginPath":"\/wp-includes\/js\/mediaelement\/","classPr
 /* ]]> */
 </script>
 <script type="text/javascript" src="../wp-includes/js/mediaelement/wp-mediaelement.min.js%3Fver=6.8.3" id="wp-mediaelement-js"></script>
-	<script src="../../../../../../wp-content/themes/unified-nav.js"></script>
+	<script src="../wp-content/themes/unified-nav.js"></script>
 	<link rel="stylesheet" href="../wp-content/themes/unified-navigation.css" type="text/css" media="all" />
 	<!-- Hall of Fame JS -->
 	<script src="../wp-content/themes/hall-of-fame.js"></script>

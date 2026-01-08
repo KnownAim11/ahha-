@@ -122,11 +122,25 @@ body.custom-background {
 	-moz-osx-font-smoothing: grayscale;
 }
 </style>
+<style>
+  /* Force Deep Black Background globally */
+  html, body, #page-container, #et-main-area, #main-content, .et_pb_section {
+      background-color: #050505 !important;
+      background-image: none !important; /* Removes any lingering old images */
+  }
+
+  /* Kill Divi Overlays and Gradients that make it look gray */
+  .et_pb_section_video_bg:before, .et_pb_section_video_bg:after, .et_pb_fullwidth_header_overlay, .et_pb_section::before, .et_pb_section::after {
+      display: none !important;
+      opacity: 0 !important;
+      background: transparent !important;
+  }
+</style>
 	<link rel="icon" href="../wp-content/uploads/2020/10/cropped-logoWhite-32x32.png" sizes="32x32" />
 <link rel="icon" href="../wp-content/uploads/2020/10/cropped-logoWhite-192x192.png" sizes="192x192" />
 <link rel="apple-touch-icon" href="../wp-content/uploads/2020/10/cropped-logoWhite-180x180.png" />
 <meta name="msapplication-TileImage" content="https://annualhha.com/wp-content/uploads/2020/10/cropped-logoWhite-270x270.png" />
-	<link rel="stylesheet" id="et-core-unified-110-cached-inline-styles" href="../wp-content/et-cache/110/et-core-unified-110-17657136429764.min.css" onerror="et_core_page_resource_fallback(this, true)" onload="et_core_page_resource_fallback(this)" /><link rel="stylesheet" href="../../../../../../wp-content/themes/modern-enhancements.css" type="text/css" media="all" />
+	<link rel="stylesheet" id="et-core-unified-110-cached-inline-styles" href="../wp-content/et-cache/110/et-core-unified-110-17657136429764.min.css" onerror="et_core_page_resource_fallback(this, true)" onload="et_core_page_resource_fallback(this)" /><link rel="stylesheet" href="../wp-content/themes/modern-enhancements.css" type="text/css" media="all" />
 	<!-- Hall of Fame CSS -->
 	<link rel="stylesheet" href="../wp-content/themes/hall-of-fame.css" type="text/css" media="all" />
 
