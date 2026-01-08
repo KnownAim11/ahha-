@@ -1,0 +1,31 @@
+/* === GLOBAL FIX: force images visible even if Divi/JS fails === */
+.box-shadow-overlay,
+.et_pb_section_video_bg:before,
+.et_pb_section:before,
+.et_pb_section:after {
+  display: none !important;
+  opacity: 0 !important;
+}
+
+/* Divi animations sometimes keep elements invisible if JS doesn't run */
+.et_animated,
+.et-waypoint {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+/* Ensure images are actually visible and above any overlays */
+.et_pb_image_wrap { position: relative !important; }
+.et_pb_image_wrap img,
+.et_pb_image img,
+img {
+  position: relative !important;
+  z-index: 5 !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  display: block !important;
+  filter: none !important;
+  mix-blend-mode: normal !important;
+  background: transparent !important;
+}
+
