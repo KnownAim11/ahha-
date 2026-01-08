@@ -1,0 +1,314 @@
+/* ============================================
+   UNIFIED PREMIUM FOOTER - 3-COLUMN DESIGN
+   Annual Houston Humanitarian Awards
+   ============================================ */
+
+/* Google Fonts (ensure loaded) */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
+
+/* ============================================
+   1. FOOTER CONTAINER
+   ============================================ */
+
+.premium-unified-footer {
+	background: #050505 !important;
+	border-top: 1px solid rgba(197, 160, 89, 0.2) !important;
+	padding: 80px 0 40px 0 !important;
+	position: relative;
+	z-index: 100;
+}
+
+.premium-unified-footer * {
+	box-sizing: border-box;
+}
+
+/* ============================================
+   2. FOOTER GRID - 3 COLUMNS
+   ============================================ */
+
+.premium-footer-grid {
+	display: grid;
+	grid-template-columns: 1.2fr 1fr 1fr;
+	gap: 60px;
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 0 5%;
+}
+
+/* ============================================
+   3. COLUMN 1 - MISSION
+   ============================================ */
+
+.footer-column-mission {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+}
+
+.footer-logo {
+	max-width: 200px;
+	height: auto;
+	margin-bottom: 24px;
+	filter: drop-shadow(0 0 20px rgba(197, 160, 89, 0.2));
+}
+
+.footer-mission-text {
+	font-family: 'Inter', sans-serif !important;
+	font-size: 14px !important;
+	font-weight: 400 !important;
+	line-height: 1.8 !important;
+	color: rgba(255, 255, 255, 0.7) !important;
+	margin: 0;
+	max-width: 320px;
+}
+
+/* ============================================
+   4. COLUMN 2 - NAVIGATION (SITE MAP)
+   ============================================ */
+
+.footer-column-nav {
+	display: flex;
+	flex-direction: column;
+}
+
+.footer-column-title {
+	font-family: 'Playfair Display', serif !important;
+	font-size: 14px !important;
+	font-weight: 500 !important;
+	color: #C5A059 !important;
+	text-transform: uppercase !important;
+	letter-spacing: 0.2em !important;
+	margin-bottom: 28px !important;
+	padding-bottom: 12px;
+	border-bottom: 1px solid rgba(197, 160, 89, 0.15);
+}
+
+.footer-nav-list {
+	list-style: none !important;
+	margin: 0 !important;
+	padding: 0 !important;
+	display: flex;
+	flex-direction: column;
+	gap: 14px;
+}
+
+.footer-nav-list li {
+	margin: 0 !important;
+	padding: 0 !important;
+}
+
+.footer-nav-list a {
+	font-family: 'Inter', sans-serif !important;
+	font-size: 12px !important;
+	font-weight: 400 !important;
+	color: rgba(255, 255, 255, 0.7) !important;
+	text-transform: uppercase !important;
+	letter-spacing: 0.15em !important;
+	text-decoration: none !important;
+	transition: all 0.3s ease !important;
+	display: inline-block;
+}
+
+.footer-nav-list a:hover {
+	color: #C5A059 !important;
+	transform: translateX(4px);
+}
+
+/* ============================================
+   5. COLUMN 3 - CONNECT (GET INVOLVED)
+   ============================================ */
+
+.footer-column-connect {
+	display: flex;
+	flex-direction: column;
+}
+
+.footer-cta-link {
+	font-family: 'Inter', sans-serif !important;
+	font-size: 12px !important;
+	font-weight: 500 !important;
+	color: #C5A059 !important;
+	text-transform: uppercase !important;
+	letter-spacing: 0.15em !important;
+	text-decoration: none !important;
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	margin-bottom: 32px;
+	padding: 12px 24px;
+	border: 1px solid rgba(197, 160, 89, 0.4);
+	transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.footer-cta-link:hover {
+	background: rgba(197, 160, 89, 0.1) !important;
+	border-color: #C5A059 !important;
+	box-shadow: 0 0 20px rgba(197, 160, 89, 0.2);
+}
+
+.footer-cta-link svg {
+	width: 16px;
+	height: 16px;
+	fill: currentColor;
+}
+
+.footer-social-icons {
+	display: flex;
+	gap: 16px;
+	margin-top: 8px;
+}
+
+.footer-social-icon {
+	width: 44px;
+	height: 44px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border: 1px solid rgba(197, 160, 89, 0.3);
+	border-radius: 50%;
+	color: #C5A059 !important;
+	text-decoration: none !important;
+	transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.footer-social-icon:hover {
+	background: #C5A059 !important;
+	color: #000000 !important;
+	border-color: #C5A059 !important;
+	transform: translateY(-3px);
+	box-shadow: 0 8px 25px rgba(197, 160, 89, 0.3);
+}
+
+.footer-social-icon svg {
+	width: 18px;
+	height: 18px;
+	fill: currentColor;
+}
+
+/* ============================================
+   6. COPYRIGHT ROW
+   ============================================ */
+
+.footer-copyright-row {
+	max-width: 1200px;
+	margin: 60px auto 0 auto;
+	padding: 24px 5% 0 5%;
+	border-top: 1px solid rgba(197, 160, 89, 0.1);
+	text-align: center;
+}
+
+.footer-copyright-text {
+	font-family: 'Inter', sans-serif !important;
+	font-size: 11px !important;
+	font-weight: 400 !important;
+	color: rgba(255, 255, 255, 0.5) !important;
+	text-transform: uppercase !important;
+	letter-spacing: 0.1em !important;
+	margin: 0;
+}
+
+/* ============================================
+   7. RESPONSIVE - TABLET
+   ============================================ */
+
+@media (max-width: 1024px) {
+	.premium-footer-grid {
+		grid-template-columns: 1fr 1fr;
+		gap: 50px;
+	}
+	
+	.footer-column-mission {
+		grid-column: 1 / -1;
+		align-items: center;
+		text-align: center;
+	}
+	
+	.footer-mission-text {
+		max-width: 500px;
+	}
+}
+
+/* ============================================
+   8. RESPONSIVE - MOBILE
+   ============================================ */
+
+@media (max-width: 768px) {
+	.premium-unified-footer {
+		padding: 60px 0 30px 0 !important;
+	}
+	
+	.premium-footer-grid {
+		grid-template-columns: 1fr;
+		gap: 40px;
+		text-align: center;
+	}
+	
+	.footer-column-mission,
+	.footer-column-nav,
+	.footer-column-connect {
+		align-items: center;
+	}
+	
+	.footer-column-title {
+		text-align: center;
+		width: 100%;
+	}
+	
+	.footer-nav-list {
+		align-items: center;
+	}
+	
+	.footer-nav-list a:hover {
+		transform: none;
+	}
+	
+	.footer-social-icons {
+		justify-content: center;
+	}
+	
+	.footer-copyright-row {
+		margin-top: 40px;
+	}
+}
+
+/* ============================================
+   9. OVERRIDE DIVI FOOTER STYLES
+   ============================================ */
+
+/* Hide original Divi footer ONLY - be very specific */
+body footer#main-footer,
+body #main-footer,
+body footer.et-l--footer,
+body #footer-bottom,
+body #et-footer-nav {
+	display: none !important;
+}
+
+/* Ensure premium footer is visible */
+.premium-unified-footer {
+	display: block !important;
+	visibility: visible !important;
+	opacity: 1 !important;
+}
+
+/* IMPORTANT: Ensure main content areas are visible and never hidden by footer styles */
+body,
+body > div,
+#page-container,
+#et-main-area,
+#main-content,
+.et-boc,
+.et_pb_section,
+main,
+article {
+	display: block !important;
+	visibility: visible !important;
+	opacity: 1 !important;
+}
+
+/* Only apply footer-specific hiding to actual footer elements */
+body footer#main-footer,
+body > footer#main-footer {
+	display: none !important;
+}
+
