@@ -123,8 +123,55 @@ html, body, #page-container, #et-main-area, #main-content, .et_pb_section {
     opacity: 0 !important;
 }
 </style>
+	<style>
+		/* Ensure dark background for honorees section */
+		.honorees-page .et_pb_section_1,
+		.honorees-page .et_pb_section_1 .et_pb_row,
+		.honorees-page .et_pb_section_1 .et_pb_column {
+			background: #050505 !important;
+			background-color: #050505 !important;
+		}
+		
+		/* Ensure images are visible and properly displayed */
+		.honorees-page .et_pb_image_wrap img {
+			background: transparent !important;
+			background-color: transparent !important;
+			display: block !important;
+			opacity: 1 !important;
+			visibility: visible !important;
+			min-height: 100px; /* Чтобы контейнер не схлопывался */
+		}
+		
+		/* Fallback Background */
+		.et_pb_image_wrap img {
+			display: block !important;
+			opacity: 1 !important;
+			visibility: visible !important;
+			min-height: 100px; /* Чтобы контейнер не схлопывался */
+		}
+		
+		/* Fix overlay blocking images */
+		.box-shadow-overlay {
+			pointer-events: none !important;
+		}
+		
+		/* Fix white background issue */
+		.honorees-page .et_pb_image,
+		.honorees-page .et_pb_image_wrap {
+			background: transparent !important;
+			background-color: transparent !important;
+		}
+		
+		/* Ensure page background is dark */
+		.honorees-page,
+		.honorees-page #page-container,
+		.honorees-page #et-main-area {
+			background: #050505 !important;
+			background-color: #050505 !important;
+		}
+	</style>
 </head>
-<body class="wp-singular page-template-default page page-id-299 custom-background wp-theme-Divi et_pb_button_helper_class et_non_fixed_nav et_show_nav et_primary_nav_dropdown_animation_fade et_secondary_nav_dropdown_animation_fade et_header_style_left et_pb_footer_columns4 et_cover_background et_pb_gutter et_pb_gutters3 et_pb_pagebuilder_layout et_no_sidebar et_divi_theme et-db et_minified_js et_minified_css">
+<body class="honorees-page wp-singular page-template-default page page-id-299 custom-background wp-theme-Divi et_pb_button_helper_class et_non_fixed_nav et_show_nav et_primary_nav_dropdown_animation_fade et_secondary_nav_dropdown_animation_fade et_header_style_left et_pb_footer_columns4 et_cover_background et_pb_gutter et_pb_gutters3 et_pb_pagebuilder_layout et_no_sidebar et_divi_theme et-db et_minified_js et_minified_css">
 	<div id="page-container">
 
 	
