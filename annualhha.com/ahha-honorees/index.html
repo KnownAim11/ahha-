@@ -160,56 +160,32 @@ body.custom-background {
 			background-color: #050505 !important;
 		}
 		
-		/* Ensure images are visible and properly displayed - ALL POSSIBLE SELECTORS */
-		.honorees-page .et_pb_image_wrap img,
-		.honorees-page .et_pb_image img,
-		.honorees-page img.et-waypoint,
-		.honorees-page .et_pb_module.et_pb_image img,
-		.honorees-page .et_pb_image_0 img,
-		.honorees-page .et_pb_image_1 img,
-		.honorees-page .et_pb_image_2 img,
-		.honorees-page .et_pb_image_3 img,
-		.honorees-page .et_pb_image_4 img,
-		.honorees-page .et_pb_image_5 img,
-		.honorees-page .et_pb_image_6 img,
-		.honorees-page .et_pb_image_7 img,
-		.honorees-page .et_pb_image_8 img,
-		.honorees-page .et_pb_image_9 img,
-		.honorees-page .et_pb_image_10 img,
-		.honorees-page .et_pb_image_11 img,
-		.honorees-page .et_pb_image_12 img {
+		/* Ensure images are visible and properly displayed */
+		.honorees-page .et_pb_image_wrap img {
 			background: transparent !important;
 			background-color: transparent !important;
 			display: block !important;
 			opacity: 1 !important;
 			visibility: visible !important;
-			min-height: 100px !important;
-			max-width: 100% !important;
-			height: auto !important;
+			min-height: 100px; /* Чтобы контейнер не схлопывался */
 		}
 		
-		/* Fallback for all images on page */
-		.honorees-page .et_pb_image_wrap img,
-		.honorees-page .et_pb_image_wrap img[src],
-		.honorees-page img[src] {
+		/* Fallback Background - ВАЖНО: работает для всех изображений */
+		.et_pb_image_wrap img {
 			display: block !important;
 			opacity: 1 !important;
 			visibility: visible !important;
-			min-height: 100px !important;
+			min-height: 100px; /* Чтобы контейнер не схлопывался */
 		}
 		
 		/* Fix overlay blocking images */
-		.honorees-page .box-shadow-overlay {
-			display: none !important;
-			opacity: 0 !important;
+		.box-shadow-overlay {
 			pointer-events: none !important;
-			visibility: hidden !important;
 		}
 		
 		/* Fix white background issue */
 		.honorees-page .et_pb_image,
-		.honorees-page .et_pb_image_wrap,
-		.honorees-page .et_pb_image.has-box-shadow-overlay {
+		.honorees-page .et_pb_image_wrap {
 			background: transparent !important;
 			background-color: transparent !important;
 		}
@@ -220,14 +196,6 @@ body.custom-background {
 		.honorees-page #et-main-area {
 			background: #050505 !important;
 			background-color: #050505 !important;
-		}
-		
-		/* Force image containers to show */
-		.honorees-page .et_pb_image_wrap,
-		.honorees-page .et_pb_module.et_pb_image {
-			display: block !important;
-			visibility: visible !important;
-			opacity: 1 !important;
 		}
 	</style>
 	<link rel="icon" href="/wp-content/uploads/2020/10/cropped-logoWhite-32x32.png" sizes="32x32" />
