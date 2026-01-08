@@ -1,19 +1,21 @@
 # Инструкция по деплою на Vercel
 
-## Важно: Настройки в панели Vercel
+## ⚠️ КРИТИЧЕСКИ ВАЖНО: Настройки в панели Vercel
 
-При создании проекта в Vercel обязательно укажите:
+### Шаг 1: Настройка Root Directory
 
-1. **Root Directory**: `annualhha.com`
-   - Это самая важная настройка!
-   - В панели Vercel: Settings → General → Root Directory
-   - Укажите: `annualhha.com`
+1. Откройте ваш проект в Vercel Dashboard
+2. Перейдите в **Settings** → **General**
+3. Найдите раздел **Root Directory**
+4. Укажите: `annualhha.com`
+5. **Сохраните изменения**
 
-2. **Framework Preset**: `Other` (или оставьте пустым)
+### Шаг 2: Настройки Build
 
-3. **Build Command**: Оставьте пустым
-
-4. **Output Directory**: Оставьте пустым (или `annualhha.com` если требуется)
+1. **Framework Preset**: `Other` (или оставьте пустым)
+2. **Build Command**: Оставьте **ПУСТЫМ**
+3. **Output Directory**: Оставьте **ПУСТЫМ**
+4. **Install Command**: Оставьте **ПУСТЫМ**
 
 ## Структура проекта
 
