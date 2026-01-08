@@ -146,11 +146,11 @@ body.custom-background {
 		}
 		
 		/* Ensure content is above video */
-		.et_pb_section_0.et_pb_section_video .et_pb_row,
-		.et_pb_section_0.et_pb_section_video .et_pb_column,
-		.et_pb_section_0.et_pb_section_video .luxury-header-block {
+		.et_pb_section_0 .et_pb_row, 
+		.et_pb_column_0, 
+		.luxury-header-block {
 			position: relative !important;
-			z-index: 10 !important;
+			z-index: 999 !important; /* Текст должен быть ВЫШЕ видео */
 		}
 		
 		.et_pb_section_0.et_pb_section_video .premium-subtitle {
@@ -534,11 +534,15 @@ html, body, #page-container, #et-main-area, #main-content, .et_pb_section {
 				<div class="et_pb_column et_pb_column_4_4 et_pb_column_0  et_pb_css_mix_blend_mode_passthrough et-last-child">
 				
 				
-				<div class="luxury-header-block premium-honorees-header et_animated" style="text-align: center; padding: 100px 0;">
-					<h1 class="luxury-title premium-main-title" style="color: #D4AF37 !important;">Our Sponsors</h1>
-					<div class="premium-title-divider" style="margin: 20px auto; background-color: #D4AF37 !important;"></div>
-					<p class="premium-subtitle" style="color: #ffffff !important; opacity: 1 !important;">Honoring Heroes Who Make a Difference</p>
-				</div>
+				<div class="luxury-header-block premium-honorees-header" style="text-align: center; padding: 120px 0 !important; position: relative; z-index: 999 !important; opacity: 1 !important; visibility: visible !important;">
+
+    <h1 class="luxury-title premium-main-title" style="color: #D4AF37 !important; opacity: 1 !important; visibility: visible !important; display: block !important;">Our Sponsors</h1>
+
+    <div class="premium-title-divider" style="margin: 20px auto; background-color: #D4AF37 !important; width: 80px; height: 3px; opacity: 1 !important;"></div>
+
+    <p class="premium-subtitle" style="color: #ffffff !important; opacity: 1 !important; font-size: 1.2rem;">Honoring Heroes Who Make a Difference</p>
+
+</div>
 				
 			</div> <!-- .et_pb_column -->
 				
