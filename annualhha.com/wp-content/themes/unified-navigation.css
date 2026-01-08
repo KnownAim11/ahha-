@@ -1,0 +1,1162 @@
+/* ============================================
+   UNIFIED NAVIGATION BAR - ЕДИНЫЙ СТИЛЬ ДЛЯ ВСЕХ СТРАНИЦ
+   Применяется ко всем страницам сайта
+   ============================================ */
+
+
+/* ============================================
+   1. HEADER CONTAINER - ЧЕРНЫЙ ФОН БЕЗ РАЗМЫТИЯ
+   ============================================ */
+
+/* Все возможные варианты header - максимальный приоритет */
+header#main-header,
+header.main-header,
+header[id="main-header"],
+header[class="main-header"],
+header[class*="main-header"],
+header[id*="main-header"],
+#main-header,
+.main-header,
+body header#main-header,
+body header.main-header,
+body header[id="main-header"],
+body header[class="main-header"],
+body #main-header,
+body .main-header,
+html body header#main-header,
+html body header.main-header,
+html body #main-header,
+html body .main-header {
+	background: #000000 !important;
+	background-color: #000000 !important;
+	backdrop-filter: none !important;
+	-webkit-backdrop-filter: none !important;
+	border-bottom: 1px solid rgba(197, 160, 89, 0.2) !important;
+	position: sticky !important;
+	top: 0 !important;
+	z-index: 1000 !important;
+	width: 100% !important;
+	box-shadow: none !important;
+	transition: none !important;
+}
+
+/* Переопределяем все inline стили через атрибут style */
+header#main-header[style],
+header.main-header[style],
+#main-header[style],
+.main-header[style] {
+	background: #000000 !important;
+	background-color: #000000 !important;
+	backdrop-filter: none !important;
+	-webkit-backdrop-filter: none !important;
+}
+
+/* ============================================
+   2. NAVIGATION LINKS - БЕЛЫЕ, 12PX, UPPERCASE
+   ============================================ */
+
+/* Все возможные селекторы для ссылок навигации - ПРОФЕССИОНАЛЬНЫЙ ВИД */
+header#main-header #top-menu a,
+header#main-header .nav a,
+header#main-header nav ul li a,
+header#main-header #top-menu-nav a,
+#main-header #top-menu a,
+#main-header .nav a,
+#main-header nav ul li a,
+#main-header #top-menu-nav a,
+#main-header nav#top-menu-nav a,
+#main-header ul#top-menu a,
+.main-header #top-menu a,
+.main-header .nav a,
+.main-header nav ul li a,
+.main-header #top-menu-nav a,
+#et-top-navigation #top-menu a,
+#et-top-navigation .nav a,
+#et-top-navigation nav ul li a,
+#top-menu-nav a,
+#top-menu a,
+nav#top-menu-nav a,
+ul#top-menu a,
+ul.nav a,
+body #main-header #top-menu a,
+body #main-header .nav a,
+body #main-header nav ul li a {
+	font-size: 14px !important;
+	text-transform: uppercase !important;
+	letter-spacing: 0.12em !important;
+	font-weight: 500 !important;
+	color: #FFFFFF !important;
+	opacity: 0.8 !important;
+	text-decoration: none !important;
+	position: relative !important;
+	transition: all 0.3s ease !important;
+	padding: 10px 20px !important;
+	margin: 0 !important;
+	border: none !important;
+	border-bottom: none !important;
+	background: transparent !important;
+	display: inline-block !important;
+}
+
+/* Убираем все псевдоэлементы ::after и ::before для ссылок */
+header#main-header #top-menu a::after,
+header#main-header #top-menu a::before,
+header#main-header .nav a::after,
+header#main-header .nav a::before,
+header#main-header nav ul li a::after,
+header#main-header nav ul li a::before,
+#main-header #top-menu a::after,
+#main-header #top-menu a::before,
+#main-header .nav a::after,
+#main-header .nav a::before,
+#main-header nav ul li a::after,
+#main-header nav ul li a::before,
+.main-header #top-menu a::after,
+.main-header #top-menu a::before,
+.main-header .nav a::after,
+.main-header .nav a::before,
+#top-menu a::after,
+#top-menu a::before,
+nav ul li a::after,
+nav ul li a::before {
+	display: none !important;
+	content: none !important;
+	width: 0 !important;
+	height: 0 !important;
+}
+
+/* ============================================
+   3. ACTIVE/CURRENT PAGE - ЗОЛОТОЙ ЦВЕТ
+   ============================================ */
+
+/* Активная страница - золотой цвет */
+header#main-header .current-menu-item > a,
+header#main-header .current_page_item > a,
+header#main-header .current-menu-item > a[aria-current="page"],
+header#main-header .current_page_item > a[aria-current="page"],
+header#main-header li.current-menu-item > a,
+header#main-header li.current_page_item > a,
+#main-header .current-menu-item > a,
+#main-header .current_page_item > a,
+#main-header .current-menu-item > a[aria-current="page"],
+#main-header .current_page_item > a[aria-current="page"],
+#main-header li.current-menu-item > a,
+#main-header li.current_page_item > a,
+#main-header #top-menu .current-menu-item > a,
+#main-header #top-menu .current_page_item > a,
+#main-header ul#top-menu .current-menu-item > a,
+#main-header ul#top-menu .current_page_item > a,
+.main-header .current-menu-item > a,
+.main-header .current_page_item > a,
+#top-menu .current-menu-item > a,
+#top-menu .current_page_item > a,
+ul#top-menu .current-menu-item > a,
+ul#top-menu .current_page_item > a,
+body #main-header .current-menu-item > a,
+body #main-header .current_page_item > a {
+	color: #C5A059 !important;
+	opacity: 1 !important;
+	font-weight: 500 !important;
+}
+
+/* ============================================
+   4. HOVER EFFECT - ОСТАЕТСЯ БЕЛЫМ
+   ============================================ */
+
+/* Hover эффект - золотой цвет с полной непрозрачностью */
+header#main-header #top-menu a:hover,
+header#main-header .nav a:hover,
+header#main-header nav ul li a:hover,
+#main-header #top-menu a:hover,
+#main-header .nav a:hover,
+#main-header nav ul li a:hover,
+.main-header #top-menu a:hover,
+.main-header .nav a:hover,
+.main-header nav ul li a:hover,
+#top-menu a:hover,
+nav ul li a:hover,
+#et-top-navigation #top-menu a:hover,
+#et-top-navigation .nav a:hover,
+#et-top-navigation nav ul li a:hover {
+	color: #C5A059 !important;
+	opacity: 1 !important;
+}
+
+/* Hover для активной страницы - остается золотым */
+header#main-header .current-menu-item > a:hover,
+header#main-header .current_page_item > a:hover,
+#main-header .current-menu-item > a:hover,
+#main-header .current_page_item > a:hover,
+#main-header #top-menu .current-menu-item > a:hover,
+#main-header #top-menu .current_page_item > a:hover {
+	color: #C5A059 !important;
+	opacity: 1 !important;
+}
+
+/* ============================================
+   5. NAVIGATION CONTAINER - РАВНОМЕРНОЕ РАСПОЛОЖЕНИЕ
+   ============================================ */
+
+/* Контейнер навигации - ГОРИЗОНТАЛЬНОЕ ВЫРАВНИВАНИЕ */
+#et-top-navigation,
+#top-menu-nav,
+nav#top-menu-nav,
+#main-header #et-top-navigation,
+header#main-header #et-top-navigation {
+	background: transparent !important;
+	display: flex !important;
+	align-items: center !important;
+	justify-content: flex-end !important;
+	width: auto !important;
+	flex-wrap: nowrap !important;
+}
+
+/* Контейнер меню - выравнивание с правильным spacing */
+.et_menu_container,
+.container.et_menu_container,
+#main-header .container,
+header#main-header .container,
+#main-header .container.clearfix,
+header#main-header .container.clearfix {
+	display: flex !important;
+	align-items: center !important;
+	justify-content: space-between !important;
+	width: 100% !important;
+	max-width: 100% !important;
+	padding: 0 5% !important;
+	gap: 2rem !important;
+	flex-wrap: nowrap !important;
+	position: relative !important;
+	overflow: visible !important;
+}
+
+/* Override clearfix float behavior that could break flexbox layout */
+.et_menu_container.clearfix::before,
+.et_menu_container.clearfix::after,
+.container.clearfix.et_menu_container::before,
+.container.clearfix.et_menu_container::after {
+	display: none !important;
+	content: none !important;
+}
+
+/* Логотип контейнер - ограничение ширины и отступ */
+.logo_container,
+#main-header .logo_container,
+header#main-header .logo_container,
+.main-header .logo_container,
+.et_menu_container .logo_container,
+.container.et_menu_container .logo_container {
+	flex-shrink: 0 !important;
+	flex-grow: 0 !important;
+	max-width: 250px !important;
+	min-width: 0 !important;
+	width: auto !important;
+	margin-right: 2rem !important;
+	display: inline-flex !important;
+	align-items: center !important;
+	position: relative !important;
+	float: none !important;
+	clear: none !important;
+	vertical-align: middle !important;
+	order: 1 !important;
+}
+
+/* Ensure logo_helper doesn't interfere with layout */
+.logo_container .logo_helper,
+#main-header .logo_container .logo_helper {
+	display: none !important;
+}
+
+/* Логотип изображение - ограничение размера */
+#logo,
+#main-header #logo,
+header#main-header #logo,
+header.main-header #logo,
+.logo_container img,
+.logo_container #logo,
+.logo_container a img {
+	max-height: 65px !important;
+	max-width: 100% !important;
+	height: auto !important;
+	width: auto !important;
+	display: block !important;
+}
+
+/* Контейнер навигации - занимает оставшееся пространство */
+#et-top-navigation,
+#top-menu-nav,
+nav#top-menu-nav,
+#main-header #et-top-navigation,
+header#main-header #et-top-navigation,
+.main-header #et-top-navigation,
+.et_menu_container #et-top-navigation,
+.container.et_menu_container #et-top-navigation {
+	background: transparent !important;
+	flex: 1 1 auto !important;
+	flex-shrink: 1 !important;
+	min-width: 0 !important;
+	display: flex !important;
+	align-items: center !important;
+	justify-content: flex-end !important;
+	position: relative !important;
+	float: none !important;
+	clear: none !important;
+	order: 2 !important;
+}
+
+/* Список навигации - ПРОФЕССИОНАЛЬНОЕ РАСПОЛОЖЕНИЕ */
+#top-menu,
+ul#top-menu,
+.nav,
+ul.nav,
+#main-header #top-menu,
+#main-header ul#top-menu,
+header#main-header #top-menu,
+header#main-header ul#top-menu,
+#et-top-navigation #top-menu,
+#et-top-navigation ul#top-menu,
+#et-top-navigation nav ul,
+#top-menu-nav ul,
+nav#top-menu-nav ul {
+	list-style: none !important;
+	margin: 0 !important;
+	padding: 0 !important;
+	display: flex !important;
+	align-items: center !important;
+	justify-content: flex-end !important;
+	gap: 0 !important;
+	flex-wrap: wrap !important;
+}
+
+/* Элементы списка - равномерные отступы */
+#top-menu li,
+ul#top-menu li,
+.nav li,
+ul.nav li,
+#main-header #top-menu li,
+#main-header ul#top-menu li,
+header#main-header #top-menu li,
+header#main-header ul#top-menu li,
+#et-top-navigation #top-menu li,
+#et-top-navigation ul#top-menu li,
+#top-menu-nav ul li,
+nav#top-menu-nav ul li {
+	list-style: none !important;
+	margin: 0 !important;
+	padding: 0 !important;
+	display: inline-flex !important;
+	align-items: center !important;
+	white-space: nowrap !important;
+	position: relative !important;
+	vertical-align: middle !important;
+	line-height: normal !important;
+}
+
+/* Ссылки внутри элементов списка - правильное выравнивание */
+#top-menu li > a,
+ul#top-menu li > a,
+.nav li > a,
+ul.nav li > a,
+#main-header #top-menu li > a,
+#main-header ul#top-menu li > a,
+header#main-header #top-menu li > a,
+header#main-header ul#top-menu li > a,
+#et-top-navigation #top-menu li > a,
+#et-top-navigation ul#top-menu li > a,
+#top-menu-nav ul li > a,
+nav#top-menu-nav ul li > a {
+	display: inline-flex !important;
+	align-items: center !important;
+	vertical-align: middle !important;
+	line-height: normal !important;
+	height: auto !important;
+}
+
+
+/* ============================================
+   6. DROPDOWN MENUS - ВЕРТИКАЛЬНЫЕ ВЫПАДАЮЩИЕ МЕНЮ
+   ОБЯЗАТЕЛЬНО ОТКРЫВАЮТСЯ ВНИЗ
+   ============================================ */
+
+/* Родительские пункты меню - якорь для позиционирования */
+#top-menu li.menu-item-has-children,
+ul#top-menu li.menu-item-has-children,
+.nav li.menu-item-has-children,
+ul.nav li.menu-item-has-children,
+#main-header #top-menu li.menu-item-has-children,
+#main-header ul#top-menu li.menu-item-has-children,
+header#main-header #top-menu li.menu-item-has-children,
+header#main-header ul#top-menu li.menu-item-has-children,
+#et-top-navigation #top-menu li.menu-item-has-children,
+#et-top-navigation ul#top-menu li.menu-item-has-children,
+#top-menu-nav ul li.menu-item-has-children,
+nav#top-menu-nav ul li.menu-item-has-children {
+	position: relative !important;
+}
+
+/* ВАЖНО: Добавляем невидимую область для плавного перехода курсора */
+#top-menu li.menu-item-has-children::after,
+ul#top-menu li.menu-item-has-children::after,
+.nav li.menu-item-has-children::after,
+ul.nav li.menu-item-has-children::after {
+	content: '' !important;
+	position: absolute !important;
+	top: 100% !important;
+	left: 0 !important;
+	width: 100% !important;
+	height: 5px !important;
+	background: transparent !important;
+	z-index: 9999 !important;
+	pointer-events: auto !important;
+}
+
+/* Выпадающие меню - ПРИНУДИТЕЛЬНО ВНИЗ (МАКСИМАЛЬНЫЙ ПРИОРИТЕТ) */
+.sub-menu,
+ul.sub-menu,
+ul ul.sub-menu,
+li .sub-menu,
+li ul.sub-menu,
+#main-header .sub-menu,
+header#main-header .sub-menu,
+#top-menu .sub-menu,
+ul#top-menu .sub-menu,
+ul#top-menu ul.sub-menu,
+.nav .sub-menu,
+ul.nav .sub-menu,
+ul.nav ul.sub-menu,
+#et-top-navigation .sub-menu,
+#et-top-navigation ul.sub-menu,
+#top-menu-nav .sub-menu,
+nav#top-menu-nav .sub-menu,
+body .sub-menu,
+html body .sub-menu {
+	/* Premium 10k Look - Фон */
+	background: rgba(0, 0, 0, 0.95) !important;
+	backdrop-filter: blur(20px) !important;
+	-webkit-backdrop-filter: blur(20px) !important;
+	border: 1px solid rgba(197, 160, 89, 0.2) !important;
+	border-radius: 4px !important;
+	padding: 8px 0 !important;
+	
+	/* КРИТИЧНО: Принудительно открывается ВНИЗ от родителя */
+	position: absolute !important;
+	top: 100% !important;
+	bottom: auto !important;
+	left: 0 !important;
+	right: auto !important;
+	
+	/* Минимальный зазор - чтобы можно было навести курсор */
+	margin-top: 2px !important;
+	margin-bottom: 0 !important;
+	
+	min-width: 200px !important;
+	max-width: 250px !important;
+	
+	/* Вертикальная структура */
+	display: flex !important;
+	flex-direction: column !important;
+	
+	box-shadow: 
+		0 4px 20px rgba(0, 0, 0, 0.5),
+		0 8px 30px rgba(0, 0, 0, 0.3) !important;
+	
+	/* Высокий z-index - поверх всего контента */
+	z-index: 10000 !important;
+	
+	/* Начальное состояние - скрыто, слегка приподнято */
+	opacity: 0 !important;
+	visibility: hidden !important;
+	transform: translateY(-3px) !important;
+	transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+	pointer-events: none !important;
+}
+
+/* Показываем меню при наведении на родителя ИЛИ на само меню */
+li.menu-item-has-children:hover > .sub-menu,
+li.menu-item-has-children .sub-menu:hover,
+#top-menu li.menu-item-has-children:hover > .sub-menu,
+#top-menu li.menu-item-has-children .sub-menu:hover,
+ul#top-menu li.menu-item-has-children:hover > .sub-menu,
+ul#top-menu li.menu-item-has-children .sub-menu:hover,
+.nav li.menu-item-has-children:hover > .sub-menu,
+.nav li.menu-item-has-children .sub-menu:hover,
+ul.nav li.menu-item-has-children:hover > .sub-menu,
+ul.nav li.menu-item-has-children .sub-menu:hover,
+#main-header #top-menu li.menu-item-has-children:hover > .sub-menu,
+#main-header #top-menu li.menu-item-has-children .sub-menu:hover,
+#main-header ul#top-menu li.menu-item-has-children:hover > .sub-menu,
+#main-header ul#top-menu li.menu-item-has-children .sub-menu:hover,
+header#main-header #top-menu li.menu-item-has-children:hover > .sub-menu,
+header#main-header #top-menu li.menu-item-has-children .sub-menu:hover,
+header#main-header ul#top-menu li.menu-item-has-children:hover > .sub-menu,
+header#main-header ul#top-menu li.menu-item-has-children .sub-menu:hover,
+#et-top-navigation #top-menu li.menu-item-has-children:hover > .sub-menu,
+#et-top-navigation #top-menu li.menu-item-has-children .sub-menu:hover,
+#et-top-navigation ul#top-menu li.menu-item-has-children:hover > .sub-menu,
+#et-top-navigation ul#top-menu li.menu-item-has-children .sub-menu:hover,
+#top-menu-nav ul li.menu-item-has-children:hover > .sub-menu,
+#top-menu-nav ul li.menu-item-has-children .sub-menu:hover,
+nav#top-menu-nav ul li.menu-item-has-children:hover > .sub-menu,
+nav#top-menu-nav ul li.menu-item-has-children .sub-menu:hover,
+body #top-menu li.menu-item-has-children:hover > .sub-menu,
+body #top-menu li.menu-item-has-children .sub-menu:hover,
+html body #top-menu li.menu-item-has-children:hover > .sub-menu,
+html body #top-menu li.menu-item-has-children .sub-menu:hover {
+	opacity: 1 !important;
+	visibility: visible !important;
+	transform: translateY(0) !important;
+	pointer-events: auto !important;
+}
+
+/* Элементы выпадающего меню */
+.sub-menu li,
+ul.sub-menu li,
+#main-header .sub-menu li,
+header#main-header .sub-menu li {
+	list-style: none !important;
+	margin: 0 !important;
+	padding: 0 !important;
+	display: block !important;
+	position: relative !important;
+}
+
+.sub-menu a,
+ul.sub-menu a,
+#main-header .sub-menu a,
+header#main-header .sub-menu a,
+#top-menu .sub-menu a,
+ul#top-menu .sub-menu a {
+	font-size: 11px !important;
+	font-weight: 400 !important;
+	padding: 10px 20px !important;
+	display: block !important;
+	color: rgba(255, 255, 255, 0.8) !important;
+	text-decoration: none !important;
+	text-transform: uppercase !important;
+	letter-spacing: 0.1em !important;
+	transition: all 0.2s ease !important;
+	white-space: nowrap !important;
+}
+
+.sub-menu a:hover,
+ul.sub-menu a:hover,
+#main-header .sub-menu a:hover,
+header#main-header .sub-menu a:hover,
+#top-menu .sub-menu a:hover,
+ul#top-menu .sub-menu a:hover {
+	background: rgba(197, 160, 89, 0.15) !important;
+	color: #C5A059 !important;
+	padding-left: 24px !important;
+}
+
+/* Убираем любые правила, которые могут поднимать меню вверх - максимальная специфичность */
+.sub-menu[style*="bottom"],
+.sub-menu[style*="bottom: 100%"],
+.sub-menu[style*="top: auto"],
+.sub-menu[style*="top: 0"],
+.sub-menu[style*="top: -"],
+ul.sub-menu[style*="bottom"],
+ul.sub-menu[style*="top: auto"],
+li .sub-menu[style*="bottom"],
+li ul.sub-menu[style*="bottom"],
+body .sub-menu[style*="bottom"],
+html body .sub-menu[style*="bottom"] {
+	bottom: auto !important;
+	top: 100% !important;
+}
+
+/* ПРИНУДИТЕЛЬНО: Переопределяем любые inline стили или другие правила - МАКСИМАЛЬНАЯ СПЕЦИФИЧНОСТЬ */
+html body #top-menu .sub-menu,
+html body ul#top-menu .sub-menu,
+html body ul#top-menu ul.sub-menu,
+html body .nav .sub-menu,
+html body ul.nav .sub-menu,
+html body ul.nav ul.sub-menu,
+html body #main-header .sub-menu,
+html body header#main-header .sub-menu,
+html body #et-top-navigation .sub-menu,
+html body #et-top-navigation ul.sub-menu,
+body #top-menu .sub-menu,
+body ul#top-menu .sub-menu,
+body ul#top-menu ul.sub-menu,
+body .nav .sub-menu,
+body ul.nav .sub-menu,
+body ul.nav ul.sub-menu,
+body #main-header .sub-menu,
+body header#main-header .sub-menu,
+body #et-top-navigation .sub-menu,
+body #et-top-navigation ul.sub-menu,
+body li .sub-menu,
+body li ul.sub-menu {
+	position: absolute !important;
+	top: 100% !important;
+	bottom: auto !important;
+	left: 0 !important;
+	right: auto !important;
+	margin-top: 2px !important;
+	margin-bottom: 0 !important;
+	z-index: 10000 !important;
+	display: flex !important;
+	flex-direction: column !important;
+}
+
+/* Родительские элементы с детьми - ОБЯЗАТЕЛЬНО position: relative */
+html body #top-menu li.menu-item-has-children,
+html body ul#top-menu li.menu-item-has-children,
+html body .nav li.menu-item-has-children,
+html body ul.nav li.menu-item-has-children,
+html body #main-header #top-menu li.menu-item-has-children,
+html body #main-header ul#top-menu li.menu-item-has-children,
+body #top-menu li.menu-item-has-children,
+body ul#top-menu li.menu-item-has-children,
+body .nav li.menu-item-has-children,
+body ul.nav li.menu-item-has-children,
+body #main-header #top-menu li.menu-item-has-children,
+body #main-header ul#top-menu li.menu-item-has-children {
+	position: relative !important;
+}
+
+/* ДОПОЛНИТЕЛЬНАЯ ЗАЩИТА: Убираем любые правила, которые могут перемещать меню вверх */
+.sub-menu[style*="bottom"],
+.sub-menu[style*="top: 0"],
+.sub-menu[style*="top: auto"],
+ul.sub-menu[style*="bottom"],
+li ul.sub-menu[style*="bottom"],
+body .sub-menu[style*="bottom"],
+html body .sub-menu[style*="bottom"],
+html body ul.sub-menu[style*="bottom"] {
+	bottom: auto !important;
+	top: 100% !important;
+}
+
+/* ============================================
+   7. LOGO - БАЛАНС С УВЕЛИЧЕННЫМ ТЕКСТОМ (уже определено выше)
+   ============================================ */
+
+/* ============================================
+   8. MOBILE MENU
+   ============================================ */
+
+@media (max-width: 980px) {
+	#et_mobile_nav_menu,
+	#main-header #et_mobile_nav_menu {
+		display: block !important;
+		cursor: pointer !important;
+	}
+	
+	#et_mobile_nav_menu .mobile_nav {
+		cursor: pointer !important;
+		user-select: none !important;
+	}
+	
+	#et_mobile_nav_menu .mobile_menu_bar_toggle,
+	#et_mobile_nav_menu .mobile_menu_bar {
+		cursor: pointer !important;
+	}
+	
+	#top-menu-nav,
+	#main-header #top-menu-nav,
+	nav#top-menu-nav {
+		display: none !important;
+	}
+	
+	/* Мобильное меню - скрыто по умолчанию */
+	#top-menu,
+	#top-menu-nav,
+	#main-header #top-menu {
+		display: none !important;
+	}
+	
+	/* Мобильное меню - показывается при открытии */
+	#et_mobile_nav_menu .mobile_nav.open ~ * #top-menu,
+	.mobile_nav.open + #top-menu,
+	body:has(#et_mobile_nav_menu .mobile_nav.open) #top-menu,
+	body:has(#et_mobile_nav_menu .mobile_nav.open) #top-menu-nav {
+		display: block !important;
+		position: fixed !important;
+		top: 80px !important;
+		left: 0 !important;
+		right: 0 !important;
+		width: 100% !important;
+		background: #000000 !important;
+		background-color: #000000 !important;
+		border-top: 1px solid #C5A059 !important;
+		z-index: 10000 !important;
+		padding: 20px !important;
+		box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5) !important;
+		max-height: calc(100vh - 80px) !important;
+		overflow-y: auto !important;
+	}
+	
+	/* Стили для ссылок в мобильном меню */
+	#top-menu a,
+	#top-menu-nav a,
+	body:has(#et_mobile_nav_menu .mobile_nav.open) #top-menu a,
+	body:has(#et_mobile_nav_menu .mobile_nav.open) #top-menu-nav a {
+		color: #FFFFFF !important;
+		display: block !important;
+		padding: 15px 20px !important;
+		border-bottom: 1px solid rgba(197, 160, 89, 0.1) !important;
+		text-decoration: none !important;
+	}
+	
+	#top-menu .current-menu-item > a,
+	#top-menu .current_page_item > a,
+	#top-menu-nav .current-menu-item > a,
+	#top-menu-nav .current_page_item > a,
+	body:has(#et_mobile_nav_menu .mobile_nav.open) #top-menu .current-menu-item > a,
+	body:has(#et_mobile_nav_menu .mobile_nav.open) #top-menu .current_page_item > a {
+		color: #C5A059 !important;
+	}
+	
+	/* Золотой цвет для хамбургера */
+	#et_mobile_nav_menu .mobile_menu_bar,
+	#et_mobile_nav_menu .mobile_menu_bar_toggle,
+	#main-header #et_mobile_nav_menu .mobile_menu_bar,
+	#main-header #et_mobile_nav_menu .mobile_menu_bar_toggle {
+		color: #C5A059 !important;
+	}
+	
+	#et_mobile_nav_menu .mobile_menu_bar::before,
+	#et_mobile_nav_menu .mobile_menu_bar::after,
+	#et_mobile_nav_menu .mobile_menu_bar_toggle::before,
+	#et_mobile_nav_menu .mobile_menu_bar_toggle::after,
+	#main-header #et_mobile_nav_menu .mobile_menu_bar::before,
+	#main-header #et_mobile_nav_menu .mobile_menu_bar::after,
+	#main-header #et_mobile_nav_menu .mobile_menu_bar_toggle::before,
+	#main-header #et_mobile_nav_menu .mobile_menu_bar_toggle::after {
+		background-color: #C5A059 !important;
+		border-color: #C5A059 !important;
+	}
+	
+	/* Стили для элементов списка в мобильном меню */
+	body:has(#et_mobile_nav_menu .mobile_nav.open) #top-menu li,
+	body:has(#et_mobile_nav_menu .mobile_nav.open) #top-menu-nav li {
+		display: block !important;
+		margin: 0 !important;
+		padding: 0 !important;
+		border-bottom: 1px solid rgba(197, 160, 89, 0.1) !important;
+	}
+	
+	body:has(#et_mobile_nav_menu .mobile_nav.open) #top-menu li:last-child,
+	body:has(#et_mobile_nav_menu .mobile_nav.open) #top-menu-nav li:last-child {
+		border-bottom: none !important;
+	}
+	
+	/* Подменю в мобильном меню */
+	body:has(#et_mobile_nav_menu .mobile_nav.open) #top-menu .sub-menu,
+	body:has(#et_mobile_nav_menu .mobile_nav.open) #top-menu-nav .sub-menu {
+		position: static !important;
+		display: block !important;
+		background: transparent !important;
+		border: none !important;
+		box-shadow: none !important;
+		padding: 0 !important;
+		margin: 0 !important;
+		opacity: 1 !important;
+		visibility: visible !important;
+		transform: none !important;
+	}
+	
+	body:has(#et_mobile_nav_menu .mobile_nav.open) #top-menu .sub-menu a,
+	body:has(#et_mobile_nav_menu .mobile_nav.open) #top-menu-nav .sub-menu a {
+		padding-left: 40px !important;
+		color: rgba(255, 255, 255, 0.8) !important;
+		font-size: 13px !important;
+	}
+	
+	/* Дополнительные стили для мобильного меню - принудительное применение */
+	#top-menu[style*="display: block"],
+	#top-menu-nav[style*="display: block"],
+	#top-menu[style*="display:block"],
+	#top-menu-nav[style*="display:block"],
+	html body #top-menu[style*="display: block"],
+	html body #top-menu-nav[style*="display: block"],
+	html body #top-menu[style*="display:block"],
+	html body #top-menu-nav[style*="display:block"] {
+		background: #000000 !important;
+		background-color: #000000 !important;
+		background-image: none !important;
+		border-top: 1px solid #C5A059 !important;
+	}
+	
+	/* Принудительные стили для ссылок в открытом мобильном меню */
+	#top-menu[style*="display: block"] a,
+	#top-menu-nav[style*="display: block"] a,
+	#top-menu[style*="display:block"] a,
+	#top-menu-nav[style*="display:block"] a,
+	html body #top-menu[style*="display: block"] a,
+	html body #top-menu-nav[style*="display: block"] a,
+	html body #top-menu[style*="display:block"] a,
+	html body #top-menu-nav[style*="display:block"] a {
+		color: #FFFFFF !important;
+		display: block !important;
+		padding: 15px 20px !important;
+		border-bottom: 1px solid rgba(197, 160, 89, 0.1) !important;
+		text-decoration: none !important;
+		background: transparent !important;
+		background-color: transparent !important;
+	}
+	
+	#top-menu[style*="display: block"] .current-menu-item > a,
+	#top-menu[style*="display: block"] .current_page_item > a,
+	#top-menu-nav[style*="display: block"] .current-menu-item > a,
+	#top-menu-nav[style*="display: block"] .current_page_item > a,
+	#top-menu[style*="display:block"] .current-menu-item > a,
+	#top-menu[style*="display:block"] .current_page_item > a,
+	#top-menu-nav[style*="display:block"] .current-menu-item > a,
+	#top-menu-nav[style*="display:block"] .current_page_item > a,
+	html body #top-menu[style*="display: block"] .current-menu-item > a,
+	html body #top-menu[style*="display: block"] .current_page_item > a,
+	html body #top-menu-nav[style*="display: block"] .current-menu-item > a,
+	html body #top-menu-nav[style*="display: block"] .current_page_item > a {
+		color: #C5A059 !important;
+	}
+	
+	/* Принудительно убираем белый фон для мобильного меню */
+	html body #top-menu,
+	html body #top-menu-nav,
+	html body #main-header #top-menu,
+	html body #main-header #top-menu-nav {
+		background: #000000 !important;
+		background-color: #000000 !important;
+		background-image: none !important;
+	}
+	
+	/* Принудительно применяем темный фон при открытии */
+	html body #et_mobile_nav_menu .mobile_nav.open ~ * #top-menu,
+	html body .mobile_nav.open + #top-menu,
+	html body #et_mobile_nav_menu .mobile_nav.open ~ * #top-menu-nav,
+	html body .mobile_nav.open + #top-menu-nav {
+		background: #000000 !important;
+		background-color: #000000 !important;
+		background-image: none !important;
+		border-top: 1px solid #C5A059 !important;
+	}
+	
+	/* МАКСИМАЛЬНАЯ СПЕЦИФИЧНОСТЬ - переопределяем ВСЕ возможные стили для мобильного меню */
+	html body #main-header #top-menu,
+	html body #main-header #top-menu-nav,
+	html body header#main-header #top-menu,
+	html body header#main-header #top-menu-nav,
+	html body #page-container #main-header #top-menu,
+	html body #page-container #main-header #top-menu-nav {
+		background: #000000 !important;
+		background-color: #000000 !important;
+		background-image: none !important;
+	}
+	
+	/* Стили для элементов списка в мобильном меню - принудительно */
+	html body #main-header #top-menu li,
+	html body #main-header #top-menu-nav li,
+	html body header#main-header #top-menu li,
+	html body header#main-header #top-menu-nav li {
+		background: transparent !important;
+		background-color: transparent !important;
+	}
+	
+	/* Стили для ссылок - принудительно белый цвет */
+	html body #main-header #top-menu a,
+	html body #main-header #top-menu-nav a,
+	html body header#main-header #top-menu a,
+	html body header#main-header #top-menu-nav a {
+		color: #FFFFFF !important;
+		background: transparent !important;
+		background-color: transparent !important;
+	}
+	
+	/* Переопределяем inline стили через атрибут style - максимальный приоритет */
+	#top-menu[style],
+	#top-menu-nav[style],
+	html body #top-menu[style],
+	html body #top-menu-nav[style],
+	html body #main-header #top-menu[style],
+	html body #main-header #top-menu-nav[style] {
+		background: #000000 !important;
+		background-color: #000000 !important;
+		background-image: none !important;
+	}
+	
+	/* Принудительно применяем темный фон для всех элементов меню */
+	#top-menu,
+	#top-menu-nav,
+	#main-header #top-menu,
+	#main-header #top-menu-nav,
+	header#main-header #top-menu,
+	header#main-header #top-menu-nav,
+	html body #top-menu,
+	html body #top-menu-nav,
+	html body #main-header #top-menu,
+	html body #main-header #top-menu-nav {
+		background: #000000 !important;
+		background-color: #000000 !important;
+		background-image: none !important;
+	}
+	
+	#top-menu ul,
+	#top-menu-nav ul,
+	#top-menu li,
+	#top-menu-nav li,
+	#main-header #top-menu ul,
+	#main-header #top-menu-nav ul,
+	#main-header #top-menu li,
+	#main-header #top-menu-nav li {
+		background: transparent !important;
+		background-color: transparent !important;
+	}
+	
+	#top-menu a,
+	#top-menu-nav a,
+	#main-header #top-menu a,
+	#main-header #top-menu-nav a {
+		color: #FFFFFF !important;
+		background: transparent !important;
+		background-color: transparent !important;
+	}
+}
+}
+
+@media (min-width: 981px) {
+	#et_mobile_nav_menu,
+	#main-header #et_mobile_nav_menu {
+		display: none !important;
+	}
+	
+	#top-menu-nav,
+	#main-header #top-menu-nav,
+	nav#top-menu-nav {
+		display: block !important;
+	}
+}
+
+/* ============================================
+   9. OVERRIDE ALL OTHER STYLES
+   ============================================ */
+
+/* Отключаем все эффекты размытия и прозрачности */
+#main-header *,
+header#main-header * {
+	backdrop-filter: none !important;
+	-webkit-backdrop-filter: none !important;
+}
+
+/* Убираем все box-shadow с header */
+#main-header,
+header#main-header {
+	box-shadow: none !important;
+}
+
+/* ============================================
+   10. FORCE STYLES - МАКСИМАЛЬНЫЙ ПРИОРИТЕТ
+   Переопределяем ВСЕ возможные стили
+   ============================================ */
+
+/* Принудительно устанавливаем черный фон для всех header */
+html body header#main-header,
+html body header.main-header,
+html body #main-header,
+html body .main-header,
+body header#main-header,
+body header.main-header,
+body #main-header,
+body .main-header,
+html body header[class*="main-header"],
+html body header[id*="main-header"] {
+	background: #000000 !important;
+	background-color: #000000 !important;
+	backdrop-filter: none !important;
+	-webkit-backdrop-filter: none !important;
+}
+
+/* ============================================
+   11. LOGO POSITIONING FIX - КРИТИЧНО
+   Гарантируем, что логотип всегда внутри navbar
+   ============================================ */
+
+/* Ensure header has minimum height and proper structure */
+header#main-header,
+header.main-header,
+#main-header,
+.main-header,
+html body header#main-header,
+html body header.main-header {
+	min-height: 80px !important;
+	height: auto !important;
+	overflow: visible !important;
+	position: relative !important;
+}
+
+/* Force logo to stay within header boundaries */
+#main-header .logo_container,
+header#main-header .logo_container,
+.main-header .logo_container {
+	position: relative !important;
+	top: auto !important;
+	left: auto !important;
+	bottom: auto !important;
+	right: auto !important;
+	margin-top: 0 !important;
+	margin-bottom: 0 !important;
+	padding-top: 0 !important;
+	padding-bottom: 0 !important;
+}
+
+/* Prevent logo from wrapping to new line */
+.et_menu_container,
+.container.et_menu_container {
+	flex-wrap: nowrap !important;
+	overflow: hidden !important;
+}
+
+/* Ensure logo_container doesn't escape header */
+header#main-header .logo_container,
+.main-header .logo_container {
+	max-height: 80px !important;
+	overflow: hidden !important;
+}
+
+/* Prevent any absolute positioning that could move logo outside navbar */
+#main-header .logo_container,
+header#main-header .logo_container {
+	position: relative !important;
+	z-index: auto !important;
+}
+
+/* Принудительно устанавливаем стили для всех ссылок - ПРОФЕССИОНАЛЬНЫЙ ВИД */
+html body #main-header #top-menu a,
+html body #main-header .nav a,
+html body #main-header nav ul li a,
+html body #main-header #top-menu-nav a,
+html body .main-header #top-menu a,
+html body .main-header .nav a,
+html body .main-header nav ul li a,
+html body #et-top-navigation #top-menu a,
+html body #et-top-navigation .nav a,
+html body #et-top-navigation nav ul li a,
+body #main-header #top-menu a,
+body #main-header .nav a,
+body #main-header nav ul li a,
+body #main-header #top-menu-nav a,
+body #et-top-navigation #top-menu a,
+body #et-top-navigation .nav a,
+body #et-top-navigation nav ul li a {
+	font-size: 14px !important;
+	text-transform: uppercase !important;
+	letter-spacing: 0.12em !important;
+	font-weight: 500 !important;
+	color: #FFFFFF !important;
+	opacity: 0.8 !important;
+	padding: 10px 20px !important;
+	transition: all 0.3s ease !important;
+}
+
+/* Активная страница - золотая с полной непрозрачностью */
+html body #main-header .current-menu-item > a,
+html body #main-header .current_page_item > a,
+html body #main-header li.current-menu-item > a,
+html body #main-header li.current_page_item > a,
+html body #main-header #top-menu .current-menu-item > a,
+html body #main-header #top-menu .current_page_item > a,
+html body #main-header ul#top-menu .current-menu-item > a,
+html body #main-header ul#top-menu .current_page_item > a,
+html body #et-top-navigation #top-menu .current-menu-item > a,
+html body #et-top-navigation #top-menu .current_page_item > a,
+body #main-header .current-menu-item > a,
+body #main-header .current_page_item > a,
+body #main-header li.current-menu-item > a,
+body #main-header li.current_page_item > a,
+body #main-header #top-menu .current-menu-item > a,
+body #main-header #top-menu .current_page_item > a,
+body #main-header ul#top-menu .current-menu-item > a,
+body #main-header ul#top-menu .current_page_item > a,
+body #et-top-navigation #top-menu .current-menu-item > a,
+body #et-top-navigation #top-menu .current_page_item > a {
+	color: #C5A059 !important;
+	opacity: 1 !important;
+}
+
+/* Принудительно устанавливаем правильное выравнивание навигации */
+html body #top-menu,
+html body ul#top-menu,
+html body .nav,
+html body ul.nav,
+html body #main-header #top-menu,
+html body #main-header ul#top-menu,
+html body #et-top-navigation #top-menu,
+html body #et-top-navigation ul#top-menu,
+html body #top-menu-nav ul,
+html body nav#top-menu-nav ul,
+body #top-menu,
+body ul#top-menu,
+body .nav,
+body ul.nav,
+body #main-header #top-menu,
+body #main-header ul#top-menu,
+body #et-top-navigation #top-menu,
+body #et-top-navigation ul#top-menu,
+body #top-menu-nav ul,
+body nav#top-menu-nav ul {
+	display: flex !important;
+	align-items: center !important;
+	justify-content: flex-end !important;
+	gap: 0 !important;
+	flex-wrap: wrap !important;
+}
+
+/* Дополнительное выравнивание для всех элементов списка - на одной линии */
+html body #top-menu li,
+html body ul#top-menu li,
+html body .nav li,
+html body ul.nav li,
+html body #main-header #top-menu li,
+html body #main-header ul#top-menu li,
+html body #et-top-navigation #top-menu li,
+html body #et-top-navigation ul#top-menu li,
+html body #top-menu-nav ul li,
+html body nav#top-menu-nav ul li,
+body #top-menu li,
+body ul#top-menu li,
+body .nav li,
+body ul.nav li,
+body #main-header #top-menu li,
+body #main-header ul#top-menu li,
+body #et-top-navigation #top-menu li,
+body #et-top-navigation ul#top-menu li,
+body #top-menu-nav ul li,
+body nav#top-menu-nav ul li {
+	display: inline-flex !important;
+	align-items: center !important;
+	vertical-align: middle !important;
+	line-height: normal !important;
+	margin: 0 !important;
+	padding: 0 !important;
+}
+
+/* Ссылки в элементах - выравнивание по центру */
+html body #top-menu li > a,
+html body ul#top-menu li > a,
+html body .nav li > a,
+html body ul.nav li > a,
+html body #main-header #top-menu li > a,
+html body #main-header ul#top-menu li > a,
+html body #et-top-navigation #top-menu li > a,
+html body #et-top-navigation ul#top-menu li > a,
+html body #top-menu-nav ul li > a,
+html body nav#top-menu-nav ul li > a,
+body #top-menu li > a,
+body ul#top-menu li > a,
+body .nav li > a,
+body ul.nav li > a,
+body #main-header #top-menu li > a,
+body #main-header ul#top-menu li > a,
+body #et-top-navigation #top-menu li > a,
+body #et-top-navigation ul#top-menu li > a,
+body #top-menu-nav ul li > a,
+body nav#top-menu-nav ul li > a {
+	display: inline-flex !important;
+	align-items: center !important;
+	vertical-align: middle !important;
+	line-height: normal !important;
+	height: auto !important;
+}
+

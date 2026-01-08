@@ -1,0 +1,1075 @@
+/* Современные улучшения для Annual Houston Humanitarian Awards */
+
+/* ============================================
+   БАЗОВЫЕ УЛУЧШЕНИЯ
+   ============================================ */
+
+* {
+	box-sizing: border-box;
+}
+
+/* ============================================
+   MASTER NAVIGATION - .main-header (10k look)
+   ============================================ */
+
+/* ============================================
+   MASTER NAVIGATION - ОТКЛЮЧЕНО
+   Используется unified-navigation.css вместо этого
+   ============================================ */
+
+body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	font-feature-settings: "kern" 1, "liga" 1;
+	text-rendering: optimizeLegibility;
+	line-height: 1.6;
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
+/* ============================================
+   УЛУЧШЕННАЯ НАВИГАЦИЯ - ОТКЛЮЧЕНО
+   Используется unified-navigation.css вместо этого
+   ============================================ */
+
+/* ============================================
+   СОВРЕМЕННЫЕ КНОПКИ
+   ============================================ */
+
+.et_pb_button {
+	border-radius: 8px;
+	font-weight: 600;
+	letter-spacing: 0.5px;
+	box-shadow: 0 4px 15px rgba(255, 215, 0, 0.2);
+	position: relative;
+	overflow: hidden;
+	transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.et_pb_button::before {
+	content: '';
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 0;
+	height: 0;
+	border-radius: 50%;
+	background: rgba(255, 255, 255, 0.2);
+	transform: translate(-50%, -50%);
+	transition: width 0.6s, height 0.6s;
+}
+
+.et_pb_button:hover::before {
+	width: 300px;
+	height: 300px;
+}
+
+.et_pb_button:hover {
+	transform: translateY(-2px);
+	box-shadow: 0 6px 20px rgba(255, 215, 0, 0.3);
+}
+
+/* ============================================
+   УЛУЧШЕННЫЕ КАРТОЧКИ И ИЗОБРАЖЕНИЯ
+   ============================================ */
+
+.et_pb_image {
+	border-radius: 12px;
+	overflow: hidden;
+	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+	transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.et_pb_image:hover {
+	transform: translateY(-4px);
+	box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+}
+
+.et_pb_image img {
+	transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.et_pb_image:hover img {
+	transform: scale(1.05);
+}
+
+.et_pb_module {
+	transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.et_pb_module:hover {
+	transform: translateY(-2px);
+}
+
+/* ============================================
+   УЛУЧШЕННАЯ ТИПОГРАФИКА
+   ============================================ */
+
+h1, h2, h3, h4, h5, h6 {
+	font-weight: 700;
+	letter-spacing: -0.02em;
+	line-height: 1.2;
+	margin-bottom: 1em;
+}
+
+p, li {
+	line-height: 1.7;
+}
+
+/* ============================================
+   АНИМАЦИИ
+   ============================================ */
+
+@keyframes fadeInUp {
+	from {
+		opacity: 0;
+		transform: translateY(30px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+.et_pb_section {
+	animation: fadeInUp 0.6s ease-out;
+}
+
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+/* ============================================
+   УЛУЧШЕННЫЙ ФУТЕР
+   ============================================ */
+
+#main-footer {
+	background: linear-gradient(180deg, #0a0a0a 0%, #000000 100%);
+	border-top: 1px solid rgba(255, 215, 0, 0.1);
+	padding: 40px 0 20px;
+}
+
+#footer-bottom {
+	border-top: 1px solid rgba(255, 255, 255, 0.1);
+	padding-top: 20px;
+	margin-top: 20px;
+}
+
+/* ============================================
+   УЛУЧШЕННАЯ ДОСТУПНОСТЬ
+   ============================================ */
+
+*:focus-visible {
+	outline: 2px solid #ffd700;
+	outline-offset: 2px;
+	border-radius: 4px;
+}
+
+a:focus,
+button:focus {
+	outline: 2px solid #ffd700;
+	outline-offset: 2px;
+}
+
+/* ============================================
+   ПЛАВНЫЕ ПЕРЕХОДЫ
+   ============================================ */
+
+a, button, .et_pb_button, .et_pb_image, .et_pb_module {
+	transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ============================================
+   АДАПТИВНЫЕ УЛУЧШЕНИЯ
+   ============================================ */
+
+@media (max-width: 768px) {
+	#main-header {
+		padding: 10px 0;
+	}
+	
+	.et_pb_button {
+		width: 100%;
+		margin: 10px 0;
+		padding: 12px 24px;
+	}
+	
+	.et_pb_image {
+		border-radius: 8px;
+	}
+	
+	h1 { font-size: 2rem; }
+	h2 { font-size: 1.75rem; }
+	h3 { font-size: 1.5rem; }
+}
+
+@media (max-width: 480px) {
+	#main-header {
+		padding: 8px 0;
+	}
+	
+	.et_pb_button {
+		padding: 10px 20px;
+		font-size: 14px;
+	}
+}
+
+/* ============================================
+   УЛУЧШЕНИЯ ДЛЯ ГАЛЕРЕИ
+   ============================================ */
+
+.et_pb_gallery_item {
+	overflow: hidden;
+	border-radius: 8px;
+}
+
+.et_pb_gallery_item img {
+	transition: transform 0.5s ease;
+}
+
+.et_pb_gallery_item:hover img {
+	transform: scale(1.1);
+}
+
+/* ============================================
+   УЛУЧШЕНИЯ ДЛЯ ФОРМ
+   ============================================ */
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+textarea,
+select {
+	border-radius: 6px;
+	border: 1px solid rgba(255, 255, 255, 0.2);
+	background: rgba(255, 255, 255, 0.05);
+	color: #ffffff;
+	padding: 12px 16px;
+	transition: all 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="tel"]:focus,
+textarea:focus,
+select:focus {
+	outline: none;
+	border-color: #ffd700;
+	box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.1);
+	background: rgba(255, 255, 255, 0.08);
+}
+
+/* ============================================
+   УЛУЧШЕНИЯ ДЛЯ ВИДЕО
+   ============================================ */
+
+.et_pb_video_box {
+	border-radius: 12px;
+	overflow: hidden;
+	box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+}
+
+/* ============================================
+   ЗОЛОТЫЕ АКЦЕНТЫ
+   ============================================ */
+
+.gold-accent {
+	color: #ffd700;
+}
+
+.gold-border {
+	border-color: #ffd700;
+}
+
+.gold-bg {
+	background: linear-gradient(135deg, rgba(255, 215, 0, 0.1) 0%, rgba(255, 200, 50, 0.05) 100%);
+}
+
+/* ============================================
+   СОВРЕМЕННЫЕ СЕКЦИИ И КОНТЕЙНЕРЫ
+   ============================================ */
+
+.et_pb_section {
+	padding: 80px 0;
+	position: relative;
+}
+
+.et_pb_row {
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 0 20px;
+}
+
+.et_pb_column {
+	padding: 20px;
+}
+
+/* ============================================
+   СОВРЕМЕННЫЕ КАРТОЧКИ КОНТЕНТА
+   ============================================ */
+
+.et_pb_text {
+	background: rgba(255, 255, 255, 0.02);
+	border-radius: 16px;
+	padding: 30px;
+	border: 1px solid rgba(255, 215, 0, 0.1);
+	backdrop-filter: blur(10px);
+	transition: all 0.3s ease;
+}
+
+.et_pb_text:hover {
+	background: rgba(255, 255, 255, 0.04);
+	border-color: rgba(255, 215, 0, 0.3);
+	transform: translateY(-4px);
+	box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* ============================================
+   СОВРЕМЕННАЯ ТИПОГРАФИКА
+   ============================================ */
+
+.et_pb_text_inner h1,
+.et_pb_text_inner h2,
+.et_pb_text_inner h3,
+.et_pb_text_inner h4 {
+	background: linear-gradient(135deg, #ffffff 0%, #ffd700 100%);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	background-clip: text;
+	margin-bottom: 1.5em;
+}
+
+.et_pb_text_inner p {
+	color: rgba(255, 255, 255, 0.9);
+	font-size: 1.1rem;
+	line-height: 1.8;
+	margin-bottom: 1.5em;
+}
+
+/* ============================================
+   СОВРЕМЕННЫЕ FULLWIDTH HEADERS
+   ============================================ */
+
+.et_pb_fullwidth_header {
+	position: relative;
+	overflow: hidden;
+}
+
+.et_pb_fullwidth_header::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: linear-gradient(135deg, rgba(26, 26, 26, 0.95) 0%, rgba(0, 0, 0, 0.98) 100%);
+	z-index: 1;
+}
+
+.et_pb_fullwidth_header_container {
+	position: relative;
+	z-index: 2;
+	padding: 100px 20px;
+}
+
+.et_pb_module_header {
+	font-size: 3.5rem;
+	font-weight: 800;
+	letter-spacing: -0.03em;
+	line-height: 1.1;
+	margin-bottom: 1rem;
+	background: linear-gradient(135deg, #ffffff 0%, #ffd700 50%, #ffffff 100%);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	background-clip: text;
+	background-size: 200% auto;
+	animation: shimmer 3s linear infinite;
+}
+
+@keyframes shimmer {
+	0% { background-position: 0% center; }
+	100% { background-position: 200% center; }
+}
+
+.et_pb_fullwidth_header_subhead {
+	font-size: 1.2rem;
+	color: rgba(255, 215, 0, 0.9);
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+	font-weight: 600;
+}
+
+/* ============================================
+   СОВРЕМЕННЫЕ DIVIDERS
+   ============================================ */
+
+.et_pb_divider {
+	margin: 60px 0;
+}
+
+.et_pb_divider_internal {
+	height: 2px;
+	background: linear-gradient(90deg, transparent 0%, rgba(255, 215, 0, 0.5) 50%, transparent 100%);
+	position: relative;
+}
+
+.et_pb_divider_internal::after {
+	content: '';
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	width: 8px;
+	height: 8px;
+	background: #ffd700;
+	border-radius: 50%;
+	box-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
+}
+
+/* ============================================
+   СОВРЕМЕННЫЕ ГРИДЫ И ЛАЙАУТЫ
+   ============================================ */
+
+.et_pb_row {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 30px;
+}
+
+.et_pb_column_1_4 {
+	flex: 1 1 calc(25% - 30px);
+	min-width: 250px;
+}
+
+.et_pb_column_1_3 {
+	flex: 1 1 calc(33.333% - 30px);
+	min-width: 300px;
+}
+
+.et_pb_column_1_2 {
+	flex: 1 1 calc(50% - 30px);
+	min-width: 400px;
+}
+
+.et_pb_column_2_3 {
+	flex: 1 1 calc(66.666% - 30px);
+	min-width: 500px;
+}
+
+.et_pb_column_3_4 {
+	flex: 1 1 calc(75% - 30px);
+	min-width: 600px;
+}
+
+.et_pb_column_4_4 {
+	flex: 1 1 100%;
+}
+
+/* ============================================
+   СОВРЕМЕННЫЕ АНИМАЦИИ ПОЯВЛЕНИЯ
+   ============================================ */
+
+@keyframes slideInLeft {
+	from {
+		opacity: 0;
+		transform: translateX(-50px);
+	}
+	to {
+		opacity: 1;
+		transform: translateX(0);
+	}
+}
+
+@keyframes slideInRight {
+	from {
+		opacity: 0;
+		transform: translateX(50px);
+	}
+	to {
+		opacity: 1;
+		transform: translateX(0);
+	}
+}
+
+@keyframes scaleIn {
+	from {
+		opacity: 0;
+		transform: scale(0.9);
+	}
+	to {
+		opacity: 1;
+		transform: scale(1);
+	}
+}
+
+.et_pb_section:nth-child(odd) .et_pb_row {
+	animation: slideInLeft 0.8s ease-out;
+}
+
+.et_pb_section:nth-child(even) .et_pb_row {
+	animation: slideInRight 0.8s ease-out;
+}
+
+/* ============================================
+   УЛУЧШЕННЫЕ СОЦИАЛЬНЫЕ ИКОНКИ
+   ============================================ */
+
+.et-social-icons a {
+	transition: all 0.3s ease;
+	border-radius: 50%;
+	width: 50px;
+	height: 50px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: rgba(255, 215, 0, 0.1);
+	border: 2px solid rgba(255, 215, 0, 0.3);
+}
+
+.et-social-icons a:hover {
+	background: rgba(255, 215, 0, 0.2);
+	border-color: #ffd700;
+	transform: translateY(-4px) scale(1.1);
+	box-shadow: 0 8px 20px rgba(255, 215, 0, 0.3);
+}
+
+/* ============================================
+   СОВРЕМЕННЫЕ МЕДИА ЗАПРОСЫ
+   ============================================ */
+
+@media (max-width: 1024px) {
+	.et_pb_module_header {
+		font-size: 2.5rem;
+	}
+	
+	.et_pb_column_1_4,
+	.et_pb_column_1_3 {
+		flex: 1 1 calc(50% - 30px);
+	}
+	
+	.et_pb_column_2_3,
+	.et_pb_column_3_4 {
+		flex: 1 1 100%;
+	}
+}
+
+@media (max-width: 768px) {
+	.et_pb_section {
+		padding: 60px 0;
+	}
+	
+	.et_pb_module_header {
+		font-size: 2rem;
+	}
+	
+	.et_pb_fullwidth_header_container {
+		padding: 60px 20px;
+	}
+	
+	.et_pb_column {
+		flex: 1 1 100% !important;
+		min-width: 100% !important;
+	}
+	
+	.et_pb_text {
+		padding: 20px;
+	}
+	
+	.et_pb_row {
+		gap: 20px;
+	}
+}
+
+@media (max-width: 480px) {
+	.et_pb_section {
+		padding: 40px 0;
+	}
+	
+	.et_pb_module_header {
+		font-size: 1.75rem;
+	}
+	
+	.et_pb_fullwidth_header_container {
+		padding: 40px 15px;
+	}
+	
+	.et_pb_text {
+		padding: 15px;
+		border-radius: 12px;
+	}
+}
+
+/* ============================================
+   ДОПОЛНИТЕЛЬНЫЕ СТИЛИ ДЛЯ СТРАНИЦЫ ABOUT
+   ============================================ */
+
+.et_pb_text_inner h2 {
+	position: relative;
+	padding-bottom: 20px;
+}
+
+.et_pb_text_inner h2::after {
+	content: '';
+	position: absolute;
+	bottom: 0;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 80px;
+	height: 3px;
+	background: linear-gradient(90deg, transparent, #ffd700, transparent);
+	border-radius: 2px;
+}
+
+.et_pb_text_inner a[title="Nomination Form"],
+.et_pb_text_inner a[href*="nomination"] {
+	position: relative;
+	overflow: hidden;
+}
+
+.et_pb_text_inner a[title="Nomination Form"]:hover,
+.et_pb_text_inner a[href*="nomination"]:hover {
+	transform: translateY(-3px);
+	box-shadow: 0 6px 25px rgba(255, 215, 0, 0.4);
+}
+
+/* Улучшенные стили для параллакс секции */
+.et_pb_section_parallax .et_pb_fullwidth_header {
+	position: relative;
+}
+
+.et_pb_section_parallax .et_pb_fullwidth_header::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: linear-gradient(135deg, rgba(0, 0, 0, 0.85) 0%, rgba(26, 26, 26, 0.9) 100%);
+	z-index: 1;
+}
+
+.et_pb_section_parallax .et_pb_fullwidth_header_container {
+	position: relative;
+	z-index: 2;
+}
+
+/* Анимация для кнопок */
+.et_pb_button_one,
+.et_pb_button_two {
+	position: relative;
+	overflow: hidden;
+}
+
+.et_pb_button_one::after,
+.et_pb_button_two::after {
+	content: '';
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 0;
+	height: 0;
+	background: rgba(255, 255, 255, 0.2);
+	border-radius: 50%;
+	transform: translate(-50%, -50%);
+	transition: width 0.6s, height 0.6s;
+}
+
+.et_pb_button_one:hover::after,
+.et_pb_button_two:hover::after {
+	width: 400px;
+	height: 400px;
+}
+
+/* (Reverted unified global navigation block) */
+
+/* ============================================
+   ABOUT PAGE: TRANSPARENT GLASS HEADER OVER HERO
+   Removes excessive black space under nav/hero and aligns content
+   ============================================ */
+
+/* Make header overlay the hero with glassmorphism */
+body.page-id-1158 #main-header {
+	position: fixed !important;
+	top: 0;
+	left: 0;
+	right: 0;
+	background: rgba(0, 0, 0, 0.2) !important;
+	backdrop-filter: blur(15px) !important;
+	-webkit-backdrop-filter: blur(15px) !important;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.06) !important;
+	box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3) !important;
+	height: auto !important;
+	padding: 12px 0 !important;
+	z-index: 10000 !important;
+}
+
+/* Tighten nav container and vertically center items */
+body.page-id-1158 #et-top-navigation,
+body.page-id-1158 #top-menu-nav {
+	height: auto !important;
+	line-height: 1 !important;
+	display: flex !important;
+	align-items: center !important;
+}
+
+/* Keep logo size elegant and aligned */
+body.page-id-1158 #logo {
+	max-height: 48px !important;
+	height: auto !important;
+}
+
+/* Remove any template top padding below fixed header */
+body.page-id-1158 #page-container {
+	padding-top: 0 !important;
+	margin-top: 0 !important;
+}
+
+/* Ensure the hero starts below the fixed header to avoid overlap */
+body.page-id-1158 .hero-fullscreen {
+	padding-top: 96px !important; /* ~ header height */
+}
+
+/* Clean up potential Divi spacing quirks */
+body.page-id-1158 .et_non_fixed_nav #main-header {
+	position: fixed !important;
+}
+
+/* ============================================
+   UNIFIED "HOW CAN YOU MAKE A DIFFERENCE" SECTION
+   Единый стиль для всех страниц
+   ============================================ */
+
+/* Заголовок - единый стиль для всех страниц */
+.premium-cta-section h2,
+.breakout-heading h2,
+.cta-section-premium h2,
+.et_pb_fullwidth_header_0 .et_pb_module_header,
+.et_pb_fullwidth_header .et_pb_module_header {
+	font-family: 'Playfair Display', serif !important;
+	font-weight: 300 !important;
+	letter-spacing: 0.1em !important;
+	color: #F5F5F5 !important;
+	font-size: clamp(2.5rem, 5vw, 4rem) !important;
+	line-height: 1.2 !important;
+	margin-bottom: 24px !important;
+	text-align: center !important;
+	text-shadow: 0 2px 20px rgba(0, 0, 0, 0.5) !important;
+	background: none !important;
+	-webkit-background-clip: unset !important;
+	-webkit-text-fill-color: #F5F5F5 !important;
+	background-clip: unset !important;
+}
+
+/* Подтекст - единый стиль для всех страниц */
+.premium-cta-section p,
+.cta-glass-text p,
+.cta-section-premium p,
+.et_pb_fullwidth_header_subhead,
+.et_pb_fullwidth_header .et_pb_fullwidth_header_subhead {
+	font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+	font-size: 14px !important;
+	letter-spacing: 0.2em !important;
+	text-transform: uppercase !important;
+	color: #C5A059 !important;
+	text-align: center !important;
+	margin-bottom: 32px !important;
+	font-weight: 400 !important;
+	opacity: 1 !important;
+	display: block !important;
+}
+
+/* Кнопки - единый стиль для всех страниц */
+.premium-cta-section .btn-learn,
+.cta-btn-primary,
+.cta-btn-secondary,
+.et_pb_fullwidth_header_0 .et_pb_button,
+.et_pb_fullwidth_header_0 a.et_pb_more_button,
+.et_pb_fullwidth_header .et_pb_button,
+.et_pb_fullwidth_header a.et_pb_more_button {
+	display: inline-block !important;
+	background: transparent !important;
+	border: 1px solid #C5A059 !important;
+	border-radius: 4px !important;
+	padding: 16px 48px !important;
+	font-family: 'Inter', sans-serif !important;
+	font-size: 14px !important;
+	font-weight: 600 !important;
+	letter-spacing: 0.1em !important;
+	text-transform: uppercase !important;
+	color: #C5A059 !important;
+	text-decoration: none !important;
+	transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+	cursor: pointer !important;
+	margin: 0 12px !important;
+	box-shadow: none !important;
+}
+
+/* Hover эффект для кнопок */
+.premium-cta-section .btn-learn:hover,
+.cta-btn-primary:hover,
+.cta-btn-secondary:hover,
+.et_pb_fullwidth_header_0 .et_pb_button:hover,
+.et_pb_fullwidth_header_0 a.et_pb_more_button:hover,
+.et_pb_fullwidth_header .et_pb_button:hover,
+.et_pb_fullwidth_header a.et_pb_more_button:hover {
+	background: #C5A059 !important;
+	color: #000000 !important;
+	border-color: #C5A059 !important;
+	box-shadow: 0 0 20px rgba(197, 160, 89, 0.4) !important;
+	transform: translateY(-2px) !important;
+}
+
+/* Контейнер для кнопок - центрирование */
+.premium-cta-section > div,
+.premium-cta-section > div > div,
+.cta-glass-text > div,
+.cta-section-premium .cta-glass-text > div,
+.et_pb_header_content_wrapper,
+.header-content,
+.et_pb_fullwidth_header .header-content {
+	display: flex !important;
+	justify-content: center !important;
+	align-items: center !important;
+	flex-wrap: wrap !important;
+	gap: 16px !important;
+}
+
+/* Центрирование контента на странице About */
+.cta-section-premium .breakout-heading,
+.cta-section-premium .editorial-main-column,
+.cta-section-premium .cta-glass-text {
+	text-align: center !important;
+}
+
+/* Убираем лишние стили с кнопок на странице About */
+.cta-btn-primary,
+.cta-btn-secondary {
+	color: #C5A059 !important;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+	.premium-cta-section h2,
+	.breakout-heading h2,
+	.et_pb_fullwidth_header_0 .et_pb_module_header {
+		font-size: clamp(2rem, 5vw, 3rem) !important;
+		margin-bottom: 20px !important;
+	}
+	
+	.premium-cta-section p,
+	.cta-glass-text p,
+	.et_pb_fullwidth_header_subhead {
+		font-size: 13px !important;
+		margin-bottom: 28px !important;
+	}
+	
+	.premium-cta-section .btn-learn,
+	.cta-btn-primary,
+	.cta-btn-secondary,
+	.et_pb_fullwidth_header_0 .et_pb_button {
+		padding: 14px 36px !important;
+		font-size: 13px !important;
+		margin: 8px !important;
+	}
+}
+
+/* ============================================
+   GLOBAL NAVIGATION - UNIFIED STYLE FOR ALL PAGES
+   Единая навигация на всех страницах (Home, About, и остальные)
+   Простой черный фон без размытия, активная страница - золотая
+   ============================================ */
+
+/* Main header container - единый стиль для всех страниц - МАКСИМАЛЬНЫЙ ПРИОРИТЕТ */
+header#main-header,
+header.main-header,
+#main-header,
+.main-header,
+.sticky-header,
+body #main-header,
+body .main-header,
+body .sticky-header {
+	background: #000000 !important;
+	border-bottom: 1px solid rgba(197, 160, 89, 0.2) !important;
+	position: sticky !important;
+	top: 0 !important;
+	z-index: 1000 !important;
+	width: 100% !important;
+	transition: all 0.3s ease !important;
+	/* Убираем размытие фона */
+	backdrop-filter: none !important;
+	-webkit-backdrop-filter: none !important;
+}
+
+/* Переопределяем все возможные inline стили и другие CSS */
+header#main-header[style],
+header.main-header[style],
+#main-header[style],
+.main-header[style] {
+	background: #000000 !important;
+	backdrop-filter: none !important;
+	-webkit-backdrop-filter: none !important;
+}
+
+/* Navigation links - единый стиль для всех страниц - МАКСИМАЛЬНЫЙ ПРИОРИТЕТ */
+header#main-header #top-menu a,
+header#main-header .nav a,
+header#main-header nav ul li a,
+header#main-header #top-menu-nav a,
+#main-header #top-menu a,
+#main-header .nav a,
+#main-header nav ul li a,
+#main-header #top-menu-nav a,
+.main-header #top-menu a,
+.main-header .nav a,
+.main-header nav ul li a,
+.sticky-header #top-menu a,
+.sticky-header .nav a,
+.sticky-header nav ul li a,
+body #main-header #top-menu a,
+body #main-header .nav a,
+body #main-header nav ul li a,
+body .main-header #top-menu a,
+body .main-header .nav a,
+body .main-header nav ul li a,
+#top-menu-nav a,
+#top-menu a,
+nav#top-menu-nav a,
+ul#top-menu a {
+	font-size: 12px !important;
+	text-transform: uppercase !important;
+	letter-spacing: 0.15em !important;
+	font-weight: 400 !important;
+	color: #ffffff !important;
+	text-decoration: none !important;
+	position: relative !important;
+	transition: color 0.6s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+/* Убираем золотую линию снизу - простой стиль как на третьем скриншоте */
+#main-header #top-menu a::after,
+#main-header .nav a::after,
+#main-header nav ul li a::after,
+.main-header #top-menu a::after,
+.main-header .nav a::after,
+.main-header nav ul li a::after,
+.sticky-header #top-menu a::after,
+.sticky-header .nav a::after,
+.sticky-header nav ul li a::after,
+nav ul li a::after,
+#top-menu-nav a::after,
+#top-menu a::after {
+	display: none !important;
+}
+
+/* Hover цвет текста - остается белым или слегка золотистым */
+#main-header #top-menu a:hover,
+#main-header .nav a:hover,
+#main-header nav ul li a:hover,
+.main-header #top-menu a:hover,
+.main-header .nav a:hover,
+.main-header nav ul li a:hover,
+.sticky-header #top-menu a:hover,
+.sticky-header .nav a:hover,
+.sticky-header nav ul li a:hover,
+nav ul li a:hover,
+#top-menu-nav a:hover,
+#top-menu a:hover {
+	color: #ffffff !important;
+	opacity: 0.8 !important;
+}
+
+/* Current page link styling - золотой цвет для активной страницы (как на третьем скриншоте) - МАКСИМАЛЬНЫЙ ПРИОРИТЕТ */
+header#main-header .current-menu-item > a,
+header#main-header .current_page_item > a,
+header#main-header .current-menu-item > a[aria-current="page"],
+header#main-header .current_page_item > a[aria-current="page"],
+#main-header .current-menu-item > a,
+#main-header .current_page_item > a,
+#main-header .current-menu-item > a[aria-current="page"],
+#main-header .current_page_item > a[aria-current="page"],
+#main-header li.current-menu-item > a,
+#main-header li.current_page_item > a,
+.main-header .current-menu-item > a,
+.main-header .current_page_item > a,
+.main-header .current-menu-item > a[aria-current="page"],
+.main-header .current_page_item > a[aria-current="page"],
+.sticky-header .current-menu-item > a,
+.sticky-header .current_page_item > a,
+.sticky-header .current-menu-item > a[aria-current="page"],
+.sticky-header .current_page_item > a[aria-current="page"],
+#top-menu .current-menu-item > a,
+#top-menu .current_page_item > a,
+#top-menu .current-menu-item > a[aria-current="page"],
+#top-menu .current_page_item > a[aria-current="page"],
+ul#top-menu .current-menu-item > a,
+ul#top-menu .current_page_item > a,
+body #main-header .current-menu-item > a,
+body #main-header .current_page_item > a {
+	color: #C5A059 !important;
+	font-weight: 400 !important;
+}
+
+/* Dropdown menu styling */
+#main-header .sub-menu,
+.main-header .sub-menu,
+.sticky-header .sub-menu,
+#top-menu .sub-menu {
+	background: rgba(0, 0, 0, 0.95) !important;
+	backdrop-filter: blur(20px) !important;
+	-webkit-backdrop-filter: blur(20px) !important;
+	border: 1px solid rgba(197, 160, 89, 0.2) !important;
+	border-radius: 4px !important;
+	padding: 8px 0 !important;
+	margin-top: 8px !important;
+}
+
+#main-header .sub-menu a,
+.main-header .sub-menu a,
+.sticky-header .sub-menu a,
+#top-menu .sub-menu a {
+	font-size: 11px !important;
+	padding: 8px 16px !important;
+	display: block !important;
+}
+
+#main-header .sub-menu a:hover,
+.main-header .sub-menu a:hover,
+.sticky-header .sub-menu a:hover,
+#top-menu .sub-menu a:hover {
+	background: rgba(197, 160, 89, 0.1) !important;
+	color: #C5A059 !important;
+}
+
+/* Logo styling */
+#main-header #logo,
+.main-header #logo,
+.sticky-header #logo {
+	max-height: 60px !important;
+	height: auto !important;
+	width: auto !important;
+}
+
+/* Mobile menu toggle */
+@media (max-width: 980px) {
+	#main-header #et_mobile_nav_menu,
+	.main-header #et_mobile_nav_menu,
+	.sticky-header #et_mobile_nav_menu {
+		display: block !important;
+	}
+	
+	#main-header #top-menu-nav,
+	.main-header #top-menu-nav,
+	.sticky-header #top-menu-nav {
+		display: none !important;
+	}
+}
+
+
