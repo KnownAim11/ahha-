@@ -170,12 +170,21 @@ body.custom-background {
 			min-height: 100px; /* Чтобы контейнер не схлопывался */
 		}
 		
-		/* Fallback Background - ВАЖНО: работает для всех изображений */
+		/* Fallback Background */
 		.et_pb_image_wrap img {
 			display: block !important;
 			opacity: 1 !important;
 			visibility: visible !important;
 			min-height: 100px; /* Чтобы контейнер не схлопывался */
+		}
+		
+		/* Additional universal image visibility rules */
+		.honorees-page img[src],
+		.honorees-page .et_pb_module img,
+		.honorees-page .wp-image {
+			display: block !important;
+			opacity: 1 !important;
+			visibility: visible !important;
 		}
 		
 		/* Fix overlay blocking images */

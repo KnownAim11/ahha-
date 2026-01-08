@@ -111,18 +111,6 @@ body.custom-background {
 	<link rel="stylesheet" href="/wp-content/themes/hall-of-fame.css" type="text/css" media="all" />
 	<link rel="stylesheet" href="/wp-content/themes/unified-footer.css" type="text/css" media="all" />
 	<link rel="stylesheet" href="/assets/themes/global-fixes.css" type="text/css" media="all" />
-
-<style id="premium-dark-theme-forced">
-html, body, #page-container, #et-main-area, #main-content, .et_pb_section {
-    background-color: #050505 !important;
-    background-image: none !important;
-}
-/* Remove Divi gray haze/overlays */
-.et_pb_section_video_bg:before, .et_pb_section:before, .et_pb_section:after {
-    display: none !important;
-    opacity: 0 !important;
-}
-</style>
 	<style>
 		/* Ensure dark background for honorees section */
 		.honorees-page .et_pb_section_1,
@@ -142,12 +130,21 @@ html, body, #page-container, #et-main-area, #main-content, .et_pb_section {
 			min-height: 100px; /* Чтобы контейнер не схлопывался */
 		}
 		
-		/* Fallback Background - ВАЖНО: работает для всех изображений */
+		/* Fallback Background */
 		.et_pb_image_wrap img {
 			display: block !important;
 			opacity: 1 !important;
 			visibility: visible !important;
 			min-height: 100px; /* Чтобы контейнер не схлопывался */
+		}
+		
+		/* Additional universal image visibility rules */
+		.honorees-page img[src],
+		.honorees-page .et_pb_module img,
+		.honorees-page .wp-image {
+			display: block !important;
+			opacity: 1 !important;
+			visibility: visible !important;
 		}
 		
 		/* Fix overlay blocking images */
@@ -170,6 +167,18 @@ html, body, #page-container, #et-main-area, #main-content, .et_pb_section {
 			background-color: #050505 !important;
 		}
 	</style>
+
+<style id="premium-dark-theme-forced">
+html, body, #page-container, #et-main-area, #main-content, .et_pb_section {
+    background-color: #050505 !important;
+    background-image: none !important;
+}
+/* Remove Divi gray haze/overlays */
+.et_pb_section_video_bg:before, .et_pb_section:before, .et_pb_section:after {
+    display: none !important;
+    opacity: 0 !important;
+}
+</style>
 </head>
 <body class="honorees-page wp-singular page-template-default page page-id-299 custom-background wp-theme-Divi et_pb_button_helper_class et_non_fixed_nav et_show_nav et_primary_nav_dropdown_animation_fade et_secondary_nav_dropdown_animation_fade et_header_style_left et_pb_footer_columns4 et_cover_background et_pb_gutter et_pb_gutters3 et_pb_pagebuilder_layout et_no_sidebar et_divi_theme et-db et_minified_js et_minified_css">
 	<div id="page-container">
