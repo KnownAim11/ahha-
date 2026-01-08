@@ -169,10 +169,35 @@ html, body, #page-container, #et-main-area, #main-content, .et_pb_section {
     opacity: 0 !important;
 }
 </style>
-<style>
-	/* Minimal CSS override to prevent black overlays on images */
-	.box-shadow-overlay { display:none !important; }
-	.et_pb_image_wrap img { opacity:1 !important; visibility:visible !important; display:block !important; }
+<style id="honorees-force-images-visible">
+	/* Kill black overlay layers that sit above images */
+	.box-shadow-overlay,
+	.et_pb_section_video_bg:before,
+	.et_pb_section:before,
+	.et_pb_section:after {
+		display: none !important;
+		opacity: 0 !important;
+	}
+
+	/* Divi animations sometimes keep images invisible if JS fails */
+	.et_animated,
+	.et-waypoint {
+		opacity: 1 !important;
+		transform: none !important;
+	}
+
+	/* Force actual <img> visibility */
+	.et_pb_image_wrap { position: relative !important; }
+	.et_pb_image_wrap img {
+		position: relative !important;
+		z-index: 5 !important;
+		opacity: 1 !important;
+		visibility: visible !important;
+		display: block !important;
+		filter: none !important;
+		mix-blend-mode: normal !important;
+		background: transparent !important;
+	}
 </style>
 </head>
 <body class="honorees-page wp-singular page-template-default page page-id-1605 custom-background wp-theme-Divi et_pb_button_helper_class et_non_fixed_nav et_show_nav et_primary_nav_dropdown_animation_fade et_secondary_nav_dropdown_animation_fade et_header_style_left et_pb_footer_columns4 et_cover_background et_pb_gutter windows et_pb_gutters3 et_pb_pagebuilder_layout et_no_sidebar et_divi_theme et-db et_minified_js et_minified_css">
@@ -289,11 +314,11 @@ html, body, #page-container, #et-main-area, #main-content, .et_pb_section {
 				<div class="et_pb_module et_pb_image et_pb_image_0 et_animated et-waypoint">
 				
 				
-				<span class="et_pb_image_wrap has-box-shadow-overlay"><div class="box-shadow-overlay"></div></span>
+				<span class="et_pb_image_wrap has-box-shadow-overlay"><div class="box-shadow-overlay"></div><img decoding="async" src="/wp-content/uploads/2022/09/Pastor-Jose-Angelica-Ortega.jpg" alt="" title="Pastor Jose &amp; Angelica Ortega" height="auto" width="auto" class="wp-image-1688" /></span>
 			</div><div class="et_pb_module et_pb_image et_pb_image_1 et_animated et-waypoint">
 				
 				
-				<span class="et_pb_image_wrap has-box-shadow-overlay"><div class="box-shadow-overlay"></div><img decoding="async" src="/img/honorees/2022/chris-debbie-tritico.jpg" alt="" title="Chris &amp; Debbie Tritico" height="auto" width="auto" class="wp-image-1610" /></span>
+				<span class="et_pb_image_wrap has-box-shadow-overlay"><div class="box-shadow-overlay"></div><img decoding="async" src="/wp-content/uploads/2022/08/Chris-Debbie-Tritico.jpg" alt="" title="Chris &amp; Debbie Tritico" height="auto" width="auto" class="wp-image-1610" /></span>
 			</div><div class="honoree-caption">
 				<div class="honoree-name">Chris &amp; Debbie Tritico</div>
 			</div><div class="et_pb_module et_pb_toggle et_pb_toggle_0 et_animated et_pb_toggle_item  et_pb_toggle_close">
@@ -304,7 +329,7 @@ html, body, #page-container, #et-main-area, #main-content, .et_pb_section {
 			</div> <!-- .et_pb_toggle --><div class="et_pb_module et_pb_image et_pb_image_2 et_animated et-waypoint">
 				
 				
-				<span class="et_pb_image_wrap has-box-shadow-overlay"><div class="box-shadow-overlay"></div><img decoding="async" src="/img/honorees/2022/jimmy-phan.jpg" alt="" title="Jimmy Phan" height="auto" width="auto" class="wp-image-1691" /></span>
+				<span class="et_pb_image_wrap has-box-shadow-overlay"><div class="box-shadow-overlay"></div><img decoding="async" src="/wp-content/uploads/2022/09/Jimmy-Phan.jpg" alt="" title="Jimmy Phan" height="auto" width="auto" class="wp-image-1691" /></span>
 			</div><div class="honoree-caption">
 				<div class="honoree-name">Jimmy Phan</div>
 			</div><div class="et_pb_module et_pb_toggle et_pb_toggle_1 et_animated et_pb_toggle_item  et_pb_toggle_close">
@@ -315,7 +340,7 @@ html, body, #page-container, #et-main-area, #main-content, .et_pb_section {
 			</div> <!-- .et_pb_toggle --><div class="et_pb_module et_pb_image et_pb_image_3 et_animated et-waypoint">
 				
 				
-				<span class="et_pb_image_wrap has-box-shadow-overlay"><div class="box-shadow-overlay"></div><img decoding="async" src="/img/honorees/2022/janice-weaver.jpg" alt="" title="Janice Weaver" height="auto" width="auto" class="wp-image-1693" /></span>
+				<span class="et_pb_image_wrap has-box-shadow-overlay"><div class="box-shadow-overlay"></div><img decoding="async" src="/wp-content/uploads/2022/09/Janice-Weaver.jpg" alt="" title="Janice Weaver" height="auto" width="auto" class="wp-image-1693" /></span>
 			</div><div class="honoree-caption">
 				<div class="honoree-name">Janice Weaver</div>
 			</div><div class="et_pb_module et_pb_toggle et_pb_toggle_2 et_animated et_pb_toggle_item  et_pb_toggle_close">
@@ -326,7 +351,7 @@ html, body, #page-container, #et-main-area, #main-content, .et_pb_section {
 			</div> <!-- .et_pb_toggle --><div class="et_pb_module et_pb_image et_pb_image_4 et_animated et-waypoint">
 				
 				
-				<span class="et_pb_image_wrap has-box-shadow-overlay"><div class="box-shadow-overlay"></div><img decoding="async" src="/img/honorees/2022/florene-ivory-dennis-heroic-heart-humanitarian.jpg" alt="" title="Florene Ivory Dennis Heroic Heart Humanitarian" height="auto" width="auto" class="wp-image-1597" /></span>
+				<span class="et_pb_image_wrap has-box-shadow-overlay"><div class="box-shadow-overlay"></div><img decoding="async" src="/wp-content/uploads/2022/08/Florene-Ivory-Dennis-Heroic-Heart-Humanitarian.jpg" alt="" title="Florene Ivory Dennis Heroic Heart Humanitarian" height="auto" width="auto" class="wp-image-1597" /></span>
 			</div><div class="honoree-caption">
 				<div class="honoree-name">Macy Savoy</div>
 				<div class="honoree-position">Florene Ivory Dennis Heroic Heart Humanitarian Honoree</div>
@@ -342,7 +367,7 @@ html, body, #page-container, #et-main-area, #main-content, .et_pb_section {
 				<div class="et_pb_module et_pb_image et_pb_image_5 et_animated et-waypoint">
 				
 				
-				<span class="et_pb_image_wrap has-box-shadow-overlay"><div class="box-shadow-overlay"></div><img decoding="async" src="/img/honorees/2022/pastor-jose-angelica-ortega.jpg" alt="" title="Pastor Jose &amp; Angelica Ortega" height="auto" width="auto" class="wp-image-1688" /></span>
+				<span class="et_pb_image_wrap has-box-shadow-overlay"><div class="box-shadow-overlay"></div><img decoding="async" src="/wp-content/uploads/2022/09/Pastor-Jose-Angelica-Ortega.jpg" alt="" title="Pastor Jose &amp; Angelica Ortega" height="auto" width="auto" class="wp-image-1688" /></span>
 			</div><div class="honoree-caption">
 				<div class="honoree-name">Pastor Jose &amp; Angelica Ortega</div>
 			</div><div class="et_pb_module et_pb_toggle et_pb_toggle_4 et_animated et_pb_toggle_item  et_pb_toggle_close">
@@ -353,7 +378,7 @@ html, body, #page-container, #et-main-area, #main-content, .et_pb_section {
 			</div> <!-- .et_pb_toggle --><div class="et_pb_module et_pb_image et_pb_image_6 et_animated et-waypoint">
 				
 				
-				<span class="et_pb_image_wrap has-box-shadow-overlay"><div class="box-shadow-overlay"></div><img decoding="async" src="/img/honorees/2022/david-imonitie.jpg" alt="" title="David Imonitie" height="auto" width="auto" class="wp-image-1701" /></span>
+				<span class="et_pb_image_wrap has-box-shadow-overlay"><div class="box-shadow-overlay"></div><img decoding="async" src="/wp-content/uploads/2022/09/David-Imonitie.jpg" alt="" title="David Imonitie" height="auto" width="auto" class="wp-image-1701" /></span>
 			</div><div class="honoree-caption">
 				<div class="honoree-name">David Imonitie</div>
 			</div><div class="et_pb_module et_pb_toggle et_pb_toggle_5 et_animated et_pb_toggle_item  et_pb_toggle_close">
@@ -364,7 +389,7 @@ html, body, #page-container, #et-main-area, #main-content, .et_pb_section {
 			</div> <!-- .et_pb_toggle --><div class="et_pb_module et_pb_image et_pb_image_7 et_animated et-waypoint">
 				
 				
-				<span class="et_pb_image_wrap has-box-shadow-overlay"><div class="box-shadow-overlay"></div><img decoding="async" src="/img/honorees/2022/dr-joseph-varon.jpg" alt="" title="Dr. Joseph Varon" height="auto" width="auto" class="wp-image-1694" /></span>
+				<span class="et_pb_image_wrap has-box-shadow-overlay"><div class="box-shadow-overlay"></div><img decoding="async" src="/wp-content/uploads/2022/09/Dr.-Joseph-Varon.jpg" alt="" title="Dr. Joseph Varon" height="auto" width="auto" class="wp-image-1694" /></span>
 			</div><div class="honoree-caption">
 				<div class="honoree-name">Dr. Joseph Varon</div>
 			</div><div class="et_pb_module et_pb_toggle et_pb_toggle_6 et_animated et_pb_toggle_item  et_pb_toggle_close">
@@ -375,7 +400,7 @@ html, body, #page-container, #et-main-area, #main-content, .et_pb_section {
 			</div> <!-- .et_pb_toggle --><div class="et_pb_module et_pb_image et_pb_image_8 et_animated et-waypoint">
 				
 				
-				<span class="et_pb_image_wrap has-box-shadow-overlay"><div class="box-shadow-overlay"></div><img decoding="async" src="/img/honorees/2022/warren-broadnax.jpg" alt="" title="Warren Broadnax" height="auto" width="auto" class="wp-image-1620" /></span>
+				<span class="et_pb_image_wrap has-box-shadow-overlay"><div class="box-shadow-overlay"></div><img decoding="async" src="/wp-content/uploads/2022/08/Warren-Broadnax.jpg" alt="" title="Warren Broadnax" height="auto" width="auto" class="wp-image-1620" /></span>
 			</div><div class="honoree-caption">
 				<div class="honoree-name">Warren Broadnax</div>
 			</div><div class="et_pb_module et_pb_toggle et_pb_toggle_7 et_animated et_pb_toggle_item  et_pb_toggle_close">
@@ -390,7 +415,7 @@ html, body, #page-container, #et-main-area, #main-content, .et_pb_section {
 				<div class="et_pb_module et_pb_image et_pb_image_9 et_animated et-waypoint">
 				
 				
-				<span class="et_pb_image_wrap has-box-shadow-overlay"><div class="box-shadow-overlay"></div><img decoding="async" src="/img/honorees/2022/cactus-jack-foundation.jpg" alt="" title="Cactus Jack Foundation" height="auto" width="auto" class="wp-image-1689" /></span>
+				<span class="et_pb_image_wrap has-box-shadow-overlay"><div class="box-shadow-overlay"></div><img decoding="async" src="/wp-content/uploads/2022/09/Cactus-Jack-Foundation.jpg" alt="" title="Cactus Jack Foundation" height="auto" width="auto" class="wp-image-1689" /></span>
 			</div><div class="honoree-caption">
 				<div class="honoree-name">Cactus Jack Foundation</div>
 			</div><div class="et_pb_module et_pb_toggle et_pb_toggle_8 et_animated et_pb_toggle_item  et_pb_toggle_close">
@@ -401,7 +426,7 @@ html, body, #page-container, #et-main-area, #main-content, .et_pb_section {
 			</div> <!-- .et_pb_toggle --><div class="et_pb_module et_pb_image et_pb_image_10 et_animated et-waypoint">
 				
 				
-				<span class="et_pb_image_wrap has-box-shadow-overlay"><div class="box-shadow-overlay"></div><img decoding="async" src="/img/honorees/2022/pastor-walter-august-jr.jpg" alt="" title="Pastor Walter August Jr" height="auto" width="auto" class="wp-image-1692" /></span>
+				<span class="et_pb_image_wrap has-box-shadow-overlay"><div class="box-shadow-overlay"></div><img decoding="async" src="/wp-content/uploads/2022/09/Pastor-Walter-August-Jr.jpg" alt="" title="Pastor Walter August Jr" height="auto" width="auto" class="wp-image-1692" /></span>
 			</div><div class="honoree-caption">
 				<div class="honoree-name">Pastor Walter August Jr.</div>
 			</div><div class="et_pb_module et_pb_toggle et_pb_toggle_9 et_animated et_pb_toggle_item  et_pb_toggle_close">
@@ -412,7 +437,7 @@ html, body, #page-container, #et-main-area, #main-content, .et_pb_section {
 			</div> <!-- .et_pb_toggle --><div class="et_pb_module et_pb_image et_pb_image_11 et_animated et-waypoint">
 				
 				
-				<span class="et_pb_image_wrap has-box-shadow-overlay"><div class="box-shadow-overlay"></div><img decoding="async" src="/img/honorees/2022/rogene-calvert.jpg" alt="" title="Rogene Calvert" height="auto" width="auto" class="wp-image-1617" /></span>
+				<span class="et_pb_image_wrap has-box-shadow-overlay"><div class="box-shadow-overlay"></div><img decoding="async" src="/wp-content/uploads/2022/08/Rogene-Calvert.jpg" alt="" title="Rogene Calvert" height="auto" width="auto" class="wp-image-1617" /></span>
 			</div><div class="honoree-caption">
 				<div class="honoree-name">Rogene Calvert</div>
 			</div><div class="et_pb_module et_pb_toggle et_pb_toggle_10 et_animated et_pb_toggle_item  et_pb_toggle_close">
@@ -423,7 +448,7 @@ html, body, #page-container, #et-main-area, #main-content, .et_pb_section {
 			</div> <!-- .et_pb_toggle --><div class="et_pb_module et_pb_image et_pb_image_12 et_animated et-waypoint">
 				
 				
-				<span class="et_pb_image_wrap has-box-shadow-overlay"><div class="box-shadow-overlay"></div><img decoding="async" src="/img/honorees/2022/marcus-bowers.jpg" alt="" title="Marcus Bowers" height="auto" width="auto" class="wp-image-1695" /></span>
+				<span class="et_pb_image_wrap has-box-shadow-overlay"><div class="box-shadow-overlay"></div><img decoding="async" src="/wp-content/uploads/2022/09/Marcus-Bowers.jpg" alt="" title="Marcus Bowers" height="auto" width="auto" class="wp-image-1695" /></span>
 			</div><div class="honoree-caption">
 				<div class="honoree-name">Marcus Bowers</div>
 			</div><div class="et_pb_module et_pb_toggle et_pb_toggle_11 et_animated et_pb_toggle_item  et_pb_toggle_close">
