@@ -177,6 +177,9 @@ body.custom-background {
 			padding: 50px 0 20px 0 !important;
 			margin-bottom: 0 !important;
 			position: relative;
+			display: block !important;
+			visibility: visible !important;
+			opacity: 1 !important;
 		}
 		
 		/* Reduce space before "How Can You Make A Difference" section */
@@ -227,21 +230,25 @@ body.custom-background {
 			margin: 0 !important;
 			padding: 0 !important;
 			float: none !important;
+			position: relative !important;
+			z-index: 1 !important;
+			opacity: 1 !important;
+			visibility: visible !important;
 		}
 		
 		/* ============================================
 		   3. LUXURY GLASS CARDS - FULL LOGO COVERAGE
 		   ============================================ */
 		.et_pb_section_1 .et_pb_image {
-			background: rgba(255, 255, 255, 0.04) !important;
+			background: rgba(255, 255, 255, 0.08) !important;
 			backdrop-filter: blur(12px) !important;
 			-webkit-backdrop-filter: blur(12px) !important;
-			border: 1px solid rgba(212, 175, 55, 0.25) !important;
+			border: 1px solid rgba(212, 175, 55, 0.35) !important;
 			border-radius: 20px !important;
 			box-shadow: 
 				0 8px 32px rgba(0, 0, 0, 0.4),
 				0 2px 8px rgba(0, 0, 0, 0.2),
-				inset 0 1px 0 rgba(255, 255, 255, 0.05) !important;
+				inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
 			padding: 8px !important;
 			margin: 0 !important;
 			height: auto !important;
@@ -251,13 +258,40 @@ body.custom-background {
 			justify-content: stretch !important;
 			transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
 			position: relative;
+			opacity: 1 !important;
+			visibility: visible !important;
 		}
 		
 		/* Fallback for browsers without backdrop-filter */
 		@supports not (backdrop-filter: blur(12px)) {
 			.et_pb_section_1 .et_pb_image {
-				background: rgba(20, 20, 22, 0.85) !important;
+				background: rgba(30, 30, 35, 0.9) !important;
 			}
+		}
+		
+		/* Ensure images are always visible */
+		.et_pb_section_1 .et_pb_image_wrap {
+			opacity: 1 !important;
+			visibility: visible !important;
+			display: flex !important;
+		}
+		
+		.et_pb_section_1 .et_pb_image_wrap img {
+			opacity: 1 !important;
+			visibility: visible !important;
+			display: block !important;
+		}
+		
+		/* Override any hidden/display:none styles */
+		.et_pb_section_1 .et_pb_module.et_pb_image {
+			display: flex !important;
+			visibility: visible !important;
+			opacity: 1 !important;
+		}
+		
+		.et_pb_section_1 .et_pb_module.et_pb_image.et_animated {
+			opacity: 1 !important;
+			visibility: visible !important;
 		}
 		
 		/* Hover State - Card Lift & Enhanced Glow */
@@ -297,6 +331,10 @@ body.custom-background {
 			object-position: center !important;
 			padding: 15px !important;
 			box-sizing: border-box !important;
+			opacity: 1 !important;
+			visibility: visible !important;
+			display: block !important;
+			filter: brightness(1.1) contrast(1.1) !important;
 		}
 		
 		/* ============================================
@@ -327,6 +365,10 @@ body.custom-background {
 				height: 100% !important;
 				min-height: 124px !important;
 				padding: 12px !important;
+				opacity: 1 !important;
+				visibility: visible !important;
+				display: block !important;
+				filter: brightness(1.1) contrast(1.1) !important;
 			}
 		}
 		
@@ -355,6 +397,10 @@ body.custom-background {
 				height: 100% !important;
 				min-height: 114px !important;
 				padding: 12px !important;
+				opacity: 1 !important;
+				visibility: visible !important;
+				display: block !important;
+				filter: brightness(1.1) contrast(1.1) !important;
 			}
 		}
 		
