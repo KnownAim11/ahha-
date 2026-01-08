@@ -3,6 +3,10 @@
   "trailingSlash": true,
   "rewrites": [
     {
+      "source": "/img/(.*)",
+      "destination": "/public/img/$1"
+    },
+    {
       "source": "/assets/(.*)",
       "destination": "/assets/$1"
     },
