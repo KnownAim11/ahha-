@@ -163,6 +163,114 @@ body.custom-background {
 			background: #050505 !important;
 			background-color: #050505 !important;
 		}
+		
+		/* КРИТИЧНО: Скрываем "Select Page" и строку поиска в мобильной версии */
+		@media (max-width: 980px) {
+			#et_mobile_nav_menu .select_page {
+				display: none !important;
+				visibility: hidden !important;
+				opacity: 0 !important;
+				width: 0 !important;
+				height: 0 !important;
+				overflow: hidden !important;
+			}
+			
+			.et_search_outer {
+				display: none !important;
+				visibility: hidden !important;
+				opacity: 0 !important;
+				height: 0 !important;
+				overflow: hidden !important;
+			}
+		}
+		
+		/* КРИТИЧНО: Гарантируем правильное отображение гамбургера (три полоски вместо буквы "a") */
+		#main-header #et_mobile_nav_menu,
+		#main-header #et_mobile_nav_menu .mobile_nav,
+		#main-header #et_mobile_nav_menu .mobile_menu_bar,
+		#main-header #et_mobile_nav_menu .mobile_menu_bar_toggle,
+		body #main-header #et_mobile_nav_menu,
+		body #main-header #et_mobile_nav_menu .mobile_nav,
+		body #main-header #et_mobile_nav_menu .mobile_menu_bar,
+		body #main-header #et_mobile_nav_menu .mobile_menu_bar_toggle {
+			position: relative !important;
+			z-index: 999999 !important;
+			pointer-events: auto !important;
+			cursor: pointer !important;
+		}
+		
+		/* Скрываем любой текст/буквы внутри гамбургера */
+		#main-header #et_mobile_nav_menu .mobile_menu_bar,
+		#main-header #et_mobile_nav_menu .mobile_menu_bar_toggle,
+		body #main-header #et_mobile_nav_menu .mobile_menu_bar,
+		body #main-header #et_mobile_nav_menu .mobile_menu_bar_toggle {
+			font-size: 0 !important;
+			line-height: 0 !important;
+			color: transparent !important;
+			text-indent: -9999px !important;
+			overflow: hidden !important;
+			text-align: center !important;
+			width: 30px !important;
+			height: 30px !important;
+			display: block !important;
+		}
+		
+		/* Убираем любые дочерние элементы, которые могут показывать букву */
+		#main-header #et_mobile_nav_menu .mobile_menu_bar *,
+		#main-header #et_mobile_nav_menu .mobile_menu_bar_toggle *,
+		body #main-header #et_mobile_nav_menu .mobile_menu_bar *,
+		body #main-header #et_mobile_nav_menu .mobile_menu_bar_toggle * {
+			display: none !important;
+			visibility: hidden !important;
+			opacity: 0 !important;
+		}
+		
+		/* Гарантируем, что гамбургер отображается как три полоски (стандартный Divi стиль) */
+		/* Средняя полоска - сам элемент */
+		#main-header #et_mobile_nav_menu .mobile_menu_bar,
+		#main-header #et_mobile_nav_menu .mobile_menu_bar_toggle,
+		body #main-header #et_mobile_nav_menu .mobile_menu_bar,
+		body #main-header #et_mobile_nav_menu .mobile_menu_bar_toggle {
+			background-color: #C5A059 !important;
+			position: relative !important;
+			height: 2px !important;
+			width: 24px !important;
+			margin: 0 auto !important;
+		}
+		
+		/* Верхняя полоска - ::before */
+		#main-header #et_mobile_nav_menu .mobile_menu_bar::before,
+		#main-header #et_mobile_nav_menu .mobile_menu_bar_toggle::before,
+		body #main-header #et_mobile_nav_menu .mobile_menu_bar::before,
+		body #main-header #et_mobile_nav_menu .mobile_menu_bar_toggle::before {
+			content: '' !important;
+			display: block !important;
+			position: absolute !important;
+			background-color: #C5A059 !important;
+			height: 2px !important;
+			width: 24px !important;
+			top: -8px !important;
+			left: 0 !important;
+			right: 0 !important;
+			margin: 0 auto !important;
+		}
+		
+		/* Нижняя полоска - ::after */
+		#main-header #et_mobile_nav_menu .mobile_menu_bar::after,
+		#main-header #et_mobile_nav_menu .mobile_menu_bar_toggle::after,
+		body #main-header #et_mobile_nav_menu .mobile_menu_bar::after,
+		body #main-header #et_mobile_nav_menu .mobile_menu_bar_toggle::after {
+			content: '' !important;
+			display: block !important;
+			position: absolute !important;
+			background-color: #C5A059 !important;
+			height: 2px !important;
+			width: 24px !important;
+			bottom: -8px !important;
+			left: 0 !important;
+			right: 0 !important;
+			margin: 0 auto !important;
+		}
 	</style>
 
 <style id="premium-dark-theme-forced">
