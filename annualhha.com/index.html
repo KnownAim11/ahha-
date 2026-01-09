@@ -152,43 +152,37 @@ var et_core_api_spam_recaptcha = {"site_key":"","page_action":{"action":"annualh
 			--bg-center: #121212;
 		}
 		
-		/* Award Trophy Animation - Комбинированная анимация: вращение + плавание */
-				@keyframes premiumAwardFloat {
+		/* Award Trophy Animation - Вращение + плавание */
+				@keyframes trophyRotate {
 					0% { 
-						transform: rotateY(0deg) rotateX(1.5deg) translateY(0px) scale(1);
-				filter: drop-shadow(0 30px 60px rgba(197, 160, 89, 0.4));
-					}
-					12.5% { 
-						transform: rotateY(45deg) rotateX(0.5deg) translateY(-4px) scale(1.01);
-				filter: drop-shadow(0 32px 65px rgba(197, 160, 89, 0.42));
-					}
-					25% { 
-						transform: rotateY(90deg) rotateX(-0.5deg) translateY(-8px) scale(1.02);
-				filter: drop-shadow(0 35px 70px rgba(197, 160, 89, 0.45));
-					}
-					37.5% { 
-						transform: rotateY(135deg) rotateX(-1.5deg) translateY(-10px) scale(1.02);
-				filter: drop-shadow(0 35px 70px rgba(197, 160, 89, 0.45));
-					}
-					50% { 
-						transform: rotateY(180deg) rotateX(-1.5deg) translateY(-10px) scale(1.02);
-				filter: drop-shadow(0 35px 70px rgba(197, 160, 89, 0.45));
-					}
-					62.5% { 
-						transform: rotateY(225deg) rotateX(-0.5deg) translateY(-8px) scale(1.02);
-				filter: drop-shadow(0 32px 65px rgba(197, 160, 89, 0.42));
-					}
-					75% { 
-						transform: rotateY(270deg) rotateX(0.5deg) translateY(-4px) scale(1.01);
-				filter: drop-shadow(0 30px 60px rgba(197, 160, 89, 0.4));
-					}
-					87.5% { 
-						transform: rotateY(315deg) rotateX(1deg) translateY(-2px) scale(1.005);
-				filter: drop-shadow(0 30px 60px rgba(197, 160, 89, 0.4));
+						transform: rotateY(0deg);
 					}
 					100% { 
-						transform: rotateY(360deg) rotateX(1.5deg) translateY(0px) scale(1);
+						transform: rotateY(360deg);
+					}
+				}
+				
+				@keyframes trophyFloat {
+					0%, 100% { 
+						transform: translateY(0px) rotateX(1.5deg) scale(1);
+					}
+					25% { 
+						transform: translateY(-8px) rotateX(-0.5deg) scale(1.02);
+					}
+					50% { 
+						transform: translateY(-10px) rotateX(-1.5deg) scale(1.02);
+					}
+					75% { 
+						transform: translateY(-4px) rotateX(0.5deg) scale(1.01);
+					}
+				}
+				
+				@keyframes trophyGlow {
+					0%, 100% {
 				filter: drop-shadow(0 30px 60px rgba(197, 160, 89, 0.4));
+					}
+					50% {
+				filter: drop-shadow(0 35px 75px rgba(197, 160, 89, 0.5));
 					}
 				}
 				
@@ -202,15 +196,20 @@ var et_core_api_spam_recaptcha = {"site_key":"","page_action":{"action":"annualh
 		}
 				
 				.award-trophy-animated {
-					transform-style: preserve-3d;
-					will-change: transform, filter;
-					backface-visibility: hidden;
-					-webkit-backface-visibility: hidden;
-					animation: premiumAwardFloat 20s infinite linear;
+					transform-style: preserve-3d !important;
+					will-change: transform !important;
+					backface-visibility: hidden !important;
+					-webkit-backface-visibility: hidden !important;
+					transform-origin: center center !important;
+					animation: trophyRotate 10s infinite linear !important;
+					-webkit-animation: trophyRotate 10s infinite linear !important;
 				}
 				
 				.award-trophy-image {
-					animation: subtleGlow 4s infinite ease-in-out;
+					animation: 
+						trophyFloat 4s infinite ease-in-out,
+						trophyGlow 4s infinite ease-in-out !important;
+					transform-origin: center center !important;
 				}
 				
 		/* Smooth transitions for interactive elements */
@@ -231,7 +230,8 @@ var et_core_api_spam_recaptcha = {"site_key":"","page_action":{"action":"annualh
 		
 		/* Perspective for 3D effect */
 		.perspective-1500 {
-			perspective: 1500px;
+			perspective: 1500px !important;
+			perspective-origin: center center !important;
 		}
 		
 		/* Award composition layout */
@@ -240,7 +240,15 @@ var et_core_api_spam_recaptcha = {"site_key":"","page_action":{"action":"annualh
 		}
 		
 		.award-trophy-wrapper {
-			transform-style: preserve-3d;
+			transform-style: preserve-3d !important;
+			perspective: 1500px !important;
+			perspective-origin: center center !important;
+			transform: translateZ(0) !important; /* Force hardware acceleration */
+		}
+		
+		.perspective-1500 {
+			perspective: 1500px !important;
+			perspective-origin: center center !important;
 		}
 		
 		.award-trophy-image {
@@ -254,7 +262,8 @@ var et_core_api_spam_recaptcha = {"site_key":"","page_action":{"action":"annualh
 		/* Responsive adjustments */
 	@media (max-width: 768px) {
 					.award-trophy-animated {
-						animation-duration: 14s;
+						animation-duration: 10s !important;
+						-webkit-animation-duration: 10s !important;
 					}
 				}
 				
