@@ -667,14 +667,11 @@ html body ul.sub-menu[style*="bottom"] {
 		display: none !important;
 	}
 	
-	/* Мобильное меню - показывается при открытии */
-	#et_mobile_nav_menu .mobile_nav.open ~ * #top-menu,
-	.mobile_nav.open + #top-menu,
-	body:has(#et_mobile_nav_menu .mobile_nav.open) #top-menu,
-	body:has(#et_mobile_nav_menu .mobile_nav.open) #top-menu-nav,
-	/* Дополнительные селекторы для надежности */
-	#main-header .mobile_nav.open ~ #et-top-navigation #top-menu,
-	#main-header .mobile_nav.open ~ #et-top-navigation #top-menu-nav {
+	/* Show menu when mobile nav is open using data-open attribute */
+	#et_mobile_nav_menu .mobile_nav[data-open="true"] ~ #et-top-navigation #top-menu,
+	#et_mobile_nav_menu .mobile_nav[data-open="true"] ~ #et-top-navigation #top-menu-nav,
+	#main-header:has(#et_mobile_nav_menu .mobile_nav[data-open="true"]) #top-menu,
+	#main-header:has(#et_mobile_nav_menu .mobile_nav[data-open="true"]) #top-menu-nav {
 		display: block !important;
 		position: fixed !important;
 		top: 80px !important;
@@ -691,13 +688,60 @@ html body ul.sub-menu[style*="bottom"] {
 		overflow-y: auto !important;
 		visibility: visible !important;
 		opacity: 1 !important;
+		pointer-events: auto !important;
 	}
 	
-	/* Стили для ссылок в мобильном меню */
-	#top-menu a,
-	#top-menu-nav a,
-	body:has(#et_mobile_nav_menu .mobile_nav.open) #top-menu a,
-	body:has(#et_mobile_nav_menu .mobile_nav.open) #top-menu-nav a {
+	/* Mobile menu - shown when data-open="true" */
+	/* Use data-open attribute selector for reliable detection */
+	#et_mobile_nav_menu .mobile_nav[data-open="true"] ~ * #top-menu,
+	.mobile_nav[data-open="true"] + #top-menu,
+	body:has(#et_mobile_nav_menu .mobile_nav[data-open="true"]) #top-menu,
+	body:has(#et_mobile_nav_menu .mobile_nav[data-open="true"]) #top-menu-nav,
+	/* Fallback for browsers without :has() support - use opened class */
+	#et_mobile_nav_menu .mobile_nav.opened ~ * #top-menu,
+	.mobile_nav.opened + #top-menu,
+	body:has(#et_mobile_nav_menu .mobile_nav.opened) #top-menu,
+	body:has(#et_mobile_nav_menu .mobile_nav.opened) #top-menu-nav,
+	/* Additional selectors for reliability */
+	#main-header .mobile_nav[data-open="true"] ~ #et-top-navigation #top-menu,
+	#main-header .mobile_nav[data-open="true"] ~ #et-top-navigation #top-menu-nav,
+	#main-header .mobile_nav.opened ~ #et-top-navigation #top-menu,
+	#main-header .mobile_nav.opened ~ #et-top-navigation #top-menu-nav,
+	/* Direct menu visibility when mobile nav is open */
+	#main-header:has(.mobile_nav[data-open="true"]) #top-menu,
+	#main-header:has(.mobile_nav[data-open="true"]) #top-menu-nav,
+	#main-header:has(.mobile_nav.opened) #top-menu,
+	#main-header:has(.mobile_nav.opened) #top-menu-nav {
+		display: block !important;
+		position: fixed !important;
+		top: 80px !important;
+		left: 0 !important;
+		right: 0 !important;
+		width: 100% !important;
+		max-width: 100% !important;
+		background: #000000 !important;
+		background-color: #000000 !important;
+		background-image: none !important;
+		border-top: 1px solid #C5A059 !important;
+		z-index: 10000 !important;
+		padding: 20px !important;
+		box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5) !important;
+		max-height: calc(100vh - 80px) !important;
+		overflow-y: auto !important;
+		visibility: visible !important;
+		opacity: 1 !important;
+		pointer-events: auto !important;
+	}
+	
+	/* Menu links styling when mobile menu is open */
+	body:has(#et_mobile_nav_menu .mobile_nav[data-open="true"]) #top-menu a,
+	body:has(#et_mobile_nav_menu .mobile_nav[data-open="true"]) #top-menu-nav a,
+	body:has(#et_mobile_nav_menu .mobile_nav.opened) #top-menu a,
+	body:has(#et_mobile_nav_menu .mobile_nav.opened) #top-menu-nav a,
+	#main-header:has(.mobile_nav[data-open="true"]) #top-menu a,
+	#main-header:has(.mobile_nav[data-open="true"]) #top-menu-nav a,
+	#main-header:has(.mobile_nav.opened) #top-menu a,
+	#main-header:has(.mobile_nav.opened) #top-menu-nav a {
 		color: #FFFFFF !important;
 		display: block !important;
 		padding: 15px 20px !important;
@@ -705,12 +749,17 @@ html body ul.sub-menu[style*="bottom"] {
 		text-decoration: none !important;
 	}
 	
-	#top-menu .current-menu-item > a,
-	#top-menu .current_page_item > a,
+	/* Active menu item styling */
+	body:has(#et_mobile_nav_menu .mobile_nav[data-open="true"]) #top-menu .current-menu-item > a,
+	body:has(#et_mobile_nav_menu .mobile_nav[data-open="true"]) #top-menu .current_page_item > a,
+	body:has(#et_mobile_nav_menu .mobile_nav.opened) #top-menu .current-menu-item > a,
+	body:has(#et_mobile_nav_menu .mobile_nav.opened) #top-menu .current_page_item > a,
+	#main-header:has(.mobile_nav[data-open="true"]) #top-menu .current-menu-item > a,
+	#main-header:has(.mobile_nav[data-open="true"]) #top-menu .current_page_item > a,
+	#main-header:has(.mobile_nav.opened) #top-menu .current-menu-item > a,
+	#main-header:has(.mobile_nav.opened) #top-menu .current_page_item > a,
 	#top-menu-nav .current-menu-item > a,
-	#top-menu-nav .current_page_item > a,
-	body:has(#et_mobile_nav_menu .mobile_nav.open) #top-menu .current-menu-item > a,
-	body:has(#et_mobile_nav_menu .mobile_nav.open) #top-menu .current_page_item > a {
+	#top-menu-nav .current_page_item > a {
 		color: #C5A059 !important;
 	}
 	
@@ -917,6 +966,20 @@ html body ul.sub-menu[style*="bottom"] {
 		color: #FFFFFF !important;
 		background: transparent !important;
 		background-color: transparent !important;
+		pointer-events: auto !important;
+	}
+	
+	/* Additional selectors for when menu is open with inline style */
+	#top-menu[style*="display: block"] a,
+	#top-menu-nav[style*="display: block"] a,
+	#top-menu[style*="display:block"] a,
+	#top-menu-nav[style*="display:block"] a {
+		color: #FFFFFF !important;
+		display: block !important;
+		padding: 15px 20px !important;
+		border-bottom: 1px solid rgba(197, 160, 89, 0.1) !important;
+		text-decoration: none !important;
+		pointer-events: auto !important;
 	}
 }
 

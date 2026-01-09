@@ -241,322 +241,179 @@
 	
 	// ============================================
 	// MOBILE MENU FUNCTIONALITY
-	// Простое и надежное решение для мобильного меню
+	// Robust fallback toggle - works even if Divi JS fails
 	// ============================================
 	
 	function initMobileMenu() {
-		// Используем делегирование событий на уровне document для максимальной надежности
-		// Удаляем старый обработчик, если он есть
+		// Find mobile menu toggle button and container
+		const mobileNavContainer = document.querySelector('#et_mobile_nav_menu .mobile_nav');
+		
+		if (!mobileNavContainer) {
+			return; // Mobile menu not found, skip initialization
+		}
+		
+		// Ensure initial state is closed
+		if (!mobileNavContainer.hasAttribute('data-open')) {
+			mobileNavContainer.setAttribute('data-open', 'false');
+			mobileNavContainer.classList.add('closed');
+			mobileNavContainer.classList.remove('opened');
+		}
+		
+		// Remove any existing handlers to prevent duplicates
 		if (window.unifiedMobileMenuHandler) {
 			document.removeEventListener('click', window.unifiedMobileMenuHandler, true);
 		}
 		
+		// Find all possible hamburger button selectors
+		const hamburgerSelectors = [
+			'#et_mobile_nav_menu .mobile_menu_bar_toggle',
+			'#et_mobile_nav_menu .mobile_menu_bar',
+			'#et_mobile_nav_menu .mobile_nav',
+			'#et_mobile_nav_menu .select_page'
+		];
+		
+		// Robust click handler using event delegation
 		window.unifiedMobileMenuHandler = function(e) {
-			// Проверяем, был ли клик внутри мобильного меню или по его элементам
-			const mobileNavContainer = e.target.closest('#et_mobile_nav_menu');
-			const isMobileMenuClick = mobileNavContainer || 
-				e.target.closest('.mobile_nav') || 
-				e.target.closest('.mobile_menu_bar') ||
-				e.target.closest('.mobile_menu_bar_toggle') ||
-				e.target.classList.contains('mobile_menu_bar') ||
-				e.target.classList.contains('mobile_menu_bar_toggle') ||
-				e.target.classList.contains('mobile_nav') ||
-				e.target.classList.contains('select_page');
+			// Only handle on mobile screens
+			if (window.innerWidth > 980) {
+				return;
+			}
 			
-			if (isMobileMenuClick && window.innerWidth <= 980) {
-				e.preventDefault();
-				e.stopPropagation();
-				
-				const mobileNav = document.querySelector('#et_mobile_nav_menu .mobile_nav');
-				const topMenu = document.querySelector('#top-menu');
-				const topMenuNav = document.querySelector('#top-menu-nav');
-				
-				if (mobileNav) {
-					const isOpen = mobileNav.classList.contains('open');
-					
-					if (isOpen) {
-						// Закрываем меню
-						mobileNav.classList.remove('open');
-						mobileNav.classList.add('closed');
-						
-						// Возвращаем хамбургер к обычному цвету (или оставляем золотым)
-						const hamburger = document.querySelector('#et_mobile_nav_menu .mobile_menu_bar, #et_mobile_nav_menu .mobile_menu_bar_toggle');
-						if (hamburger) {
-							hamburger.style.color = '#C5A059';
-						}
-						
-						if (topMenu) {
-							topMenu.style.display = 'none';
-							topMenu.style.visibility = 'hidden';
-						}
-						if (topMenuNav) {
-							topMenuNav.style.display = 'none';
-							topMenuNav.style.visibility = 'hidden';
-						}
-					} else {
-						// Открываем меню
-						mobileNav.classList.remove('closed');
-						mobileNav.classList.add('open');
-						
-						// Делаем хамбургер золотым
-						const hamburger = document.querySelector('#et_mobile_nav_menu .mobile_menu_bar, #et_mobile_nav_menu .mobile_menu_bar_toggle');
-						if (hamburger) {
-							hamburger.style.color = '#C5A059';
-							// Если хамбургер использует псевдоэлементы
-							const hamburgerStyle = document.createElement('style');
-							hamburgerStyle.id = 'mobile-hamburger-gold';
-							hamburgerStyle.textContent = `
-								#et_mobile_nav_menu .mobile_menu_bar::before,
-								#et_mobile_nav_menu .mobile_menu_bar::after,
-								#et_mobile_nav_menu .mobile_menu_bar_toggle::before,
-								#et_mobile_nav_menu .mobile_menu_bar_toggle::after {
-									background-color: #C5A059 !important;
-									border-color: #C5A059 !important;
-								}
-							`;
-							if (!document.getElementById('mobile-hamburger-gold')) {
-								document.head.appendChild(hamburgerStyle);
-							}
-						}
-						
-						// Получаем позицию header для правильного позиционирования меню
-						const header = document.querySelector('#main-header, header#main-header');
-						const headerHeight = header ? header.offsetHeight : 80;
-						
-						if (topMenu) {
-							topMenu.style.setProperty('display', 'block', 'important');
-							topMenu.style.setProperty('visibility', 'visible', 'important');
-							topMenu.style.setProperty('position', 'fixed', 'important');
-							topMenu.style.setProperty('top', headerHeight + 'px', 'important');
-							topMenu.style.setProperty('left', '0', 'important');
-							topMenu.style.setProperty('right', '0', 'important');
-							topMenu.style.setProperty('width', '100%', 'important');
-							topMenu.style.setProperty('max-width', '100%', 'important');
-							topMenu.style.setProperty('background', '#000000', 'important');
-							topMenu.style.setProperty('background-color', '#000000', 'important');
-							topMenu.style.setProperty('background-image', 'none', 'important');
-							topMenu.style.setProperty('border-top', '1px solid #C5A059', 'important');
-							topMenu.style.setProperty('z-index', '10000', 'important');
-							topMenu.style.setProperty('padding', '20px', 'important');
-							topMenu.style.setProperty('box-shadow', '0 4px 20px rgba(0, 0, 0, 0.5)', 'important');
-							topMenu.style.setProperty('overflow-y', 'auto', 'important');
-							topMenu.style.setProperty('max-height', 'calc(100vh - ' + headerHeight + 'px)', 'important');
-							
-							// Принудительно убираем все возможные белые фоны
-							topMenu.setAttribute('style', topMenu.getAttribute('style') + '; background: #000000 !important; background-color: #000000 !important; background-image: none !important;');
-							
-							// Стили для ссылок в мобильном меню
-							const menuLinks = topMenu.querySelectorAll('a');
-							menuLinks.forEach(function(link) {
-								link.style.color = '#FFFFFF';
-								link.style.display = 'block';
-								link.style.padding = '15px 20px';
-								link.style.borderBottom = '1px solid rgba(197, 160, 89, 0.1)';
-								link.style.textDecoration = 'none';
-							});
-							
-							// Активная ссылка - золотая
-							const activeLink = topMenu.querySelector('.current-menu-item > a, .current_page_item > a');
-							if (activeLink) {
-								activeLink.style.color = '#C5A059';
-							}
-							
-							// Стили для элементов списка
-							const menuItems = topMenu.querySelectorAll('li');
-							menuItems.forEach(function(item) {
-								item.style.display = 'block';
-								item.style.margin = '0';
-								item.style.padding = '0';
-								item.style.borderBottom = '1px solid rgba(197, 160, 89, 0.1)';
-							});
-							
-							// Стили для подменю
-							const subMenus = topMenu.querySelectorAll('.sub-menu');
-							subMenus.forEach(function(subMenu) {
-								subMenu.style.position = 'static';
-								subMenu.style.display = 'block';
-								subMenu.style.background = 'transparent';
-								subMenu.style.border = 'none';
-								subMenu.style.boxShadow = 'none';
-								subMenu.style.padding = '0';
-								subMenu.style.margin = '0';
-								subMenu.style.opacity = '1';
-								subMenu.style.visibility = 'visible';
-								subMenu.style.transform = 'none';
-							});
-							
-							// Стили для ссылок в подменю
-							const subMenuLinks = topMenu.querySelectorAll('.sub-menu a');
-							subMenuLinks.forEach(function(link) {
-								link.style.paddingLeft = '40px';
-								link.style.color = 'rgba(255, 255, 255, 0.8)';
-								link.style.fontSize = '13px';
-							});
-						}
-						if (topMenuNav) {
-							topMenuNav.style.setProperty('display', 'block', 'important');
-							topMenuNav.style.setProperty('visibility', 'visible', 'important');
-							topMenuNav.style.setProperty('position', 'fixed', 'important');
-							topMenuNav.style.setProperty('top', headerHeight + 'px', 'important');
-							topMenuNav.style.setProperty('left', '0', 'important');
-							topMenuNav.style.setProperty('right', '0', 'important');
-							topMenuNav.style.setProperty('width', '100%', 'important');
-							topMenuNav.style.setProperty('max-width', '100%', 'important');
-							topMenuNav.style.setProperty('background', '#000000', 'important');
-							topMenuNav.style.setProperty('background-color', '#000000', 'important');
-							topMenuNav.style.setProperty('background-image', 'none', 'important');
-							topMenuNav.style.setProperty('border-top', '1px solid #C5A059', 'important');
-							topMenuNav.style.setProperty('z-index', '10000', 'important');
-							topMenuNav.style.setProperty('padding', '20px', 'important');
-							topMenuNav.style.setProperty('box-shadow', '0 4px 20px rgba(0, 0, 0, 0.5)', 'important');
-							topMenuNav.style.setProperty('overflow-y', 'auto', 'important');
-							topMenuNav.style.setProperty('max-height', 'calc(100vh - ' + headerHeight + 'px)', 'important');
-							
-							// Принудительно убираем все возможные белые фоны
-							topMenuNav.setAttribute('style', topMenuNav.getAttribute('style') + '; background: #000000 !important; background-color: #000000 !important; background-image: none !important;');
-							
-							// Стили для ссылок в мобильном меню
-							const menuNavLinks = topMenuNav.querySelectorAll('a');
-							menuNavLinks.forEach(function(link) {
-								link.style.color = '#FFFFFF';
-								link.style.display = 'block';
-								link.style.padding = '15px 20px';
-								link.style.borderBottom = '1px solid rgba(197, 160, 89, 0.1)';
-								link.style.textDecoration = 'none';
-							});
-							
-							// Активная ссылка - золотая
-							const activeNavLink = topMenuNav.querySelector('.current-menu-item > a, .current_page_item > a');
-							if (activeNavLink) {
-								activeNavLink.style.color = '#C5A059';
-							}
-							
-							// Стили для элементов списка
-							const menuNavItems = topMenuNav.querySelectorAll('li');
-							menuNavItems.forEach(function(item) {
-								item.style.display = 'block';
-								item.style.margin = '0';
-								item.style.padding = '0';
-								item.style.borderBottom = '1px solid rgba(197, 160, 89, 0.1)';
-							});
-							
-							// Стили для подменю
-							const subNavMenus = topMenuNav.querySelectorAll('.sub-menu');
-							subNavMenus.forEach(function(subMenu) {
-								subMenu.style.position = 'static';
-								subMenu.style.display = 'block';
-								subMenu.style.background = 'transparent';
-								subMenu.style.border = 'none';
-								subMenu.style.boxShadow = 'none';
-								subMenu.style.padding = '0';
-								subMenu.style.margin = '0';
-								subMenu.style.opacity = '1';
-								subMenu.style.visibility = 'visible';
-								subMenu.style.transform = 'none';
-							});
-							
-							// Стили для ссылок в подменю
-							const subNavMenuLinks = topMenuNav.querySelectorAll('.sub-menu a');
-							subNavMenuLinks.forEach(function(link) {
-								link.style.paddingLeft = '40px';
-								link.style.color = 'rgba(255, 255, 255, 0.8)';
-								link.style.fontSize = '13px';
-							});
-						}
+			// Check if click is on hamburger button or its parent container
+			const target = e.target;
+			let isHamburgerClick = false;
+			
+			// Check if target or its parent matches hamburger selectors
+			for (let selector of hamburgerSelectors) {
+				if (target.matches && target.matches(selector)) {
+					isHamburgerClick = true;
+					break;
+				}
+				if (target.closest && target.closest(selector)) {
+					isHamburgerClick = true;
+					break;
+				}
+			}
+			
+			// Also check by class names
+			if (!isHamburgerClick) {
+				const classes = ['mobile_menu_bar_toggle', 'mobile_menu_bar', 'mobile_nav', 'select_page'];
+				for (let className of classes) {
+					if (target.classList && target.classList.contains(className)) {
+						isHamburgerClick = true;
+						break;
 					}
+				}
+			}
+			
+			// Check if click is within the mobile nav menu container
+			if (!isHamburgerClick && target.closest && target.closest('#et_mobile_nav_menu')) {
+				isHamburgerClick = true;
+			}
+			
+			if (!isHamburgerClick) {
+				return; // Not a hamburger click, ignore
+			}
+			
+			// Prevent default and stop propagation
+			e.preventDefault();
+			e.stopPropagation();
+			
+			// Find mobile nav container (re-query in case DOM changed)
+			const mobileNav = document.querySelector('#et_mobile_nav_menu .mobile_nav');
+			if (!mobileNav) {
+				return;
+			}
+			
+			// Get current state
+			const isCurrentlyOpen = mobileNav.getAttribute('data-open') === 'true' || 
+			                         mobileNav.classList.contains('opened') ||
+			                         mobileNav.classList.contains('open');
+			
+			// Toggle menu state
+			if (isCurrentlyOpen) {
+				// Close menu
+				mobileNav.setAttribute('data-open', 'false');
+				mobileNav.classList.remove('opened', 'open');
+				mobileNav.classList.add('closed');
+				
+				// Hide the menu
+				const topMenu = document.querySelector('#top-menu, #top-menu-nav');
+				if (topMenu) {
+					topMenu.style.display = 'none';
+				}
+			} else {
+				// Open menu
+				mobileNav.setAttribute('data-open', 'true');
+				mobileNav.classList.remove('closed');
+				mobileNav.classList.add('opened', 'open');
+				
+				// Show the menu
+				const topMenu = document.querySelector('#top-menu, #top-menu-nav');
+				if (topMenu) {
+					topMenu.style.display = 'block';
 				}
 			}
 		};
 		
-		document.addEventListener('click', window.unifiedMobileMenuHandler, true); // Используем capture phase для раннего перехвата
+		// Add event listener with capture phase for early interception
+		document.addEventListener('click', window.unifiedMobileMenuHandler, true);
 		
-		// Также инициализируем через jQuery, если доступен
-		if (typeof jQuery !== 'undefined') {
-			jQuery(document).ready(function($) {
-				// Дополнительная инициализация через jQuery - делегирование событий
-				$(document).on('click', '#et_mobile_nav_menu, #et_mobile_nav_menu *, #et_mobile_nav_menu .mobile_nav, #et_mobile_nav_menu .mobile_menu_bar, #et_mobile_nav_menu .mobile_menu_bar_toggle, #et_mobile_nav_menu .select_page', function(e) {
-					if (window.innerWidth > 980) return; // Только для мобильных
-					
+		// Also add direct event listeners to hamburger elements for extra reliability
+		hamburgerSelectors.forEach(function(selector) {
+			const elements = document.querySelectorAll(selector);
+			elements.forEach(function(el) {
+				el.addEventListener('click', function(e) {
 					e.preventDefault();
 					e.stopPropagation();
-					
-					const $mobileNav = $('#et_mobile_nav_menu .mobile_nav');
-					const $topMenu = $('#top-menu');
-					const $topMenuNav = $('#top-menu-nav');
-					
-					if ($mobileNav.hasClass('open')) {
-						$mobileNav.removeClass('open').addClass('closed');
-						$topMenu.hide();
-						$topMenuNav.hide();
-					} else {
-						$mobileNav.removeClass('closed').addClass('open');
-						
-						const header = $('#main-header');
-						const headerHeight = header.length ? header.outerHeight() : 80;
-						
-						if ($topMenu.length) {
-							$topMenu.css({
-								'display': 'block',
-								'position': 'fixed',
-								'top': headerHeight + 'px',
-								'left': '0',
-								'right': '0',
-								'width': '100%',
-								'max-width': '100%',
-								'background': '#000000',
-								'background-color': '#000000',
-								'border-top': '1px solid #C5A059',
-								'z-index': '10000',
-								'padding': '20px',
-								'box-shadow': '0 4px 20px rgba(0, 0, 0, 0.5)',
-								'overflow-y': 'auto',
-								'max-height': 'calc(100vh - ' + headerHeight + 'px)'
-							}).show();
-						}
-						
-						if ($topMenuNav.length) {
-							$topMenuNav.css({
-								'display': 'block',
-								'position': 'fixed',
-								'top': headerHeight + 'px',
-								'left': '0',
-								'right': '0',
-								'width': '100%',
-								'max-width': '100%',
-								'background': '#000000',
-								'background-color': '#000000',
-								'border-top': '1px solid #C5A059',
-								'z-index': '10000',
-								'padding': '20px',
-								'box-shadow': '0 4px 20px rgba(0, 0, 0, 0.5)',
-								'overflow-y': 'auto',
-								'max-height': 'calc(100vh - ' + headerHeight + 'px)'
-							}).show();
-						}
-					}
-				});
+					// Trigger the main handler
+					const clickEvent = new MouseEvent('click', {
+						bubbles: true,
+						cancelable: true,
+						view: window
+					});
+					window.unifiedMobileMenuHandler.call(document, clickEvent);
+				}, true);
 			});
-		}
+		});
 	}
 	
-	// Инициализируем мобильное меню несколько раз для надежности
+	// Initialize on DOMContentLoaded
 	function runMobileMenuInit() {
 		initMobileMenu();
 	}
 	
-	// Запускаем при разных событиях для максимальной надежности
 	if (document.readyState === 'loading') {
 		document.addEventListener('DOMContentLoaded', runMobileMenuInit);
 	} else {
 		runMobileMenuInit();
 	}
 	
+	// Re-initialize after page load to catch dynamically loaded content
 	window.addEventListener('load', function() {
 		setTimeout(runMobileMenuInit, 100);
+		setTimeout(runMobileMenuInit, 500);
 	});
 	
-	// Дополнительная инициализация через небольшую задержку
-	setTimeout(runMobileMenuInit, 500);
+	// Re-initialize on resize (mobile/desktop switch)
+	let resizeTimeout;
+	window.addEventListener('resize', function() {
+		clearTimeout(resizeTimeout);
+		resizeTimeout = setTimeout(function() {
+			// Re-initialize when switching between mobile and desktop
+			if (window.innerWidth <= 980) {
+				runMobileMenuInit();
+			} else {
+				// Close menu on desktop
+				const mobileNav = document.querySelector('#et_mobile_nav_menu .mobile_nav');
+				if (mobileNav) {
+					mobileNav.setAttribute('data-open', 'false');
+					mobileNav.classList.remove('opened', 'open');
+					mobileNav.classList.add('closed');
+				}
+			}
+		}, 150);
+	});
 	
 	// ============================================
 	// MUTATION OBSERVER - отслеживание изменений стилей
