@@ -276,16 +276,21 @@
    ============================================ */
 
 /* Hide original Divi footer ONLY - be very specific */
-body footer#main-footer,
-body #main-footer,
+/* BUT: Don't hide premium footer even if it has main-footer ID */
+body footer#main-footer:not(.premium-unified-footer),
+body #main-footer:not(.premium-unified-footer),
 body footer.et-l--footer,
 body #footer-bottom,
 body #et-footer-nav {
 	display: none !important;
 }
 
-/* Ensure premium footer is visible */
-.premium-unified-footer {
+/* Ensure premium footer is visible - high specificity */
+.premium-unified-footer,
+body .premium-unified-footer,
+body footer.premium-unified-footer,
+footer#main-footer.premium-unified-footer,
+body footer#main-footer.premium-unified-footer {
 	display: block !important;
 	visibility: visible !important;
 	opacity: 1 !important;
@@ -307,8 +312,18 @@ article {
 }
 
 /* Only apply footer-specific hiding to actual footer elements */
-body footer#main-footer,
-body > footer#main-footer {
+/* BUT: Always show premium footer even if it has main-footer ID */
+body footer#main-footer:not(.premium-unified-footer),
+body > footer#main-footer:not(.premium-unified-footer) {
 	display: none !important;
+}
+
+/* Force premium footer to be visible - highest specificity */
+body footer#main-footer.premium-unified-footer,
+body > footer#main-footer.premium-unified-footer,
+footer#main-footer.premium-unified-footer {
+	display: block !important;
+	visibility: visible !important;
+	opacity: 1 !important;
 }
 
