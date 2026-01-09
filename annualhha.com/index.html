@@ -152,28 +152,34 @@ var et_core_api_spam_recaptcha = {"site_key":"","page_action":{"action":"annualh
 			--bg-center: #121212;
 		}
 		
-		/* Award Trophy Animation - Вращение + плавание */
-				@keyframes trophyRotate {
+		/* Award Trophy Animation - Вращение + плавание (комбинированная анимация) */
+				@keyframes trophyRotateAndFloat {
 					0% { 
-						transform: rotateY(0deg);
+						transform: rotate(0deg) translateY(0px) scale(1);
 					}
-					100% { 
-						transform: rotateY(360deg);
-					}
-				}
-				
-				@keyframes trophyFloat {
-					0%, 100% { 
-						transform: translateY(0px) rotateX(1.5deg) scale(1);
+					12.5% { 
+						transform: rotate(45deg) translateY(-4px) scale(1.01);
 					}
 					25% { 
-						transform: translateY(-8px) rotateX(-0.5deg) scale(1.02);
+						transform: rotate(90deg) translateY(-8px) scale(1.02);
+					}
+					37.5% { 
+						transform: rotate(135deg) translateY(-10px) scale(1.02);
 					}
 					50% { 
-						transform: translateY(-10px) rotateX(-1.5deg) scale(1.02);
+						transform: rotate(180deg) translateY(-10px) scale(1.02);
+					}
+					62.5% { 
+						transform: rotate(225deg) translateY(-8px) scale(1.02);
 					}
 					75% { 
-						transform: translateY(-4px) rotateX(0.5deg) scale(1.01);
+						transform: rotate(270deg) translateY(-4px) scale(1.01);
+					}
+					87.5% { 
+						transform: rotate(315deg) translateY(-2px) scale(1.005);
+					}
+					100% { 
+						transform: rotate(360deg) translateY(0px) scale(1);
 					}
 				}
 				
@@ -201,15 +207,16 @@ var et_core_api_spam_recaptcha = {"site_key":"","page_action":{"action":"annualh
 					backface-visibility: hidden !important;
 					-webkit-backface-visibility: hidden !important;
 					transform-origin: center center !important;
-					animation: trophyRotate 10s infinite linear !important;
-					-webkit-animation: trophyRotate 10s infinite linear !important;
+					animation: trophyRotateAndFloat 8s infinite linear !important;
+					-webkit-animation: trophyRotateAndFloat 8s infinite linear !important;
+					display: block !important;
+					position: relative !important;
 				}
 				
 				.award-trophy-image {
-					animation: 
-						trophyFloat 4s infinite ease-in-out,
-						trophyGlow 4s infinite ease-in-out !important;
+					animation: trophyGlow 4s infinite ease-in-out !important;
 					transform-origin: center center !important;
+					display: block !important;
 				}
 				
 		/* Smooth transitions for interactive elements */
@@ -244,15 +251,20 @@ var et_core_api_spam_recaptcha = {"site_key":"","page_action":{"action":"annualh
 			perspective: 1500px !important;
 			perspective-origin: center center !important;
 			transform: translateZ(0) !important; /* Force hardware acceleration */
+			position: relative !important;
+			display: block !important;
 		}
 		
 		.perspective-1500 {
 			perspective: 1500px !important;
 			perspective-origin: center center !important;
+			transform-style: preserve-3d !important;
 		}
 		
 		.award-trophy-image {
 			filter: drop-shadow(0 30px 60px rgba(197, 160, 89, 0.4));
+			display: block !important;
+			transform-origin: center center !important;
 		}
 		
 		.award-text-image {
@@ -1440,9 +1452,9 @@ html, body, #page-container, #et-main-area, #main-content, .et_pb_section {
 					<!-- Award Animation (Preserved) -->
 					<div class="lg:col-span-7 award-composition relative z-10">
 						<div class="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-center">
-							<div class="award-trophy-wrapper perspective-1500">
-								<div class="award-trophy-animated">
-									<img src="/wp-content/uploads/2019/12/award-trophy.png" alt="Award Trophy" class="award-trophy-image w-full h-auto" />
+							<div class="award-trophy-wrapper perspective-1500" style="perspective: 1500px; transform-style: preserve-3d;">
+								<div class="award-trophy-animated" style="animation: trophyRotateAndFloat 8s infinite linear !important; -webkit-animation: trophyRotateAndFloat 8s infinite linear !important; transform-style: preserve-3d; transform-origin: center center;">
+									<img src="/wp-content/uploads/2019/12/award-trophy.png" alt="Award Trophy" class="award-trophy-image w-full h-auto" style="transform-origin: center center; display: block;" />
 								</div>
 							</div>
 							<div class="award-text-wrapper">
