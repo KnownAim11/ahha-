@@ -1503,7 +1503,10 @@ html, body, #page-container, #et-main-area, #main-content, .et_pb_section {
 						img.style.setProperty('-moz-animation', 'none', 'important');
 						img.style.setProperty('-o-animation', 'none', 'important');
 						img.style.setProperty('transform-origin', 'center center', 'important');
+						img.style.setProperty('transform-style', 'preserve-3d', 'important');
+						img.style.setProperty('-webkit-transform-style', 'preserve-3d', 'important');
 						img.style.setProperty('will-change', 'transform', 'important');
+						img.style.setProperty('backface-visibility', 'visible', 'important');
 						
 						// Убеждаемся, что нет конфликтующих трансформаций
 						img.style.setProperty('transform', '', 'important');
@@ -1522,11 +1525,11 @@ html, body, #page-container, #et-main-area, #main-content, .et_pb_section {
 							rotation += 1.5; // 1.5 градуса за кадр
 							if (rotation >= 360) rotation = 0;
 							
-							// Применяем transform с maximum priority через setProperty
-							trophyImage.style.setProperty('transform', 'rotate(' + rotation + 'deg)', 'important');
-							trophyImage.style.setProperty('-webkit-transform', 'rotate(' + rotation + 'deg)', 'important');
-							trophyImage.style.setProperty('-moz-transform', 'rotate(' + rotation + 'deg)', 'important');
-							trophyImage.style.setProperty('-ms-transform', 'rotate(' + rotation + 'deg)', 'important');
+							// Вращение вокруг вертикальной оси (Y-axis) - как глобус на столе
+							trophyImage.style.setProperty('transform', 'rotateY(' + rotation + 'deg)', 'important');
+							trophyImage.style.setProperty('-webkit-transform', 'rotateY(' + rotation + 'deg)', 'important');
+							trophyImage.style.setProperty('-moz-transform', 'rotateY(' + rotation + 'deg)', 'important');
+							trophyImage.style.setProperty('-ms-transform', 'rotateY(' + rotation + 'deg)', 'important');
 							
 							animationId = requestAnimationFrame(rotate);
 						}
