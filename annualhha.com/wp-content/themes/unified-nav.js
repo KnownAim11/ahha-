@@ -465,30 +465,142 @@
 		};
 		
 		// Add event listener with capture phase for early interception
+		// Handle both click and touchstart for mobile devices
 		document.addEventListener('click', window.unifiedMobileMenuHandler, true);
+		document.addEventListener('touchstart', function(e) {
+			// On touch devices, convert touchstart to click for the handler
+			if (window.innerWidth <= 980) {
+				const target = e.target;
+				// Check if touch is on hamburger
+				let isHamburgerTouch = false;
+				for (let selector of hamburgerSelectors) {
+					if (target.matches && target.matches(selector)) {
+						isHamburgerTouch = true;
+						break;
+					}
+					if (target.closest && target.closest(selector)) {
+						isHamburgerTouch = true;
+						break;
+					}
+				}
+				if (!isHamburgerTouch) {
+					const classes = ['mobile_menu_bar_toggle', 'mobile_menu_bar', 'mobile_nav', 'select_page'];
+					for (let className of classes) {
+						if (target.classList && target.classList.contains(className)) {
+							isHamburgerTouch = true;
+							break;
+						}
+					}
+				}
+				if (!isHamburgerTouch && target.closest && target.closest('#et_mobile_nav_menu')) {
+					isHamburgerTouch = true;
+				}
+				if (isHamburgerTouch) {
+					e.preventDefault();
+					e.stopPropagation();
+					window.unifiedMobileMenuHandler(e);
+				}
+			}
+		}, true);
 		
 		// Also add direct event listeners to hamburger elements for extra reliability
 		hamburgerSelectors.forEach(function(selector) {
 			const elements = document.querySelectorAll(selector);
 			elements.forEach(function(el) {
+				// Handle click
 				el.addEventListener('click', function(e) {
-					e.preventDefault();
-					e.stopPropagation();
-					// Trigger the main handler
-					const clickEvent = new MouseEvent('click', {
-						bubbles: true,
-						cancelable: true,
-						view: window
-					});
-					window.unifiedMobileMenuHandler.call(document, clickEvent);
+					if (window.innerWidth <= 980) {
+						e.preventDefault();
+						e.stopPropagation();
+						window.unifiedMobileMenuHandler(e);
+					}
+				}, true);
+				// Handle touch for mobile
+				el.addEventListener('touchstart', function(e) {
+					if (window.innerWidth <= 980) {
+						e.preventDefault();
+						e.stopPropagation();
+						window.unifiedMobileMenuHandler(e);
+					}
 				}, true);
 			});
 		});
 	}
 	
+	// Close menu when clicking outside
+	function setupOutsideClickClose() {
+		if (window.unifiedOutsideClickHandler) {
+			document.removeEventListener('click', window.unifiedOutsideClickHandler, true);
+		}
+		
+		window.unifiedOutsideClickHandler = function(e) {
+			// Only handle on mobile screens
+			if (window.innerWidth > 980) {
+				return;
+			}
+			
+			const mobileNav = document.querySelector('#et_mobile_nav_menu .mobile_nav');
+			if (!mobileNav) {
+				return;
+			}
+			
+			// Check if menu is open
+			const isMenuOpen = mobileNav.getAttribute('data-open') === 'true' || 
+			                   mobileNav.classList.contains('opened') ||
+			                   mobileNav.classList.contains('open');
+			
+			if (!isMenuOpen) {
+				return; // Menu is closed, nothing to do
+			}
+			
+			// Check if click is inside the mobile nav menu container or the dropdown menu
+			const target = e.target;
+			const mobileNavContainer = document.querySelector('#et_mobile_nav_menu');
+			const topMenuNav = document.querySelector('#top-menu-nav');
+			const topMenu = document.querySelector('#top-menu');
+			
+			// Check if click is inside mobile nav container (hamburger button area)
+			if (mobileNavContainer && mobileNavContainer.contains(target)) {
+				return; // Click is on hamburger button, let the toggle handler handle it
+			}
+			
+			// Check if click is inside the dropdown menu
+			if ((topMenuNav && topMenuNav.contains(target)) || 
+			    (topMenu && topMenu.contains(target))) {
+				return; // Click is inside menu, don't close
+			}
+			
+			// Click is outside both hamburger and menu - close the menu
+			mobileNav.setAttribute('data-open', 'false');
+			mobileNav.classList.remove('opened', 'open');
+			mobileNav.classList.add('closed');
+			
+			if (topMenuNav) {
+				topMenuNav.style.display = 'none';
+				topMenuNav.style.visibility = 'hidden';
+				topMenuNav.style.opacity = '0';
+			}
+			if (topMenu) {
+				topMenu.style.display = 'none';
+				topMenu.style.visibility = 'hidden';
+				topMenu.style.opacity = '0';
+			}
+		};
+		
+		// Add event listener with capture phase
+		// Handle both click and touchstart for mobile devices
+		document.addEventListener('click', window.unifiedOutsideClickHandler, true);
+		document.addEventListener('touchstart', function(e) {
+			if (window.innerWidth <= 980) {
+				window.unifiedOutsideClickHandler(e);
+			}
+		}, true);
+	}
+	
 	// Initialize on DOMContentLoaded
 	function runMobileMenuInit() {
 		initMobileMenu();
+		setupOutsideClickClose();
 	}
 	
 	if (document.readyState === 'loading') {
@@ -580,6 +692,19 @@
 					mobileNav.setAttribute('data-open', 'false');
 					mobileNav.classList.remove('opened', 'open');
 					mobileNav.classList.add('closed');
+				}
+				const topMenuNav = document.querySelector('#top-menu-nav');
+				const topMenu = document.querySelector('#top-menu');
+				if (topMenuNav) {
+					topMenuNav.style.display = '';
+					topMenuNav.style.visibility = '';
+					topMenuNav.style.opacity = '';
+					topMenuNav.style.position = '';
+				}
+				if (topMenu) {
+					topMenu.style.display = '';
+					topMenu.style.visibility = '';
+					topMenu.style.opacity = '';
 				}
 			}
 		}, 150);
