@@ -263,7 +263,68 @@ html, body, #page-container, #et-main-area, #main-content, .et_pb_section {
     display: none !important;
     opacity: 0 !important;
 }
-</style>
+
+		/* На десктопе - скрываем переносы, показываем в одну строку */
+		@media (min-width: 769px) {
+			.premium-honorees-header .premium-main-title br,
+			.premium-honorees-header .luxury-title.premium-main-title br,
+			.premium-honorees-header h1.luxury-title br {
+				display: none !important;
+			}
+			
+			.premium-honorees-header .premium-main-title .title-line,
+			.premium-honorees-header .luxury-title.premium-main-title .title-line,
+			.premium-honorees-header h1.luxury-title .title-line {
+				display: inline !important;
+			}
+			
+			.premium-honorees-header .premium-main-title .title-line:not(:last-child)::after,
+			.premium-honorees-header .luxury-title.premium-main-title .title-line:not(:last-child)::after,
+			.premium-honorees-header h1.luxury-title .title-line:not(:last-child)::after {
+				content: ' ' !important;
+			}
+		}
+		
+		/* Исправление заголовка для мобильной версии - каждое слово на отдельной строке */
+		@media (max-width: 768px) {
+			.premium-honorees-header .premium-main-title,
+			.premium-honorees-header .luxury-title.premium-main-title,
+			.premium-honorees-header h1.luxury-title,
+			.luxury-header-block.premium-honorees-header h1 {
+				font-size: clamp(1.8rem, 7vw, 2.5rem) !important;
+				line-height: 1.3 !important;
+				letter-spacing: 0.05em !important;
+				padding: 0 10px !important;
+				text-align: center !important;
+				display: block !important;
+			}
+			
+			.premium-honorees-header .premium-main-title br,
+			.premium-honorees-header .luxury-title.premium-main-title br,
+			.premium-honorees-header h1.luxury-title br {
+				display: block !important;
+			}
+			
+			.premium-honorees-header .premium-main-title .title-line,
+			.premium-honorees-header .luxury-title.premium-main-title .title-line,
+			.premium-honorees-header h1.luxury-title .title-line {
+				display: block !important;
+				line-height: 1.2 !important;
+			}
+		}
+		
+		/* Для очень маленьких экранов */
+		@media (max-width: 480px) {
+			.premium-honorees-header .premium-main-title,
+			.premium-honorees-header .luxury-title.premium-main-title,
+			.premium-honorees-header h1.luxury-title,
+			.luxury-header-block.premium-honorees-header h1 {
+				font-size: clamp(1.5rem, 6vw, 2rem) !important;
+				line-height: 1.25 !important;
+				letter-spacing: 0.04em !important;
+			}
+		}
+	</style>
 </head>
 <body class="honorees-page wp-singular page-template-default page page-id-1605 custom-background wp-theme-Divi et_pb_button_helper_class et_non_fixed_nav et_show_nav et_primary_nav_dropdown_animation_fade et_secondary_nav_dropdown_animation_fade et_header_style_left et_pb_footer_columns4 et_cover_background et_pb_gutter windows et_pb_gutters3 et_pb_pagebuilder_layout et_no_sidebar et_divi_theme et-db et_minified_js et_minified_css">
 	<div id="page-container">
@@ -342,7 +403,7 @@ html, body, #page-container, #et-main-area, #main-content, .et_pb_section {
 				
 				<!-- Premium Header Block -->
 				<div class="luxury-header-block premium-honorees-header">
-					<h1 class="luxury-title premium-main-title">Houston Humanitarian Honorees</h1>
+					<h1 class="luxury-title premium-main-title"><span class="title-line">Houston</span><br><span class="title-line">Humanitarian</span><br><span class="title-line">Honorees</span></h1>
 					<div class="premium-title-divider"></div>
 					<p class="premium-subtitle">2022 • Recognizing Excellence in Humanitarianism</p>
 				</div>
