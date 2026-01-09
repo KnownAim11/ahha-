@@ -1462,11 +1462,18 @@ html, body, #page-container, #et-main-area, #main-content, .et_pb_section {
 			</div>
 			
 			<script>
-				// Принудительно применяем анимацию вращения к статуэтке
+				// Глобальные переменные для вращения статуэтки (запускается только один раз)
 				(function() {
-					function applyTrophyAnimation() {
+					let trophyImage = null;
+					let rotation = 0;
+					let isRotating = false;
+					let animationId = null;
+					
+					function findTrophy() {
+						if (trophyImage) return trophyImage; // Уже найдена
+						
 						// Пробуем найти по ID
-						let trophyImage = document.getElementById('trophy-statue');
+						trophyImage = document.getElementById('trophy-statue');
 						// Если не нашли, пробуем по классу
 						if (!trophyImage) {
 							trophyImage = document.querySelector('.award-trophy-image');
@@ -1476,60 +1483,72 @@ html, body, #page-container, #et-main-area, #main-content, .et_pb_section {
 							trophyImage = document.querySelector('img[src="/wp-content/uploads/2019/12/award-trophy.png"]');
 						}
 						
-						if (trophyImage) {
-							// Применяем CSS анимацию
-							trophyImage.style.setProperty('animation', 'rotate360 8s infinite linear', 'important');
-							trophyImage.style.setProperty('-webkit-animation', 'rotate360 8s infinite linear', 'important');
-							trophyImage.style.setProperty('-moz-animation', 'rotate360 8s infinite linear', 'important');
-							trophyImage.style.setProperty('transform-origin', 'center center', 'important');
-							trophyImage.style.setProperty('will-change', 'transform', 'important');
-							
-							// Убеждаемся, что transform не заблокирован
-							trophyImage.style.transform = '';
-							
-							console.log('✅ Статуэтка найдена! Trophy found!', trophyImage);
-							console.log('✅ Анимация применена! Animation applied!');
-							
-							// Проверяем, применяется ли анимация
-							const computedStyle = window.getComputedStyle(trophyImage);
-							console.log('Анимация CSS:', computedStyle.animation);
-							
-							// Альтернативный метод через JavaScript, если CSS не работает
-							let rotation = 0;
-							const rotateByJS = function() {
-								rotation += 2; // 2 градуса за кадр
-								if (rotation >= 360) rotation = 0;
-								trophyImage.style.transform = 'rotate(' + rotation + 'deg)';
-								requestAnimationFrame(rotateByJS);
-							};
-							
-							// Если через 1 секунду анимация не работает, запускаем JS версию
-							setTimeout(function() {
-								const checkStyle = window.getComputedStyle(trophyImage);
-								if (!checkStyle.animation || checkStyle.animation === 'none') {
-									console.log('⚠️ CSS анимация не работает, используем JavaScript вращение');
-									rotateByJS();
-								} else {
-									console.log('✅ CSS анимация работает!');
-								}
-							}, 1000);
-						} else {
-							console.error('❌ Статуэтка не найдена! Trophy not found!');
+						return trophyImage;
+					}
+					
+					function startRotation() {
+						// Если уже вращается, не запускаем снова
+						if (isRotating) {
+							console.log('⚠️ Вращение уже запущено');
+							return;
 						}
+						
+						const img = findTrophy();
+						if (!img) {
+							console.log('⏳ Статуэтка еще не найдена, попробуем позже...');
+							return false;
+						}
+						
+						// Отключаем CSS анимацию полностью, используем только JavaScript
+						img.style.animation = 'none !important';
+						img.style.webkitAnimation = 'none !important';
+						img.style.mozAnimation = 'none !important';
+						img.style.transformOrigin = 'center center';
+						img.style.willChange = 'transform';
+						
+						console.log('✅ Статуэтка найдена! Trophy found!', img);
+						
+						// Запускаем вращение
+						isRotating = true;
+						rotation = 0;
+						
+						function rotate() {
+							if (!isRotating || !trophyImage) return;
+							
+							rotation += 1.5; // 1.5 градуса за кадр
+							if (rotation >= 360) rotation = 0;
+							
+							// Применяем transform напрямую
+							trophyImage.style.transform = 'rotate(' + rotation + 'deg)';
+							trophyImage.style.webkitTransform = 'rotate(' + rotation + 'deg)';
+							trophyImage.style.mozTransform = 'rotate(' + rotation + 'deg)';
+							
+							animationId = requestAnimationFrame(rotate);
+						}
+						
+						rotate();
+						console.log('🔄 JavaScript вращение ЗАПУЩЕНО! JS rotation STARTED!');
+						return true;
 					}
 					
-					// Применяем при загрузке DOM
-					if (document.readyState === 'loading') {
-						document.addEventListener('DOMContentLoaded', applyTrophyAnimation);
-					} else {
-						applyTrophyAnimation();
+					// Пробуем запустить сразу
+					if (!startRotation()) {
+						// Если не нашли, пробуем при загрузке DOM
+						if (document.readyState === 'loading') {
+							document.addEventListener('DOMContentLoaded', function() {
+								setTimeout(startRotation, 100);
+							});
+						}
+						
+						// Также пробуем после полной загрузки
+						window.addEventListener('load', function() {
+							setTimeout(startRotation, 100);
+						});
+						
+						// Пробуем с задержкой
+						setTimeout(startRotation, 500);
+						setTimeout(startRotation, 1000);
 					}
-					
-					// Также применяем после полной загрузки страницы
-					window.addEventListener('load', applyTrophyAnimation);
-					
-					// Применяем с задержкой на всякий случай
-					setTimeout(applyTrophyAnimation, 500);
 				})();
 			</script>
 			
