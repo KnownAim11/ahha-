@@ -245,6 +245,17 @@ html, body, #page-container, #et-main-area, #main-content, .et_pb_section {
 				letter-spacing: 0.04em !important;
 			}
 		}
+	
+		/* Скрываем дублирующиеся имена в toggle заголовках */
+		.honorees-page .et_pb_toggle .et_pb_toggle_title,
+		.honorees-page .et_pb_module.et_pb_toggle .et_pb_toggle_title {
+			display: none !important;
+			visibility: hidden !important;
+			height: 0 !important;
+			overflow: hidden !important;
+			margin: 0 !important;
+			padding: 0 !important;
+		}
 	</style>
 </head>
 <body class="honorees-page wp-singular page-template-default page page-id-303 custom-background wp-theme-Divi et_pb_button_helper_class et_non_fixed_nav et_show_nav et_primary_nav_dropdown_animation_fade et_secondary_nav_dropdown_animation_fade et_header_style_left et_pb_footer_columns4 et_cover_background et_pb_gutter linux et_pb_gutters3 et_pb_pagebuilder_layout et_no_sidebar et_divi_theme et-db et_minified_js et_minified_css">
