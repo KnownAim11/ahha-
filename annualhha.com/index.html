@@ -182,20 +182,17 @@ var et_core_api_spam_recaptcha = {"site_key":"","page_action":{"action":"annualh
 				
 				.award-trophy-animated {
 					transform-style: preserve-3d !important;
-					will-change: transform !important;
-					backface-visibility: hidden !important;
-					-webkit-backface-visibility: hidden !important;
 					transform-origin: center center !important;
-					animation: trophyRotateAndFloat 8s infinite linear !important;
-					-webkit-animation: trophyRotateAndFloat 8s infinite linear !important;
 					display: block !important;
 					position: relative !important;
 				}
 				
 				.award-trophy-image {
-					animation: trophyGlow 4s infinite ease-in-out !important;
+					animation: trophyRotateAndFloat 8s infinite linear !important;
+					-webkit-animation: trophyRotateAndFloat 8s infinite linear !important;
 					transform-origin: center center !important;
 					display: block !important;
+					will-change: transform !important;
 				}
 				
 		/* Smooth transitions for interactive elements */
@@ -1432,8 +1429,8 @@ html, body, #page-container, #et-main-area, #main-content, .et_pb_section {
 					<div class="lg:col-span-7 award-composition relative z-10">
 						<div class="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-center">
 							<div class="award-trophy-wrapper perspective-1500" style="perspective: 1500px; transform-style: preserve-3d;">
-								<div class="award-trophy-animated" style="animation: trophyRotateAndFloat 8s infinite linear !important; -webkit-animation: trophyRotateAndFloat 8s infinite linear !important; transform-style: preserve-3d; transform-origin: center center;">
-									<img src="/wp-content/uploads/2019/12/award-trophy.png" alt="Award Trophy" class="award-trophy-image w-full h-auto" style="transform-origin: center center; display: block;" />
+								<div class="award-trophy-animated">
+									<img src="/wp-content/uploads/2019/12/award-trophy.png" alt="Award Trophy" class="award-trophy-image w-full h-auto" />
 								</div>
 							</div>
 							<div class="award-text-wrapper">
