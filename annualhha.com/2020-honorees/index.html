@@ -275,6 +275,27 @@ body.custom-background {
 			margin: 0 auto !important;
 		}
 		
+		/* На десктопе - скрываем переносы, показываем в одну строку */
+		@media (min-width: 769px) {
+			.premium-honorees-header .premium-main-title br,
+			.premium-honorees-header .luxury-title.premium-main-title br,
+			.premium-honorees-header h1.luxury-title br {
+				display: none !important;
+			}
+			
+			.premium-honorees-header .premium-main-title .title-line,
+			.premium-honorees-header .luxury-title.premium-main-title .title-line,
+			.premium-honorees-header h1.luxury-title .title-line {
+				display: inline !important;
+			}
+			
+			.premium-honorees-header .premium-main-title .title-line:not(:last-child)::after,
+			.premium-honorees-header .luxury-title.premium-main-title .title-line:not(:last-child)::after,
+			.premium-honorees-header h1.luxury-title .title-line:not(:last-child)::after {
+				content: ' ' !important;
+			}
+		}
+		
 		/* Исправление заголовка для мобильной версии - каждое слово на отдельной строке */
 		@media (max-width: 768px) {
 			.premium-honorees-header .premium-main-title,
@@ -286,6 +307,12 @@ body.custom-background {
 				letter-spacing: 0.05em !important;
 				padding: 0 10px !important;
 				text-align: center !important;
+				display: block !important;
+			}
+			
+			.premium-honorees-header .premium-main-title br,
+			.premium-honorees-header .luxury-title.premium-main-title br,
+			.premium-honorees-header h1.luxury-title br {
 				display: block !important;
 			}
 			
@@ -306,15 +333,6 @@ body.custom-background {
 				font-size: clamp(1.5rem, 6vw, 2rem) !important;
 				line-height: 1.25 !important;
 				letter-spacing: 0.04em !important;
-			}
-		}
-		
-		/* На десктопе - можно оставить как есть или тоже в три строки */
-		@media (min-width: 769px) {
-			.premium-honorees-header .premium-main-title .title-line,
-			.premium-honorees-header .luxury-title.premium-main-title .title-line,
-			.premium-honorees-header h1.luxury-title .title-line {
-				display: block !important;
 			}
 		}
 	</style>
