@@ -241,10 +241,11 @@ var et_core_api_spam_recaptcha = {"site_key":"","page_action":{"action":"annualh
 		}
 		
 		.award-trophy-image {
-			animation: rotate360 8s infinite linear !important;
-			-webkit-animation: rotate360 8s infinite linear !important;
-			-moz-animation: rotate360 8s infinite linear !important;
-			-o-animation: rotate360 8s infinite linear !important;
+			/* Анимация отключена - используется только JavaScript вращение */
+			animation: none !important;
+			-webkit-animation: none !important;
+			-moz-animation: none !important;
+			-o-animation: none !important;
 			filter: drop-shadow(0 30px 60px rgba(197, 160, 89, 0.4));
 			display: block !important;
 			transform-origin: center center !important;
@@ -255,13 +256,7 @@ var et_core_api_spam_recaptcha = {"site_key":"","page_action":{"action":"annualh
 			filter: drop-shadow(0 25px 50px rgba(197, 160, 89, 0.35));
 		}
 		
-		/* Responsive adjustments */
-	@media (max-width: 768px) {
-					.award-trophy-image {
-						animation-duration: 10s !important;
-						-webkit-animation-duration: 10s !important;
-					}
-				}
+		/* Responsive adjustments - анимация отключена, используется JavaScript */
 				
 		/* ============================================
 		   ULTRA-PREMIUM LUXURY DESIGN
@@ -1343,11 +1338,14 @@ main, section, header, footer {
 /* КРИТИЧЕСКИ ВАЖНО: Анимация вращения статуэтки - должна быть в конце для максимального приоритета */
 #trophy-statue,
 img[src="/wp-content/uploads/2019/12/award-trophy.png"],
+/* КРИТИЧЕСКИ ВАЖНО: Анимация вращения статуэтки отключена - используется только JavaScript */
+#trophy-statue,
+img[src="/wp-content/uploads/2019/12/award-trophy.png"],
 .award-trophy-image {
-	animation: rotate360 8s infinite linear !important;
-	-webkit-animation: rotate360 8s infinite linear !important;
-	-moz-animation: rotate360 8s infinite linear !important;
-	-o-animation: rotate360 8s infinite linear !important;
+	animation: none !important;
+	-webkit-animation: none !important;
+	-moz-animation: none !important;
+	-o-animation: none !important;
 	transform-origin: center center !important;
 	will-change: transform !important;
 }
@@ -1450,7 +1448,7 @@ html, body, #page-container, #et-main-area, #main-content, .et_pb_section {
 						<div class="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-center">
 							<div class="award-trophy-wrapper perspective-1500" style="perspective: 1500px; transform-style: preserve-3d;">
 								<div class="award-trophy-animated">
-									<img src="/wp-content/uploads/2019/12/award-trophy.png" alt="Award Trophy" id="trophy-statue" class="award-trophy-image w-full h-auto" style="animation: rotate360 8s infinite linear !important; -webkit-animation: rotate360 8s infinite linear !important; -moz-animation: rotate360 8s infinite linear !important; transform-origin: center center !important; will-change: transform !important;" />
+									<img src="/wp-content/uploads/2019/12/award-trophy.png" alt="Award Trophy" id="trophy-statue" class="award-trophy-image w-full h-auto" style="transform-origin: center center !important; will-change: transform !important;" />
 								</div>
 							</div>
 							<div class="award-text-wrapper">
@@ -1499,12 +1497,16 @@ html, body, #page-container, #et-main-area, #main-content, .et_pb_section {
 							return false;
 						}
 						
-						// Отключаем CSS анимацию полностью, используем только JavaScript
-						img.style.animation = 'none !important';
-						img.style.webkitAnimation = 'none !important';
-						img.style.mozAnimation = 'none !important';
-						img.style.transformOrigin = 'center center';
-						img.style.willChange = 'transform';
+						// ПОЛНОСТЬЮ отключаем CSS анимацию через setProperty с important
+						img.style.setProperty('animation', 'none', 'important');
+						img.style.setProperty('-webkit-animation', 'none', 'important');
+						img.style.setProperty('-moz-animation', 'none', 'important');
+						img.style.setProperty('-o-animation', 'none', 'important');
+						img.style.setProperty('transform-origin', 'center center', 'important');
+						img.style.setProperty('will-change', 'transform', 'important');
+						
+						// Убеждаемся, что нет конфликтующих трансформаций
+						img.style.setProperty('transform', '', 'important');
 						
 						console.log('✅ Статуэтка найдена! Trophy found!', img);
 						
@@ -1513,15 +1515,18 @@ html, body, #page-container, #et-main-area, #main-content, .et_pb_section {
 						rotation = 0;
 						
 						function rotate() {
-							if (!isRotating || !trophyImage) return;
+							if (!isRotating || !trophyImage) {
+								return;
+							}
 							
 							rotation += 1.5; // 1.5 градуса за кадр
 							if (rotation >= 360) rotation = 0;
 							
-							// Применяем transform напрямую
-							trophyImage.style.transform = 'rotate(' + rotation + 'deg)';
-							trophyImage.style.webkitTransform = 'rotate(' + rotation + 'deg)';
-							trophyImage.style.mozTransform = 'rotate(' + rotation + 'deg)';
+							// Применяем transform с maximum priority через setProperty
+							trophyImage.style.setProperty('transform', 'rotate(' + rotation + 'deg)', 'important');
+							trophyImage.style.setProperty('-webkit-transform', 'rotate(' + rotation + 'deg)', 'important');
+							trophyImage.style.setProperty('-moz-transform', 'rotate(' + rotation + 'deg)', 'important');
+							trophyImage.style.setProperty('-ms-transform', 'rotate(' + rotation + 'deg)', 'important');
 							
 							animationId = requestAnimationFrame(rotate);
 						}
