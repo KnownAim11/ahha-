@@ -337,10 +337,18 @@
 				mobileNav.classList.remove('opened', 'open');
 				mobileNav.classList.add('closed');
 				
-				// Hide the menu
-				const topMenu = document.querySelector('#top-menu, #top-menu-nav');
+				// Hide the menu - hide both nav and ul
+				const topMenuNav = document.querySelector('#top-menu-nav');
+				const topMenu = document.querySelector('#top-menu');
+				if (topMenuNav) {
+					topMenuNav.style.display = 'none';
+					topMenuNav.style.visibility = 'hidden';
+					topMenuNav.style.opacity = '0';
+				}
 				if (topMenu) {
 					topMenu.style.display = 'none';
+					topMenu.style.visibility = 'hidden';
+					topMenu.style.opacity = '0';
 				}
 			} else {
 				// Open menu
@@ -348,11 +356,111 @@
 				mobileNav.classList.remove('closed');
 				mobileNav.classList.add('opened', 'open');
 				
-				// Show the menu
-				const topMenu = document.querySelector('#top-menu, #top-menu-nav');
-				if (topMenu) {
-					topMenu.style.display = 'block';
+				// Show the menu - show nav container with proper positioning
+				const topMenuNav = document.querySelector('#top-menu-nav');
+				const topMenu = document.querySelector('#top-menu');
+				
+				if (topMenuNav) {
+					// Position the nav container properly
+					topMenuNav.style.display = 'block';
+					topMenuNav.style.position = 'fixed';
+					topMenuNav.style.top = '80px';
+					topMenuNav.style.left = '0';
+					topMenuNav.style.right = '0';
+					topMenuNav.style.width = '100%';
+					topMenuNav.style.maxWidth = '100%';
+					topMenuNav.style.background = '#000000';
+					topMenuNav.style.backgroundColor = '#000000';
+					topMenuNav.style.borderTop = '1px solid #C5A059';
+					topMenuNav.style.zIndex = '10000';
+					topMenuNav.style.padding = '20px';
+					topMenuNav.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.5)';
+					topMenuNav.style.maxHeight = 'calc(100vh - 80px)';
+					topMenuNav.style.overflowY = 'auto';
+					topMenuNav.style.visibility = 'visible';
+					topMenuNav.style.opacity = '1';
+					topMenuNav.style.pointerEvents = 'auto';
 				}
+				
+				if (topMenu) {
+					// Show the menu list
+					topMenu.style.display = 'block';
+					topMenu.style.visibility = 'visible';
+					topMenu.style.opacity = '1';
+					topMenu.style.position = 'relative';
+					topMenu.style.background = 'transparent';
+					topMenu.style.backgroundColor = 'transparent';
+					topMenu.style.flexDirection = 'column';
+					topMenu.style.alignItems = 'flex-start';
+				}
+				
+				// Also ensure menu items are visible and clickable
+				const menuLinks = document.querySelectorAll('#top-menu a, #top-menu-nav a');
+				menuLinks.forEach(function(link) {
+					link.style.display = 'block';
+					link.style.color = '#FFFFFF';
+					link.style.padding = '15px 20px';
+					link.style.borderBottom = '1px solid rgba(197, 160, 89, 0.1)';
+					link.style.pointerEvents = 'auto';
+					link.style.cursor = 'pointer';
+					link.style.width = '100%';
+					link.style.boxSizing = 'border-box';
+				});
+				
+				// Style submenus for mobile
+				const subMenus = document.querySelectorAll('#top-menu .sub-menu, #top-menu-nav .sub-menu');
+				subMenus.forEach(function(subMenu) {
+					subMenu.style.display = 'none'; // Hidden by default
+					subMenu.style.position = 'static';
+					subMenu.style.background = 'transparent';
+					subMenu.style.backgroundColor = 'transparent';
+					subMenu.style.border = 'none';
+					subMenu.style.boxShadow = 'none';
+					subMenu.style.padding = '0';
+					subMenu.style.margin = '0';
+					subMenu.style.opacity = '1';
+					subMenu.style.visibility = 'visible';
+					subMenu.style.transform = 'none';
+					subMenu.style.flexDirection = 'column';
+					subMenu.style.width = '100%';
+				});
+				
+				// Handle submenu toggle on mobile
+				const parentLinks = document.querySelectorAll('#top-menu .menu-item-has-children > a, #top-menu-nav .menu-item-has-children > a');
+				parentLinks.forEach(function(parentLink) {
+					// Remove any existing handlers
+					const newLink = parentLink.cloneNode(true);
+					parentLink.parentNode.replaceChild(newLink, parentLink);
+					
+					newLink.addEventListener('click', function(e) {
+						if (window.innerWidth <= 980) {
+							e.preventDefault();
+							const parentLi = newLink.parentElement;
+							const subMenu = parentLi.querySelector('.sub-menu');
+							
+							if (subMenu) {
+								const isOpen = subMenu.style.display === 'block';
+								
+								// Close all other submenus
+								document.querySelectorAll('#top-menu .sub-menu, #top-menu-nav .sub-menu').forEach(function(menu) {
+									if (menu !== subMenu) {
+										menu.style.display = 'none';
+									}
+								});
+								
+								// Toggle current submenu
+								if (isOpen) {
+									subMenu.style.display = 'none';
+								} else {
+									subMenu.style.display = 'block';
+									subMenu.style.position = 'static';
+									subMenu.style.background = 'transparent';
+									subMenu.style.paddingLeft = '20px';
+								}
+							}
+						}
+					}, false);
+				});
 			}
 		};
 		
@@ -393,6 +501,68 @@
 	window.addEventListener('load', function() {
 		setTimeout(runMobileMenuInit, 100);
 		setTimeout(runMobileMenuInit, 500);
+		
+		// Close menu when clicking on non-submenu links (top-level menu items without children)
+		const topLevelLinks = document.querySelectorAll('#top-menu > li:not(.menu-item-has-children) > a, #top-menu-nav > li:not(.menu-item-has-children) > a');
+		topLevelLinks.forEach(function(link) {
+			link.addEventListener('click', function() {
+				if (window.innerWidth <= 980) {
+					const mobileNav = document.querySelector('#et_mobile_nav_menu .mobile_nav');
+					if (mobileNav && (mobileNav.getAttribute('data-open') === 'true' || mobileNav.classList.contains('opened'))) {
+						// Close menu after a short delay to allow navigation
+						setTimeout(function() {
+							mobileNav.setAttribute('data-open', 'false');
+							mobileNav.classList.remove('opened', 'open');
+							mobileNav.classList.add('closed');
+							
+							const topMenuNav = document.querySelector('#top-menu-nav');
+							const topMenu = document.querySelector('#top-menu');
+							if (topMenuNav) {
+								topMenuNav.style.display = 'none';
+								topMenuNav.style.visibility = 'hidden';
+								topMenuNav.style.opacity = '0';
+							}
+							if (topMenu) {
+								topMenu.style.display = 'none';
+								topMenu.style.visibility = 'hidden';
+								topMenu.style.opacity = '0';
+							}
+						}, 100);
+					}
+				}
+			}, false);
+		});
+		
+		// Also close menu when clicking on submenu links (not parent links)
+		const subMenuLinks = document.querySelectorAll('#top-menu .sub-menu a, #top-menu-nav .sub-menu a');
+		subMenuLinks.forEach(function(link) {
+			link.addEventListener('click', function() {
+				if (window.innerWidth <= 980) {
+					const mobileNav = document.querySelector('#et_mobile_nav_menu .mobile_nav');
+					if (mobileNav && (mobileNav.getAttribute('data-open') === 'true' || mobileNav.classList.contains('opened'))) {
+						// Close menu after a short delay to allow navigation
+						setTimeout(function() {
+							mobileNav.setAttribute('data-open', 'false');
+							mobileNav.classList.remove('opened', 'open');
+							mobileNav.classList.add('closed');
+							
+							const topMenuNav = document.querySelector('#top-menu-nav');
+							const topMenu = document.querySelector('#top-menu');
+							if (topMenuNav) {
+								topMenuNav.style.display = 'none';
+								topMenuNav.style.visibility = 'hidden';
+								topMenuNav.style.opacity = '0';
+							}
+							if (topMenu) {
+								topMenu.style.display = 'none';
+								topMenu.style.visibility = 'hidden';
+								topMenu.style.opacity = '0';
+							}
+						}, 100);
+					}
+				}
+			}, false);
+		});
 	});
 	
 	// Re-initialize on resize (mobile/desktop switch)

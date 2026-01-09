@@ -665,6 +665,161 @@ html body ul.sub-menu[style*="bottom"] {
 	#top-menu-nav,
 	#main-header #top-menu {
 		display: none !important;
+		visibility: hidden !important;
+		opacity: 0 !important;
+	}
+	
+	/* Simple fallback: show menu when opened class or data-open attribute is set */
+	/* This works without :has() selector for better browser support */
+	#top-menu-nav[style*="display: block"],
+	#top-menu-nav[style*="display:block"],
+	#top-menu[style*="display: block"],
+	#top-menu[style*="display:block"] {
+		display: block !important;
+		visibility: visible !important;
+		opacity: 1 !important;
+		pointer-events: auto !important;
+	}
+	
+	/* When menu is open via inline styles, ensure proper positioning */
+	#top-menu-nav[style*="position: fixed"],
+	#top-menu-nav[style*="position:fixed"] {
+		position: fixed !important;
+		top: 80px !important;
+		left: 0 !important;
+		right: 0 !important;
+		width: 100% !important;
+		max-width: 100% !important;
+		background: #000000 !important;
+		background-color: #000000 !important;
+		border-top: 1px solid #C5A059 !important;
+		z-index: 10000 !important;
+		padding: 20px !important;
+		box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5) !important;
+		max-height: calc(100vh - 80px) !important;
+		overflow-y: auto !important;
+		visibility: visible !important;
+		opacity: 1 !important;
+		pointer-events: auto !important;
+	}
+	
+	/* Ensure menu list is visible when parent nav is visible */
+	#top-menu-nav[style*="display: block"] #top-menu,
+	#top-menu-nav[style*="display:block"] #top-menu,
+	#top-menu-nav[style*="position: fixed"] #top-menu,
+	#top-menu-nav[style*="position:fixed"] #top-menu {
+		display: block !important;
+		visibility: visible !important;
+		opacity: 1 !important;
+		position: relative !important;
+		background: transparent !important;
+		background-color: transparent !important;
+		flex-direction: column !important;
+		align-items: flex-start !important;
+		width: 100% !important;
+	}
+	
+	/* Style menu items when menu is open */
+	#top-menu-nav[style*="display: block"] #top-menu li,
+	#top-menu-nav[style*="display:block"] #top-menu li,
+	#top-menu-nav[style*="position: fixed"] #top-menu li,
+	#top-menu-nav[style*="position:fixed"] #top-menu li {
+		display: block !important;
+		width: 100% !important;
+		margin: 0 !important;
+		padding: 0 !important;
+		border-bottom: 1px solid rgba(197, 160, 89, 0.1) !important;
+	}
+	
+	/* Style menu links when menu is open */
+	#top-menu-nav[style*="display: block"] #top-menu a,
+	#top-menu-nav[style*="display:block"] #top-menu a,
+	#top-menu-nav[style*="position: fixed"] #top-menu a,
+	#top-menu-nav[style*="position:fixed"] #top-menu a {
+		display: block !important;
+		color: #FFFFFF !important;
+		padding: 15px 20px !important;
+		border-bottom: 1px solid rgba(197, 160, 89, 0.1) !important;
+		text-decoration: none !important;
+		pointer-events: auto !important;
+		cursor: pointer !important;
+		width: 100% !important;
+		box-sizing: border-box !important;
+	}
+	
+	/* Active menu item in mobile menu */
+	#top-menu-nav[style*="display: block"] #top-menu .current-menu-item > a,
+	#top-menu-nav[style*="display:block"] #top-menu .current-menu-item > a,
+	#top-menu-nav[style*="position: fixed"] #top-menu .current-menu-item > a,
+	#top-menu-nav[style*="position:fixed"] #top-menu .current-menu-item > a {
+		color: #C5A059 !important;
+	}
+	
+	/* Submenu styling in mobile menu */
+	#top-menu-nav[style*="display: block"] #top-menu .sub-menu,
+	#top-menu-nav[style*="display:block"] #top-menu .sub-menu,
+	#top-menu-nav[style*="position: fixed"] #top-menu .sub-menu,
+	#top-menu-nav[style*="position:fixed"] #top-menu .sub-menu {
+		position: static !important;
+		display: none !important;
+		background: transparent !important;
+		background-color: transparent !important;
+		border: none !important;
+		box-shadow: none !important;
+		padding: 0 !important;
+		margin: 0 !important;
+		opacity: 1 !important;
+		visibility: visible !important;
+		transform: none !important;
+		flex-direction: column !important;
+		width: 100% !important;
+		padding-left: 20px !important;
+	}
+	
+	/* Show submenu when opened */
+	#top-menu-nav[style*="display: block"] #top-menu .sub-menu[style*="display: block"],
+	#top-menu-nav[style*="display:block"] #top-menu .sub-menu[style*="display:block"],
+	#top-menu-nav[style*="position: fixed"] #top-menu .sub-menu[style*="display: block"],
+	#top-menu-nav[style*="position:fixed"] #top-menu .sub-menu[style*="display:block"] {
+		display: block !important;
+	}
+	
+	/* Submenu items in mobile menu */
+	#top-menu-nav[style*="display: block"] #top-menu .sub-menu li,
+	#top-menu-nav[style*="display:block"] #top-menu .sub-menu li,
+	#top-menu-nav[style*="position: fixed"] #top-menu .sub-menu li,
+	#top-menu-nav[style*="position:fixed"] #top-menu .sub-menu li {
+		display: block !important;
+		width: 100% !important;
+		margin: 0 !important;
+		padding: 0 !important;
+		border-bottom: 1px solid rgba(197, 160, 89, 0.05) !important;
+	}
+	
+	/* Submenu links in mobile menu */
+	#top-menu-nav[style*="display: block"] #top-menu .sub-menu a,
+	#top-menu-nav[style*="display:block"] #top-menu .sub-menu a,
+	#top-menu-nav[style*="position: fixed"] #top-menu .sub-menu a,
+	#top-menu-nav[style*="position:fixed"] #top-menu .sub-menu a {
+		display: block !important;
+		color: rgba(255, 255, 255, 0.8) !important;
+		padding: 12px 20px 12px 40px !important;
+		border-bottom: 1px solid rgba(197, 160, 89, 0.05) !important;
+		text-decoration: none !important;
+		pointer-events: auto !important;
+		cursor: pointer !important;
+		width: 100% !important;
+		box-sizing: border-box !important;
+		font-size: 13px !important;
+	}
+	
+	/* Submenu links hover */
+	#top-menu-nav[style*="display: block"] #top-menu .sub-menu a:hover,
+	#top-menu-nav[style*="display:block"] #top-menu .sub-menu a:hover,
+	#top-menu-nav[style*="position: fixed"] #top-menu .sub-menu a:hover,
+	#top-menu-nav[style*="position:fixed"] #top-menu .sub-menu a:hover {
+		color: #C5A059 !important;
+		background: rgba(197, 160, 89, 0.1) !important;
 	}
 	
 	/* Show menu when mobile nav is open using data-open attribute */
