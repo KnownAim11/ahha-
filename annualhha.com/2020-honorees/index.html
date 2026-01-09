@@ -274,6 +274,34 @@ body.custom-background {
 			right: 0 !important;
 			margin: 0 auto !important;
 		}
+		
+		/* Исправление заголовка для мобильной версии - чтобы "Humanitarian" полностью влезал */
+		@media (max-width: 768px) {
+			.premium-honorees-header .premium-main-title,
+			.premium-honorees-header .luxury-title.premium-main-title,
+			.premium-honorees-header h1.luxury-title,
+			.luxury-header-block.premium-honorees-header h1 {
+				font-size: clamp(1.8rem, 7vw, 2.5rem) !important;
+				line-height: 1.2 !important;
+				word-break: break-word !important;
+				hyphens: auto !important;
+				letter-spacing: 0.03em !important;
+				padding: 0 10px !important;
+				text-align: center !important;
+			}
+		}
+		
+		/* Для очень маленьких экранов - еще больше уменьшаем */
+		@media (max-width: 480px) {
+			.premium-honorees-header .premium-main-title,
+			.premium-honorees-header .luxury-title.premium-main-title,
+			.premium-honorees-header h1.luxury-title,
+			.luxury-header-block.premium-honorees-header h1 {
+				font-size: clamp(1.5rem, 6vw, 2rem) !important;
+				line-height: 1.15 !important;
+				letter-spacing: 0.02em !important;
+			}
+		}
 	</style>
 
 <style id="premium-dark-theme-forced">
