@@ -517,22 +517,33 @@ var et_core_api_spam_recaptcha = {"site_key":"","page_action":{"action":"annualh
 				inset 0 1px 0 rgba(255, 255, 255, 0.3) !important;
 		}
 		
-		/* Hero Premium Section - Ultra-Premium Gradient */
+		/* Hero Premium Section - Video Background (no gradient overlay) */
 		.hero-premium {
-			background: radial-gradient(circle at 50% 0%, #121212 0%, #000000 100%) !important;
+			background: transparent !important;
 			position: relative;
 		}
 		
 		/* Video Background Styling */
 		.hero-video-background {
-			position: absolute;
-			top: 0;
-			left: 0;
-			width: 100%;
-			height: 100%;
-			object-fit: cover;
-			object-position: center;
-			z-index: 0;
+			position: absolute !important;
+			top: 0 !important;
+			left: 0 !important;
+			width: 100% !important;
+			height: 100% !important;
+			object-fit: cover !important;
+			object-position: center !important;
+			z-index: 0 !important;
+			display: block !important;
+			visibility: visible !important;
+			opacity: 1 !important;
+			pointer-events: none !important;
+		}
+		
+		/* Ensure hero section shows video */
+		.hero-premium {
+			background: transparent !important;
+			position: relative !important;
+			overflow: hidden !important;
 		}
 		
 		/* Video Overlay for better text readability */
@@ -542,9 +553,15 @@ var et_core_api_spam_recaptcha = {"site_key":"","page_action":{"action":"annualh
 			left: 0;
 			width: 100%;
 			height: 100%;
-			background: rgba(0, 0, 0, 0.4);
+			background: rgba(0, 0, 0, 0.3);
 			z-index: 1;
 			pointer-events: none;
+		}
+		
+		/* Ensure canvas doesn't completely hide video */
+		#golden-particles-canvas {
+			z-index: 2 !important;
+			opacity: 0.8;
 		}
 		
 		.hero-title-overlay {
@@ -1375,10 +1392,10 @@ html, body, #page-container, #et-main-area, #main-content, .et_pb_section {
 		<section class="hero-premium relative min-h-screen flex items-center overflow-hidden" style="margin-top: 0; padding-top: 0; padding-bottom: 225px;">
 			<!-- Video Background -->
 			<video autoplay muted loop playsinline class="hero-video-background absolute inset-0 w-full h-full object-cover" style="z-index: 0;">
-				<source src="/background .mp4" type="video/mp4">
+				<source src="../background%20.mp4" type="video/mp4">
 			</video>
 			<!-- Dark overlay for better text readability -->
-			<div class="hero-video-overlay absolute inset-0 w-full h-full" style="z-index: 1; background: rgba(0, 0, 0, 0.4);"></div>
+			<div class="hero-video-overlay absolute inset-0 w-full h-full" style="z-index: 1; background: rgba(0, 0, 0, 0.3);"></div>
 			<canvas id="golden-particles-canvas" class="absolute inset-0 w-full h-full" style="z-index: 2;"></canvas>
 			<div class="relative z-10 w-full max-w-7xl mx-auto px-6" style="z-index: 10;">
 				<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
