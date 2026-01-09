@@ -58,3 +58,75 @@ img {
 
 }
 
+/* ============================================
+   MOBILE NAVBAR Z-INDEX FIX
+   Ensure header is always above hero overlays
+   ============================================ */
+
+/* Force header to always be above hero overlays */
+#main-header {
+  position: relative !important;
+  z-index: 999999 !important;
+}
+
+/* Navigation containers must also be above hero */
+#et-top-navigation,
+#et_mobile_nav_menu {
+  position: relative !important;
+  z-index: 999999 !important;
+}
+
+/* Mobile menu when opened must be above everything */
+.et_mobile_menu,
+#et_mobile_nav_menu,
+#top-menu-nav[style*="display: block"],
+#top-menu-nav[style*="display:block"],
+#top-menu-nav[style*="position: fixed"] {
+  position: relative !important;
+  z-index: 999999 !important;
+  pointer-events: auto !important;
+}
+
+/* Ensure mobile menu container and links are clickable */
+.et_mobile_menu *,
+#et_mobile_nav_menu *,
+#top-menu-nav[style*="display: block"] *,
+#top-menu-nav[style*="display:block"] * {
+  pointer-events: auto !important;
+}
+
+/* ============================================
+   HERO CANVAS NON-INTERACTIVE
+   Prevent canvas from capturing clicks
+   ============================================ */
+
+/* Golden particles canvas must never capture clicks */
+#golden-particles-canvas,
+.golden-particles-canvas,
+canvas#golden-particles-canvas,
+.hero-premium #golden-particles-canvas,
+section.hero-premium #golden-particles-canvas {
+  pointer-events: none !important;
+  z-index: 0 !important;
+}
+
+/* Hero section and main content layering */
+.hero-premium {
+  position: relative !important;
+  z-index: 1 !important;
+}
+
+main {
+  position: relative !important;
+  z-index: 1 !important;
+}
+
+section {
+  position: relative !important;
+  z-index: 1 !important;
+}
+
+footer {
+  position: relative !important;
+  z-index: 1 !important;
+}

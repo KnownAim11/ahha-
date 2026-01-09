@@ -288,11 +288,18 @@ var et_core_api_spam_recaptcha = {"site_key":"","page_action":{"action":"annualh
 		}
 		
 		/* Ensure content is above noise */
-		header, main, section, footer {
+		/* Keep z-index only for header - main/section/footer handled separately */
+		header {
 			display: block !important;
 			width: 100% !important;
 			position: relative;
 			z-index: 2;
+		}
+		main, section, footer {
+			display: block !important;
+			width: 100% !important;
+			position: relative;
+			/* z-index removed - handled by global-fixes.css */
 		}
 		
 		/* Ultra-Premium Typography - Enhanced Readability */

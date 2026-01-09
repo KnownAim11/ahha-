@@ -34,7 +34,7 @@ html body .main-header {
 	border-bottom: 1px solid rgba(197, 160, 89, 0.2) !important;
 	position: sticky !important;
 	top: 0 !important;
-	z-index: 99999 !important;
+	z-index: 999999 !important;
 	width: 100% !important;
 	box-shadow: none !important;
 	transition: none !important;
@@ -210,7 +210,7 @@ header#main-header #et-top-navigation {
 	width: auto !important;
 	flex-wrap: nowrap !important;
 	position: relative !important;
-	z-index: 99999 !important;
+	z-index: 999999 !important;
 }
 
 /* Контейнер меню - выравнивание с правильным spacing */
@@ -645,7 +645,7 @@ html body ul.sub-menu[style*="bottom"] {
 		display: block !important;
 		cursor: pointer !important;
 		position: relative !important;
-		z-index: 99999 !important;
+		z-index: 999999 !important;
 		pointer-events: auto !important;
 	}
 	
@@ -1420,6 +1420,7 @@ canvas#golden-particles-canvas,
 section.hero-premium canvas,
 section.hero-premium #golden-particles-canvas {
 	pointer-events: none !important;
+	z-index: 0 !important;
 }
 
 /* Ensure header and mobile nav are always above hero overlays with high z-index */
@@ -1429,7 +1430,7 @@ header.main-header,
 html body #main-header,
 html body header#main-header {
 	position: relative !important;
-	z-index: 99999 !important;
+	z-index: 999999 !important;
 }
 
 #et-top-navigation,
@@ -1438,7 +1439,7 @@ nav#top-menu-nav,
 html body #et-top-navigation,
 html body #top-menu-nav {
 	position: relative !important;
-	z-index: 99999 !important;
+	z-index: 999999 !important;
 }
 
 /* Mobile navigation menu - ensure it's always clickable and above hero */
@@ -1447,7 +1448,7 @@ html body #top-menu-nav {
 html body #et_mobile_nav_menu,
 html body #main-header #et_mobile_nav_menu {
 	position: relative !important;
-	z-index: 99999 !important;
+	z-index: 999999 !important;
 	pointer-events: auto !important;
 }
 
@@ -1458,7 +1459,7 @@ html body #et_mobile_nav_menu .mobile_nav,
 html body #et_mobile_nav_menu .mobile_menu_bar_toggle,
 html body #et_mobile_nav_menu .mobile_menu_bar {
 	position: relative !important;
-	z-index: 99999 !important;
+	z-index: 999999 !important;
 	pointer-events: auto !important;
 }
 
@@ -1476,7 +1477,7 @@ html body #et_mobile_nav_menu .mobile_menu_bar {
 		visibility: visible !important;
 		opacity: 1 !important;
 		pointer-events: auto !important;
-		z-index: 99999 !important;
+		z-index: 999999 !important;
 		position: fixed !important;
 		top: 80px !important;
 		left: 0 !important;
@@ -1494,5 +1495,41 @@ html body #et_mobile_nav_menu .mobile_menu_bar {
 		pointer-events: auto !important;
 		cursor: pointer !important;
 	}
+}
+
+/* ============================================
+   HERO AND MAIN CONTENT Z-INDEX LAYERING
+   Ensure hero canvas is below header, hero content is above canvas
+   ============================================ */
+
+/* Hero canvas must be at bottom layer */
+#golden-particles-canvas,
+.golden-particles-canvas,
+canvas#golden-particles-canvas,
+.hero-premium #golden-particles-canvas,
+section.hero-premium #golden-particles-canvas {
+	z-index: 0 !important;
+}
+
+/* Hero section content above canvas */
+.hero-premium {
+	position: relative !important;
+	z-index: 1 !important;
+}
+
+/* Main content above hero but below header */
+main {
+	position: relative !important;
+	z-index: 1 !important;
+}
+
+section {
+	position: relative !important;
+	z-index: 1 !important;
+}
+
+footer {
+	position: relative !important;
+	z-index: 1 !important;
 }
 
