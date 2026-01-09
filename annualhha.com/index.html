@@ -152,42 +152,42 @@ var et_core_api_spam_recaptcha = {"site_key":"","page_action":{"action":"annualh
 			--bg-center: #121212;
 		}
 		
-		/* Award Trophy Animation - КРИТИЧЕСКИ ВАЖНО: НЕ МЕНЯТЬ */
+		/* Award Trophy Animation - Комбинированная анимация: вращение + плавание */
 				@keyframes premiumAwardFloat {
 					0% { 
-						transform: rotateY(-5deg) rotateX(1.5deg) translateY(0px) scale(1);
+						transform: rotateY(0deg) rotateX(1.5deg) translateY(0px) scale(1);
 				filter: drop-shadow(0 30px 60px rgba(197, 160, 89, 0.4));
 					}
 					12.5% { 
-						transform: rotateY(-2deg) rotateX(0.5deg) translateY(-4px) scale(1.01);
+						transform: rotateY(45deg) rotateX(0.5deg) translateY(-4px) scale(1.01);
 				filter: drop-shadow(0 32px 65px rgba(197, 160, 89, 0.42));
 					}
 					25% { 
-						transform: rotateY(2deg) rotateX(-0.5deg) translateY(-8px) scale(1.02);
+						transform: rotateY(90deg) rotateX(-0.5deg) translateY(-8px) scale(1.02);
 				filter: drop-shadow(0 35px 70px rgba(197, 160, 89, 0.45));
 					}
 					37.5% { 
-						transform: rotateY(5deg) rotateX(-1.5deg) translateY(-10px) scale(1.02);
+						transform: rotateY(135deg) rotateX(-1.5deg) translateY(-10px) scale(1.02);
 				filter: drop-shadow(0 35px 70px rgba(197, 160, 89, 0.45));
 					}
 					50% { 
-						transform: rotateY(5deg) rotateX(-1.5deg) translateY(-10px) scale(1.02);
+						transform: rotateY(180deg) rotateX(-1.5deg) translateY(-10px) scale(1.02);
 				filter: drop-shadow(0 35px 70px rgba(197, 160, 89, 0.45));
 					}
 					62.5% { 
-						transform: rotateY(2deg) rotateX(-0.5deg) translateY(-8px) scale(1.02);
+						transform: rotateY(225deg) rotateX(-0.5deg) translateY(-8px) scale(1.02);
 				filter: drop-shadow(0 32px 65px rgba(197, 160, 89, 0.42));
 					}
 					75% { 
-						transform: rotateY(-2deg) rotateX(0.5deg) translateY(-4px) scale(1.01);
+						transform: rotateY(270deg) rotateX(0.5deg) translateY(-4px) scale(1.01);
 				filter: drop-shadow(0 30px 60px rgba(197, 160, 89, 0.4));
 					}
 					87.5% { 
-						transform: rotateY(-4deg) rotateX(1deg) translateY(-2px) scale(1.005);
+						transform: rotateY(315deg) rotateX(1deg) translateY(-2px) scale(1.005);
 				filter: drop-shadow(0 30px 60px rgba(197, 160, 89, 0.4));
 					}
 					100% { 
-						transform: rotateY(-5deg) rotateX(1.5deg) translateY(0px) scale(1);
+						transform: rotateY(360deg) rotateX(1.5deg) translateY(0px) scale(1);
 				filter: drop-shadow(0 30px 60px rgba(197, 160, 89, 0.4));
 					}
 				}
@@ -206,7 +206,7 @@ var et_core_api_spam_recaptcha = {"site_key":"","page_action":{"action":"annualh
 					will-change: transform, filter;
 					backface-visibility: hidden;
 					-webkit-backface-visibility: hidden;
-					animation: premiumAwardFloat 18s infinite ease-in-out;
+					animation: premiumAwardFloat 20s infinite linear;
 				}
 				
 				.award-trophy-image {
