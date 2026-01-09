@@ -926,5 +926,179 @@ var gform_theme_config = {"common":{"form":{"honeypot":{"version_hash":"c954a059
 
 <script src="/wp-content/themes/unified-footer.js"></script>
 <script src="/wp-content/themes/mobile-nav-fix.js" defer></script>
+<!-- Простой и надежный обработчик мобильного меню -->
+<script>
+(function() {
+	'use strict';
+	
+	// Функция для инициализации мобильного меню
+	function initMobileMenu() {
+		// Находим элементы
+		const mobileNavContainer = document.querySelector('#et_mobile_nav_menu');
+		const mobileNav = document.querySelector('#et_mobile_nav_menu .mobile_nav');
+		const toggle = document.querySelector('#et_mobile_nav_menu .mobile_menu_bar_toggle, #et_mobile_nav_menu .mobile_menu_bar');
+		const topMenuNav = document.querySelector('#top-menu-nav');
+		const topMenu = document.querySelector('#top-menu');
+		
+		// Проверяем наличие элементов
+		if (!mobileNavContainer || !mobileNav || !toggle) {
+			return;
+		}
+		
+		// Функция для открытия меню
+		function openMenu() {
+			mobileNav.classList.remove('closed');
+			mobileNav.classList.add('opened', 'open');
+			mobileNav.setAttribute('data-open', 'true');
+			mobileNav.setAttribute('aria-expanded', 'true');
+			
+			if (topMenuNav) {
+				topMenuNav.style.display = 'block';
+				topMenuNav.style.position = 'fixed';
+				topMenuNav.style.top = '80px';
+				topMenuNav.style.left = '0';
+				topMenuNav.style.right = '0';
+				topMenuNav.style.width = '100%';
+				topMenuNav.style.maxWidth = '100%';
+				topMenuNav.style.background = '#000000';
+				topMenuNav.style.backgroundColor = '#000000';
+				topMenuNav.style.borderTop = '1px solid #C5A059';
+				topMenuNav.style.zIndex = '999999';
+				topMenuNav.style.padding = '20px';
+				topMenuNav.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.5)';
+				topMenuNav.style.maxHeight = 'calc(100vh - 80px)';
+				topMenuNav.style.overflowY = 'auto';
+				topMenuNav.style.visibility = 'visible';
+				topMenuNav.style.opacity = '1';
+				topMenuNav.style.pointerEvents = 'auto';
+			}
+			
+			if (topMenu) {
+				topMenu.style.display = 'block';
+				topMenu.style.visibility = 'visible';
+				topMenu.style.opacity = '1';
+				topMenu.style.position = 'relative';
+				topMenu.style.background = 'transparent';
+				topMenu.style.backgroundColor = 'transparent';
+				topMenu.style.flexDirection = 'column';
+				topMenu.style.alignItems = 'flex-start';
+			}
+		}
+		
+		// Функция для закрытия меню
+		function closeMenu() {
+			mobileNav.classList.remove('opened', 'open');
+			mobileNav.classList.add('closed');
+			mobileNav.setAttribute('data-open', 'false');
+			mobileNav.setAttribute('aria-expanded', 'false');
+			
+			if (topMenuNav) {
+				topMenuNav.style.display = 'none';
+				topMenuNav.style.visibility = 'hidden';
+				topMenuNav.style.opacity = '0';
+			}
+			
+			if (topMenu) {
+				topMenu.style.display = 'none';
+				topMenu.style.visibility = 'hidden';
+				topMenu.style.opacity = '0';
+			}
+		}
+		
+		// Функция для переключения меню
+		function toggleMenu(e) {
+			if (e) {
+				e.preventDefault();
+				e.stopPropagation();
+				e.stopImmediatePropagation();
+			}
+			
+			const isOpen = mobileNav.classList.contains('opened') || 
+			               mobileNav.classList.contains('open') ||
+			               mobileNav.getAttribute('data-open') === 'true';
+			
+			if (isOpen) {
+				closeMenu();
+			} else {
+				openMenu();
+			}
+			
+			return false;
+		}
+		
+		// Удаляем старые обработчики (если есть)
+		const newToggle = toggle.cloneNode(true);
+		toggle.parentNode.replaceChild(newToggle, toggle);
+		
+		// Добавляем обработчики на новый элемент
+		newToggle.addEventListener('click', toggleMenu, { capture: true, passive: false });
+		newToggle.addEventListener('touchstart', toggleMenu, { capture: true, passive: false });
+		
+		// Также добавляем обработчик на контейнер для большей надежности
+		mobileNavContainer.addEventListener('click', function(e) {
+			if (e.target === newToggle || 
+			    e.target === mobileNav || 
+			    newToggle.contains(e.target) ||
+			    mobileNav.contains(e.target)) {
+				toggleMenu(e);
+			}
+		}, { capture: true, passive: false });
+		
+		mobileNavContainer.addEventListener('touchstart', function(e) {
+			if (e.target === newToggle || 
+			    e.target === mobileNav || 
+			    newToggle.contains(e.target) ||
+			    mobileNav.contains(e.target)) {
+				toggleMenu(e);
+			}
+		}, { capture: true, passive: false });
+		
+		// Закрываем меню при клике вне его
+		document.addEventListener('click', function(e) {
+			const header = document.querySelector('#main-header');
+			if (header && !header.contains(e.target)) {
+				if (mobileNav.classList.contains('opened') || mobileNav.classList.contains('open')) {
+					closeMenu();
+				}
+			}
+		}, true);
+		
+		// Закрываем меню при клике на ссылку
+		if (topMenu) {
+			const links = topMenu.querySelectorAll('a');
+			links.forEach(function(link) {
+				link.addEventListener('click', function() {
+					setTimeout(closeMenu, 100);
+				});
+			});
+		}
+	}
+	
+	// Инициализируем при загрузке DOM
+	if (document.readyState === 'loading') {
+		document.addEventListener('DOMContentLoaded', function() {
+			setTimeout(initMobileMenu, 100);
+		});
+	} else {
+		setTimeout(initMobileMenu, 100);
+	}
+	
+	// Также инициализируем после полной загрузки страницы
+	window.addEventListener('load', function() {
+		setTimeout(initMobileMenu, 200);
+	});
+	
+	// Переинициализируем при изменении размера окна
+	let resizeTimeout;
+	window.addEventListener('resize', function() {
+		clearTimeout(resizeTimeout);
+		resizeTimeout = setTimeout(function() {
+			if (window.innerWidth <= 980) {
+				initMobileMenu();
+			}
+		}, 150);
+	});
+})();
+</script>
 </body>
 </html>
