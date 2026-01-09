@@ -154,10 +154,20 @@ var et_core_api_spam_recaptcha = {"site_key":"","page_action":{"action":"annualh
 		
 		/* Award Trophy Animation - Вращение на 360 градусов */
 		@keyframes trophyRotateAndFloat {
-			0% { 
+			from {
 				transform: rotate(0deg);
 			}
-			100% { 
+			to {
+				transform: rotate(360deg);
+			}
+		}
+		
+		/* Простая анимация вращения статуэтки */
+		@keyframes rotate360 {
+			from {
+				transform: rotate(0deg);
+			}
+			to {
 				transform: rotate(360deg);
 			}
 		}
@@ -231,8 +241,10 @@ var et_core_api_spam_recaptcha = {"site_key":"","page_action":{"action":"annualh
 		}
 		
 		.award-trophy-image {
-			animation: trophyRotateAndFloat 8s infinite linear !important;
-			-webkit-animation: trophyRotateAndFloat 8s infinite linear !important;
+			animation: rotate360 8s infinite linear !important;
+			-webkit-animation: rotate360 8s infinite linear !important;
+			-moz-animation: rotate360 8s infinite linear !important;
+			-o-animation: rotate360 8s infinite linear !important;
 			filter: drop-shadow(0 30px 60px rgba(197, 160, 89, 0.4));
 			display: block !important;
 			transform-origin: center center !important;
@@ -1426,7 +1438,7 @@ html, body, #page-container, #et-main-area, #main-content, .et_pb_section {
 						<div class="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-center">
 							<div class="award-trophy-wrapper perspective-1500" style="perspective: 1500px; transform-style: preserve-3d;">
 								<div class="award-trophy-animated">
-									<img src="/wp-content/uploads/2019/12/award-trophy.png" alt="Award Trophy" class="award-trophy-image w-full h-auto" style="animation: trophyRotateAndFloat 8s infinite linear !important; -webkit-animation: trophyRotateAndFloat 8s infinite linear !important; transform-origin: center center !important; will-change: transform !important;" />
+									<img src="/wp-content/uploads/2019/12/award-trophy.png" alt="Award Trophy" class="award-trophy-image w-full h-auto" style="animation: rotate360 8s infinite linear; -webkit-animation: rotate360 8s infinite linear; transform-origin: center center; will-change: transform;" />
 								</div>
 							</div>
 							<div class="award-text-wrapper">
@@ -1441,13 +1453,15 @@ html, body, #page-container, #et-main-area, #main-content, .et_pb_section {
 				// Принудительно применяем анимацию вращения к статуэтке
 				(function() {
 					function applyTrophyAnimation() {
-						const trophyImage = document.querySelector('.award-trophy-image');
+						const trophyImage = document.querySelector('img[src="/wp-content/uploads/2019/12/award-trophy.png"]');
 						if (trophyImage) {
-							trophyImage.style.animation = 'trophyRotateAndFloat 8s infinite linear';
-							trophyImage.style.webkitAnimation = 'trophyRotateAndFloat 8s infinite linear';
+							trophyImage.style.animation = 'rotate360 8s infinite linear';
+							trophyImage.style.webkitAnimation = 'rotate360 8s infinite linear';
+							trophyImage.style.MozAnimation = 'rotate360 8s infinite linear';
+							trophyImage.style.OAnimation = 'rotate360 8s infinite linear';
 							trophyImage.style.transformOrigin = 'center center';
 							trophyImage.style.willChange = 'transform';
-							console.log('Trophy animation applied');
+							console.log('Статуэтка крутится! Trophy rotating!');
 						}
 					}
 					
@@ -1460,6 +1474,9 @@ html, body, #page-container, #et-main-area, #main-content, .et_pb_section {
 					
 					// Также применяем после полной загрузки страницы
 					window.addEventListener('load', applyTrophyAnimation);
+					
+					// Применяем с небольшой задержкой на всякий случай
+					setTimeout(applyTrophyAnimation, 100);
 				})();
 			</script>
 			
