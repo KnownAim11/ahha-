@@ -153,14 +153,14 @@ var et_core_api_spam_recaptcha = {"site_key":"","page_action":{"action":"annualh
 		}
 		
 		/* Award Trophy Animation - Вращение на 360 градусов */
-				@keyframes trophyRotateAndFloat {
-					0% { 
-						transform: rotate(0deg);
-					}
-					100% { 
-						transform: rotate(360deg);
-					}
-				}
+		@keyframes trophyRotateAndFloat {
+			0% { 
+				transform: rotate(0deg);
+			}
+			100% { 
+				transform: rotate(360deg);
+			}
+		}
 				
 				@keyframes trophyGlow {
 					0%, 100% {
@@ -187,13 +187,6 @@ var et_core_api_spam_recaptcha = {"site_key":"","page_action":{"action":"annualh
 					position: relative !important;
 				}
 				
-				.award-trophy-image {
-					animation: trophyRotateAndFloat 8s infinite linear !important;
-					-webkit-animation: trophyRotateAndFloat 8s infinite linear !important;
-					transform-origin: center center !important;
-					display: block !important;
-					will-change: transform !important;
-				}
 				
 		/* Smooth transitions for interactive elements */
 		a, button {
@@ -238,9 +231,12 @@ var et_core_api_spam_recaptcha = {"site_key":"","page_action":{"action":"annualh
 		}
 		
 		.award-trophy-image {
+			animation: trophyRotateAndFloat 8s infinite linear !important;
+			-webkit-animation: trophyRotateAndFloat 8s infinite linear !important;
 			filter: drop-shadow(0 30px 60px rgba(197, 160, 89, 0.4));
 			display: block !important;
 			transform-origin: center center !important;
+			will-change: transform !important;
 		}
 		
 		.award-text-image {
@@ -249,7 +245,7 @@ var et_core_api_spam_recaptcha = {"site_key":"","page_action":{"action":"annualh
 		
 		/* Responsive adjustments */
 	@media (max-width: 768px) {
-					.award-trophy-animated {
+					.award-trophy-image {
 						animation-duration: 10s !important;
 						-webkit-animation-duration: 10s !important;
 					}
@@ -1430,7 +1426,7 @@ html, body, #page-container, #et-main-area, #main-content, .et_pb_section {
 						<div class="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-center">
 							<div class="award-trophy-wrapper perspective-1500" style="perspective: 1500px; transform-style: preserve-3d;">
 								<div class="award-trophy-animated">
-									<img src="/wp-content/uploads/2019/12/award-trophy.png" alt="Award Trophy" class="award-trophy-image w-full h-auto" />
+									<img src="/wp-content/uploads/2019/12/award-trophy.png" alt="Award Trophy" class="award-trophy-image w-full h-auto" style="animation: trophyRotateAndFloat 8s infinite linear !important; -webkit-animation: trophyRotateAndFloat 8s infinite linear !important; transform-origin: center center !important; will-change: transform !important;" />
 								</div>
 							</div>
 							<div class="award-text-wrapper">
@@ -1440,6 +1436,32 @@ html, body, #page-container, #et-main-area, #main-content, .et_pb_section {
 					</div>
 				</div>
 			</div>
+			
+			<script>
+				// Принудительно применяем анимацию вращения к статуэтке
+				(function() {
+					function applyTrophyAnimation() {
+						const trophyImage = document.querySelector('.award-trophy-image');
+						if (trophyImage) {
+							trophyImage.style.animation = 'trophyRotateAndFloat 8s infinite linear';
+							trophyImage.style.webkitAnimation = 'trophyRotateAndFloat 8s infinite linear';
+							trophyImage.style.transformOrigin = 'center center';
+							trophyImage.style.willChange = 'transform';
+							console.log('Trophy animation applied');
+						}
+					}
+					
+					// Применяем при загрузке DOM
+					if (document.readyState === 'loading') {
+						document.addEventListener('DOMContentLoaded', applyTrophyAnimation);
+					} else {
+						applyTrophyAnimation();
+					}
+					
+					// Также применяем после полной загрузки страницы
+					window.addEventListener('load', applyTrophyAnimation);
+				})();
+			</script>
 			
 			<script>
 				(function() {
