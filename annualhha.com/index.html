@@ -520,6 +520,31 @@ var et_core_api_spam_recaptcha = {"site_key":"","page_action":{"action":"annualh
 		/* Hero Premium Section - Ultra-Premium Gradient */
 		.hero-premium {
 			background: radial-gradient(circle at 50% 0%, #121212 0%, #000000 100%) !important;
+			position: relative;
+		}
+		
+		/* Video Background Styling */
+		.hero-video-background {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			object-position: center;
+			z-index: 0;
+		}
+		
+		/* Video Overlay for better text readability */
+		.hero-video-overlay {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background: rgba(0, 0, 0, 0.4);
+			z-index: 1;
+			pointer-events: none;
 		}
 		
 		.hero-title-overlay {
@@ -1348,8 +1373,14 @@ html, body, #page-container, #et-main-area, #main-content, .et_pb_section {
 		
 		<main>
 		<section class="hero-premium relative min-h-screen flex items-center overflow-hidden" style="margin-top: 0; padding-top: 0; padding-bottom: 225px;">
-			<canvas id="golden-particles-canvas" class="absolute inset-0 w-full h-full"></canvas>
-			<div class="relative z-10 w-full max-w-7xl mx-auto px-6">
+			<!-- Video Background -->
+			<video autoplay muted loop playsinline class="hero-video-background absolute inset-0 w-full h-full object-cover" style="z-index: 0;">
+				<source src="/background .mp4" type="video/mp4">
+			</video>
+			<!-- Dark overlay for better text readability -->
+			<div class="hero-video-overlay absolute inset-0 w-full h-full" style="z-index: 1; background: rgba(0, 0, 0, 0.4);"></div>
+			<canvas id="golden-particles-canvas" class="absolute inset-0 w-full h-full" style="z-index: 2;"></canvas>
+			<div class="relative z-10 w-full max-w-7xl mx-auto px-6" style="z-index: 10;">
 				<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
 				<!-- Large Left-Aligned Title -->
 				<div class="lg:col-span-5 hero-title-overlay">
