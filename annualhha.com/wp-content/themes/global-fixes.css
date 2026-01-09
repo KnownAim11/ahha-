@@ -130,3 +130,47 @@ footer {
   position: relative !important;
   z-index: 1 !important;
 }
+
+/* ============================================
+   Mobile Nav Clickability & Layering
+   Ensure header and mobile toggle are always clickable above any overlays
+   ============================================ */
+
+/* Ensure header and its mobile toggle are always clickable above any overlays */
+#main-header,
+#et-top-navigation,
+#et_mobile_nav_menu {
+  position: relative !important;
+  z-index: 999999 !important;
+}
+
+#et_mobile_nav_menu,
+#et_mobile_nav_menu * {
+  pointer-events: auto !important;
+}
+
+/* Prevent hero overlays from stealing taps */
+.hero-premium canvas,
+#golden-particles-canvas {
+  pointer-events: none !important;
+}
+
+body::before {
+  pointer-events: none !important;
+  z-index: 0 !important;
+}
+
+/* Ensure the opened mobile menu is visible */
+#et_mobile_nav_menu .mobile_nav.opened .et_mobile_menu {
+  display: block !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+#et_mobile_nav_menu .et_mobile_menu {
+  position: absolute !important;
+  top: 100% !important;
+  left: 0 !important;
+  right: 0 !important;
+  z-index: 999999 !important;
+}
