@@ -671,7 +671,10 @@ html body ul.sub-menu[style*="bottom"] {
 	#et_mobile_nav_menu .mobile_nav.open ~ * #top-menu,
 	.mobile_nav.open + #top-menu,
 	body:has(#et_mobile_nav_menu .mobile_nav.open) #top-menu,
-	body:has(#et_mobile_nav_menu .mobile_nav.open) #top-menu-nav {
+	body:has(#et_mobile_nav_menu .mobile_nav.open) #top-menu-nav,
+	/* Дополнительные селекторы для надежности */
+	#main-header .mobile_nav.open ~ #et-top-navigation #top-menu,
+	#main-header .mobile_nav.open ~ #et-top-navigation #top-menu-nav {
 		display: block !important;
 		position: fixed !important;
 		top: 80px !important;
@@ -686,6 +689,8 @@ html body ul.sub-menu[style*="bottom"] {
 		box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5) !important;
 		max-height: calc(100vh - 80px) !important;
 		overflow-y: auto !important;
+		visibility: visible !important;
+		opacity: 1 !important;
 	}
 	
 	/* Стили для ссылок в мобильном меню */
@@ -913,7 +918,6 @@ html body ul.sub-menu[style*="bottom"] {
 		background: transparent !important;
 		background-color: transparent !important;
 	}
-}
 }
 
 @media (min-width: 981px) {

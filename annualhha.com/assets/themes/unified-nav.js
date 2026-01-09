@@ -252,10 +252,18 @@
 		}
 		
 		window.unifiedMobileMenuHandler = function(e) {
-			// Проверяем, был ли клик по кнопке мобильного меню или её родителю
-			const mobileNavToggle = e.target.closest('.mobile_menu_bar_toggle, .mobile_nav, #et_mobile_nav_menu');
+			// Проверяем, был ли клик внутри мобильного меню или по его элементам
+			const mobileNavContainer = e.target.closest('#et_mobile_nav_menu');
+			const isMobileMenuClick = mobileNavContainer || 
+				e.target.closest('.mobile_nav') || 
+				e.target.closest('.mobile_menu_bar') ||
+				e.target.closest('.mobile_menu_bar_toggle') ||
+				e.target.classList.contains('mobile_menu_bar') ||
+				e.target.classList.contains('mobile_menu_bar_toggle') ||
+				e.target.classList.contains('mobile_nav') ||
+				e.target.classList.contains('select_page');
 			
-			if (mobileNavToggle && window.innerWidth <= 980) {
+			if (isMobileMenuClick && window.innerWidth <= 980) {
 				e.preventDefault();
 				e.stopPropagation();
 				
@@ -465,31 +473,66 @@
 		// Также инициализируем через jQuery, если доступен
 		if (typeof jQuery !== 'undefined') {
 			jQuery(document).ready(function($) {
-				// Дополнительная инициализация через jQuery
-				$('#et_mobile_nav_menu, #et_mobile_nav_menu .mobile_nav, #et_mobile_nav_menu .mobile_menu_bar_toggle').on('click', function(e) {
+				// Дополнительная инициализация через jQuery - делегирование событий
+				$(document).on('click', '#et_mobile_nav_menu, #et_mobile_nav_menu *, #et_mobile_nav_menu .mobile_nav, #et_mobile_nav_menu .mobile_menu_bar, #et_mobile_nav_menu .mobile_menu_bar_toggle, #et_mobile_nav_menu .select_page', function(e) {
+					if (window.innerWidth > 980) return; // Только для мобильных
+					
 					e.preventDefault();
 					e.stopPropagation();
 					
 					const $mobileNav = $('#et_mobile_nav_menu .mobile_nav');
-					const $topMenu = $('#top-menu, #top-menu-nav');
+					const $topMenu = $('#top-menu');
+					const $topMenuNav = $('#top-menu-nav');
 					
 					if ($mobileNav.hasClass('open')) {
 						$mobileNav.removeClass('open').addClass('closed');
 						$topMenu.hide();
+						$topMenuNav.hide();
 					} else {
 						$mobileNav.removeClass('closed').addClass('open');
-						$topMenu.css({
-							'display': 'block',
-							'position': 'absolute',
-							'top': '100%',
-							'left': '0',
-							'right': '0',
-							'width': '100%',
-							'background': '#000000',
-							'z-index': '10000',
-							'padding': '20px',
-							'box-shadow': '0 4px 20px rgba(0, 0, 0, 0.5)'
-						}).show();
+						
+						const header = $('#main-header');
+						const headerHeight = header.length ? header.outerHeight() : 80;
+						
+						if ($topMenu.length) {
+							$topMenu.css({
+								'display': 'block',
+								'position': 'fixed',
+								'top': headerHeight + 'px',
+								'left': '0',
+								'right': '0',
+								'width': '100%',
+								'max-width': '100%',
+								'background': '#000000',
+								'background-color': '#000000',
+								'border-top': '1px solid #C5A059',
+								'z-index': '10000',
+								'padding': '20px',
+								'box-shadow': '0 4px 20px rgba(0, 0, 0, 0.5)',
+								'overflow-y': 'auto',
+								'max-height': 'calc(100vh - ' + headerHeight + 'px)'
+							}).show();
+						}
+						
+						if ($topMenuNav.length) {
+							$topMenuNav.css({
+								'display': 'block',
+								'position': 'fixed',
+								'top': headerHeight + 'px',
+								'left': '0',
+								'right': '0',
+								'width': '100%',
+								'max-width': '100%',
+								'background': '#000000',
+								'background-color': '#000000',
+								'border-top': '1px solid #C5A059',
+								'z-index': '10000',
+								'padding': '20px',
+								'box-shadow': '0 4px 20px rgba(0, 0, 0, 0.5)',
+								'overflow-y': 'auto',
+								'max-height': 'calc(100vh - ' + headerHeight + 'px)'
+							}).show();
+						}
 					}
 				});
 			});
